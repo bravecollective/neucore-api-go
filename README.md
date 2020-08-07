@@ -1,3 +1,8 @@
+The version numbers correspond to the Neucore version numbers.
+
+When updating, check the generator version in .openapi-generator/VERSION, 
+a new version may break backwards compatibility.
+
 # Go API client for neucoreapi
 
 Client library of Neucore API
