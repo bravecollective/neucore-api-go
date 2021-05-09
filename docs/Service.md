@@ -1,4 +1,4 @@
-# Watchlist
+# Service
 
 ## Properties
 
@@ -6,91 +6,91 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int32** |  | 
 **Name** | **string** |  | 
-**LockWatchlistSettings** | Pointer to **bool** |  | [optional] 
+**Configuration** | Pointer to [**ServiceConfiguration**](ServiceConfiguration.md) |  | [optional] 
 
 ## Methods
 
-### NewWatchlist
+### NewService
 
-`func NewWatchlist(id int32, name string, ) *Watchlist`
+`func NewService(id int32, name string, ) *Service`
 
-NewWatchlist instantiates a new Watchlist object
+NewService instantiates a new Service object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewWatchlistWithDefaults
+### NewServiceWithDefaults
 
-`func NewWatchlistWithDefaults() *Watchlist`
+`func NewServiceWithDefaults() *Service`
 
-NewWatchlistWithDefaults instantiates a new Watchlist object
+NewServiceWithDefaults instantiates a new Service object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *Watchlist) GetId() int32`
+`func (o *Service) GetId() int32`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *Watchlist) GetIdOk() (*int32, bool)`
+`func (o *Service) GetIdOk() (*int32, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *Watchlist) SetId(v int32)`
+`func (o *Service) SetId(v int32)`
 
 SetId sets Id field to given value.
 
 
 ### GetName
 
-`func (o *Watchlist) GetName() string`
+`func (o *Service) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *Watchlist) GetNameOk() (*string, bool)`
+`func (o *Service) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *Watchlist) SetName(v string)`
+`func (o *Service) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
-### GetLockWatchlistSettings
+### GetConfiguration
 
-`func (o *Watchlist) GetLockWatchlistSettings() bool`
+`func (o *Service) GetConfiguration() ServiceConfiguration`
 
-GetLockWatchlistSettings returns the LockWatchlistSettings field if non-nil, zero value otherwise.
+GetConfiguration returns the Configuration field if non-nil, zero value otherwise.
 
-### GetLockWatchlistSettingsOk
+### GetConfigurationOk
 
-`func (o *Watchlist) GetLockWatchlistSettingsOk() (*bool, bool)`
+`func (o *Service) GetConfigurationOk() (*ServiceConfiguration, bool)`
 
-GetLockWatchlistSettingsOk returns a tuple with the LockWatchlistSettings field if it's non-nil, zero value otherwise
+GetConfigurationOk returns a tuple with the Configuration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLockWatchlistSettings
+### SetConfiguration
 
-`func (o *Watchlist) SetLockWatchlistSettings(v bool)`
+`func (o *Service) SetConfiguration(v ServiceConfiguration)`
 
-SetLockWatchlistSettings sets LockWatchlistSettings field to given value.
+SetConfiguration sets Configuration field to given value.
 
-### HasLockWatchlistSettings
+### HasConfiguration
 
-`func (o *Watchlist) HasLockWatchlistSettings() bool`
+`func (o *Service) HasConfiguration() bool`
 
-HasLockWatchlistSettings returns a boolean if a field has been set.
+HasConfiguration returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

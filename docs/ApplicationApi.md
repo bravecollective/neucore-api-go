@@ -10,15 +10,46 @@ Method | HTTP request | Description
 
 ## ShowV1
 
-> App ShowV1(ctx, )
+> App ShowV1(ctx).Execute()
 
 Show app information.
 
-Needs role: app
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationApi.ShowV1(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationApi.ShowV1``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ShowV1`: App
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationApi.ShowV1`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiShowV1Request struct via the builder pattern
+
 
 ### Return type
 

@@ -11,19 +11,53 @@ Method | HTTP request | Description
 
 ## EsiPostV1
 
-> string EsiPostV1(ctx, esiPathQuery, datasource, body)
+> string EsiPostV1(ctx).EsiPathQuery(esiPathQuery).Datasource(datasource).Body(body).Execute()
 
 Same as GET /app/v1/esi, but for POST requests.
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    esiPathQuery := "esiPathQuery_example" // string | The ESI path and query string (without the datasource parameter).
+    datasource := "datasource_example" // string | The EVE character ID those token should be used to make the ESI request
+    body := "body_example" // string | JSON encoded data.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationESIApi.EsiPostV1(context.Background()).EsiPathQuery(esiPathQuery).Datasource(datasource).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationESIApi.EsiPostV1``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EsiPostV1`: string
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationESIApi.EsiPostV1`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEsiPostV1Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**esiPathQuery** | **string**| The ESI path and query string (without the datasource parameter). | 
-**datasource** | **string**| The EVE character ID those token should be used to make the ESI request | 
-**body** | **string**| JSON encoded data. | 
+ **esiPathQuery** | **string** | The ESI path and query string (without the datasource parameter). | 
+ **datasource** | **string** | The EVE character ID those token should be used to make the ESI request | 
+ **body** | **string** | JSON encoded data. | 
 
 ### Return type
 
@@ -45,20 +79,53 @@ Name | Type | Description  | Notes
 
 ## EsiV1
 
-> string EsiV1(ctx, esiPathQuery, datasource)
+> string EsiV1(ctx).EsiPathQuery(esiPathQuery).Datasource(datasource).Execute()
 
 Makes an ESI GET request on behalf on an EVE character and returns the result.
 
-Needs role: app-esi<br>      *         Public ESI routes are not allowed.<br>      *         The following headers from ESI are passed through to the response if they exist:                Content-Type Expires X-Esi-Error-Limit-Remain X-Esi-Error-Limit-Reset X-Pages warning, Warning<br>      *         The HTTP status code from ESI is also passed through, so there may be more than the documented ones.<br>      *         The ESI path and query parameters can alternatively be appended to the path of this endpoint,                this allows to use OpenAPI clients that were generated for the ESI API,                see doc/app-esi-examples.php for more.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    esiPathQuery := "esiPathQuery_example" // string | The ESI path and query string (without the datasource parameter).
+    datasource := "datasource_example" // string | The EVE character ID those token should be used to make the ESI request
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationESIApi.EsiV1(context.Background()).EsiPathQuery(esiPathQuery).Datasource(datasource).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationESIApi.EsiV1``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EsiV1`: string
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationESIApi.EsiV1`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEsiV1Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**esiPathQuery** | **string**| The ESI path and query string (without the datasource parameter). | 
-**datasource** | **string**| The EVE character ID those token should be used to make the ESI request | 
+ **esiPathQuery** | **string** | The ESI path and query string (without the datasource parameter). | 
+ **datasource** | **string** | The EVE character ID those token should be used to make the ESI request | 
 
 ### Return type
 

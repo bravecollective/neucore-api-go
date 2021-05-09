@@ -10,32 +10,61 @@ Method | HTTP request | Description
 
 ## MemberTrackingV1
 
-> []CorporationMember MemberTrackingV1(ctx, id, optional)
+> []CorporationMember MemberTrackingV1(ctx, id).Inactive(inactive).Active(active).Account(account).Execute()
 
 Return corporation member tracking data.
 
-Needs role: app-tracking
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | EVE corporation ID.
+    inactive := int32(56) // int32 | Limit to members who have been inactive for x days or longer. (optional)
+    active := int32(56) // int32 | Limit to members who were active in the last x days. (optional)
+    account := "account_example" // string | Limit to members with (true) or without (false) an account. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationTrackingApi.MemberTrackingV1(context.Background(), id).Inactive(inactive).Active(active).Account(account).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationTrackingApi.MemberTrackingV1``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `MemberTrackingV1`: []CorporationMember
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationTrackingApi.MemberTrackingV1`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32**| EVE corporation ID. | 
- **optional** | ***MemberTrackingV1Opts** | optional parameters | nil if no parameters
+**id** | **int32** | EVE corporation ID. | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a MemberTrackingV1Opts struct
+Other parameters are passed through a pointer to a apiMemberTrackingV1Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **inactive** | **optional.Int32**| Limit to members who have been inactive for x days or longer. | 
- **active** | **optional.Int32**| Limit to members who were active in the last x days. | 
- **account** | **optional.String**| Limit to members with (true) or without (false) an account. | 
+ **inactive** | **int32** | Limit to members who have been inactive for x days or longer. | 
+ **active** | **int32** | Limit to members who were active in the last x days. | 
+ **account** | **string** | Limit to members with (true) or without (false) an account. | 
 
 ### Return type
 

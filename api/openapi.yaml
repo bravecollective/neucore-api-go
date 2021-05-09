@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: Client library of Neucore API
   title: Neucore API
-  version: 1.14.0
+  version: 1.21.0
 servers:
 - url: https://localhost/api
 tags:
@@ -157,6 +157,40 @@ paths:
       - BearerAuth: []
       summary: Returns all characters of the player account to which the character
         ID belongs.
+      tags:
+      - Application - Characters
+  /app/v1/characters:
+    post:
+      description: 'Needs role: app-chars.'
+      operationId: charactersBulkV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                type: integer
+              type: array
+        description: EVE character IDs array.
+        required: true
+      responses:
+        "400":
+          description: Invalid body.
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  items:
+                    type: integer
+                  type: array
+                type: array
+          description: All characters from the player account.
+        "403":
+          description: Not authorized.
+      security:
+      - BearerAuth: []
+      summary: Returns all characters from multiple player accounts identified by
+        character IDs.
       tags:
       - Application - Characters
   /app/v1/character-list:
@@ -940,6 +974,37 @@ paths:
         and alliance.
       tags:
       - Application - Groups
+  /app/v1/group-members/{groupId}:
+    get:
+      description: 'Needs role: app-groups.'
+      operationId: groupMembersV1
+      parameters:
+      - description: Group ID.
+        explode: false
+        in: path
+        name: groupId
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: integer
+                type: array
+          description: List of character IDs.
+        "403":
+          description: Not authorized.
+        "404":
+          description: Group was not found or app may not see it.
+      security:
+      - BearerAuth: []
+      summary: Returns the main character IDs from all group members.
+      tags:
+      - Application - Groups
   /app/v1/corporation/{id}/member-tracking:
     get:
       description: 'Needs role: app-tracking'
@@ -999,6 +1064,40 @@ paths:
       - Application - Tracking
 components:
   schemas:
+    ServiceAccount:
+      example:
+        serviceId: 0
+        serviceName: serviceName
+        characterId: 6
+        username: username
+        status: Pending
+      properties:
+        serviceId:
+          type: integer
+        serviceName:
+          nullable: true
+          type: string
+        characterId:
+          format: int64
+          type: integer
+        username:
+          nullable: true
+          type: string
+        status:
+          enum:
+          - Pending
+          - Active
+          - Deactivated
+          - Unknown
+          nullable: true
+          type: string
+      required:
+      - characterId
+      - serviceId
+      - serviceName
+      - status
+      - username
+      type: object
     CharacterGroups:
       example:
         character:
@@ -1032,6 +1131,11 @@ components:
           name: name
           main: true
           validTokenTime: 2000-01-23T04:56:07.000+00:00
+          characterNameChanges:
+          - oldName: oldName
+            changeDate: 2000-01-23T04:56:07.000+00:00
+          - oldName: oldName
+            changeDate: 2000-01-23T04:56:07.000+00:00
           id: 0
         groups:
         - visibility: private
@@ -1154,6 +1258,11 @@ components:
         name: name
         main: true
         validTokenTime: 2000-01-23T04:56:07.000+00:00
+        characterNameChanges:
+        - oldName: oldName
+          changeDate: 2000-01-23T04:56:07.000+00:00
+        - oldName: oldName
+          changeDate: 2000-01-23T04:56:07.000+00:00
         id: 0
       properties:
         id:
@@ -1189,9 +1298,29 @@ components:
           type: string
         corporation:
           $ref: '#/components/schemas/Corporation'
+        characterNameChanges:
+          description: 'List of previous character names (API: not included by default).'
+          items:
+            $ref: '#/components/schemas/CharacterNameChange'
+          type: array
       required:
       - id
       - name
+      type: object
+    CharacterNameChange:
+      example:
+        oldName: oldName
+        changeDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        oldName:
+          type: string
+        changeDate:
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - changeDate
+      - oldName
       type: object
     Corporation:
       example:
@@ -1289,6 +1418,11 @@ components:
           name: name
           main: true
           validTokenTime: 2000-01-23T04:56:07.000+00:00
+          characterNameChanges:
+          - oldName: oldName
+            changeDate: 2000-01-23T04:56:07.000+00:00
+          - oldName: oldName
+            changeDate: 2000-01-23T04:56:07.000+00:00
           id: 0
         missingCharacterMailSentNumber: 5
         name: name
@@ -1336,6 +1470,11 @@ components:
             name: name
             main: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
+            characterNameChanges:
+            - oldName: oldName
+              changeDate: 2000-01-23T04:56:07.000+00:00
+            - oldName: oldName
+              changeDate: 2000-01-23T04:56:07.000+00:00
             id: 0
           - validToken: true
             created: 2000-01-23T04:56:07.000+00:00
@@ -1367,6 +1506,11 @@ components:
             name: name
             main: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
+            characterNameChanges:
+            - oldName: oldName
+              changeDate: 2000-01-23T04:56:07.000+00:00
+            - oldName: oldName
+              changeDate: 2000-01-23T04:56:07.000+00:00
             id: 0
           managerApps:
           - roles:
@@ -1396,16 +1540,27 @@ components:
           incomingCharacters:
           - newPlayerName: newPlayerName
             reason: moved
-            newPlayerId: 6
+            newPlayerId: 5
             characterName: characterName
-            characterId: 1
+            characterId: 5
             removedDate: 2000-01-23T04:56:07.000+00:00
           - newPlayerName: newPlayerName
             reason: moved
-            newPlayerId: 6
+            newPlayerId: 5
             characterName: characterName
-            characterId: 1
+            characterId: 5
             removedDate: 2000-01-23T04:56:07.000+00:00
+          serviceAccounts:
+          - serviceId: 0
+            serviceName: serviceName
+            characterId: 6
+            username: username
+            status: Pending
+          - serviceId: 0
+            serviceName: serviceName
+            characterId: 6
+            username: username
+            status: Pending
           roles:
           - null
           - null
@@ -1417,7 +1572,7 @@ components:
           - visibility: private
             name: name
             id: 6
-          id: 0
+          id: 1
           managerGroups:
           - visibility: private
             name: name
@@ -1428,15 +1583,15 @@ components:
           removedCharacters:
           - newPlayerName: newPlayerName
             reason: moved
-            newPlayerId: 6
+            newPlayerId: 5
             characterName: characterName
-            characterId: 1
+            characterId: 5
             removedDate: 2000-01-23T04:56:07.000+00:00
           - newPlayerName: newPlayerName
             reason: moved
-            newPlayerId: 6
+            newPlayerId: 5
             characterName: characterName
-            characterId: 1
+            characterId: 5
             removedDate: 2000-01-23T04:56:07.000+00:00
           status: standard
       properties:
@@ -1528,10 +1683,12 @@ components:
       properties:
         id:
           description: Group ID.
+          nullable: true
           type: integer
         name:
           description: A unique group name (can be changed).
           maxLength: 64
+          nullable: true
           pattern: ^[-._a-zA-Z0-9]+$
           type: string
         visibility:
@@ -1603,6 +1760,11 @@ components:
           name: name
           main: true
           validTokenTime: 2000-01-23T04:56:07.000+00:00
+          characterNameChanges:
+          - oldName: oldName
+            changeDate: 2000-01-23T04:56:07.000+00:00
+          - oldName: oldName
+            changeDate: 2000-01-23T04:56:07.000+00:00
           id: 0
         - validToken: true
           created: 2000-01-23T04:56:07.000+00:00
@@ -1634,6 +1796,11 @@ components:
           name: name
           main: true
           validTokenTime: 2000-01-23T04:56:07.000+00:00
+          characterNameChanges:
+          - oldName: oldName
+            changeDate: 2000-01-23T04:56:07.000+00:00
+          - oldName: oldName
+            changeDate: 2000-01-23T04:56:07.000+00:00
           id: 0
         managerApps:
         - roles:
@@ -1663,16 +1830,27 @@ components:
         incomingCharacters:
         - newPlayerName: newPlayerName
           reason: moved
-          newPlayerId: 6
+          newPlayerId: 5
           characterName: characterName
-          characterId: 1
+          characterId: 5
           removedDate: 2000-01-23T04:56:07.000+00:00
         - newPlayerName: newPlayerName
           reason: moved
-          newPlayerId: 6
+          newPlayerId: 5
           characterName: characterName
-          characterId: 1
+          characterId: 5
           removedDate: 2000-01-23T04:56:07.000+00:00
+        serviceAccounts:
+        - serviceId: 0
+          serviceName: serviceName
+          characterId: 6
+          username: username
+          status: Pending
+        - serviceId: 0
+          serviceName: serviceName
+          characterId: 6
+          username: username
+          status: Pending
         roles:
         - null
         - null
@@ -1684,7 +1862,7 @@ components:
         - visibility: private
           name: name
           id: 6
-        id: 0
+        id: 1
         managerGroups:
         - visibility: private
           name: name
@@ -1695,18 +1873,23 @@ components:
         removedCharacters:
         - newPlayerName: newPlayerName
           reason: moved
-          newPlayerId: 6
+          newPlayerId: 5
           characterName: characterName
-          characterId: 1
+          characterId: 5
           removedDate: 2000-01-23T04:56:07.000+00:00
         - newPlayerName: newPlayerName
           reason: moved
-          newPlayerId: 6
+          newPlayerId: 5
           characterName: characterName
-          characterId: 1
+          characterId: 5
           removedDate: 2000-01-23T04:56:07.000+00:00
         status: standard
       properties:
+        serviceAccounts:
+          description: 'External service accounts (API: not included by default)'
+          items:
+            $ref: '#/components/schemas/ServiceAccount'
+          type: array
         id:
           type: integer
         name:
@@ -1766,9 +1949,9 @@ components:
       example:
         newPlayerName: newPlayerName
         reason: moved
-        newPlayerId: 6
+        newPlayerId: 5
         characterName: characterName
-        characterId: 1
+        characterId: 5
         removedDate: 2000-01-23T04:56:07.000+00:00
       properties:
         newPlayerId:
@@ -1819,6 +2002,8 @@ components:
       - group-manager
       - app-admin
       - app-manager
+      - service-admin
+      - statistics
       - esi
       - settings
       - tracking
@@ -1827,6 +2012,83 @@ components:
       - watchlist-manager
       - watchlist-admin
       type: string
+    Service:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        configuration:
+          $ref: '#/components/schemas/ServiceConfiguration'
+      required:
+      - id
+      - name
+      type: object
+    ServiceConfiguration:
+      properties:
+        phpClass:
+          type: string
+        psr4Prefix:
+          type: string
+        psr4Path:
+          type: string
+        requiredGroups:
+          items:
+            type: integer
+          type: array
+        properties:
+          enum:
+          - username
+          - password
+          - email
+          - status
+          items:
+            type: string
+          type: array
+        showPassword:
+          type: boolean
+        actions:
+          enum:
+          - update-account
+          - reset-password
+          items:
+            type: string
+          type: array
+        URLs:
+          items:
+            $ref: '#/components/schemas/ServiceConfigurationURL'
+          type: array
+        textAccount:
+          type: string
+        textTop:
+          type: string
+        textRegister:
+          type: string
+        textPending:
+          type: string
+      required:
+      - URLs
+      - actions
+      - properties
+      - textAccount
+      - textPending
+      - textRegister
+      - textTop
+      type: object
+    ServiceConfigurationURL:
+      properties:
+        url:
+          description: 'placeholders: {username}, {password}, {email}'
+          type: string
+        title:
+          type: string
+        target:
+          type: string
+      required:
+      - target
+      - title
+      - url
+      type: object
     SystemVariable:
       properties:
         name:
@@ -1852,6 +2114,70 @@ components:
       required:
       - id
       - name
+      type: object
+    TotalMonthlyAppRequests:
+      properties:
+        requests:
+          type: integer
+        year:
+          type: integer
+        month:
+          type: integer
+      required:
+      - month
+      - requests
+      - year
+      type: object
+    MonthlyAppRequests:
+      properties:
+        app_id:
+          type: integer
+        app_name:
+          type: string
+        requests:
+          type: integer
+        year:
+          type: integer
+        month:
+          type: integer
+      required:
+      - app_id
+      - app_name
+      - month
+      - requests
+      - year
+      type: object
+    TotalDailyAppRequests:
+      properties:
+        requests:
+          type: integer
+        year:
+          type: integer
+        month:
+          type: integer
+        day_of_month:
+          type: integer
+      required:
+      - day_of_month
+      - month
+      - requests
+      - year
+      type: object
+    PlayerLoginStatistics:
+      properties:
+        unique_logins:
+          type: integer
+        total_logins:
+          type: integer
+        year:
+          type: integer
+        month:
+          type: integer
+      required:
+      - month
+      - total_logins
+      - unique_logins
+      - year
       type: object
   securitySchemes:
     BearerAuth:
