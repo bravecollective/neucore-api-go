@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: Client library of Neucore API
   title: Neucore API
-  version: 1.21.0
+  version: 1.22.0
 servers:
 - url: https://localhost/api
 tags:
@@ -987,6 +987,14 @@ paths:
         schema:
           type: integer
         style: simple
+      - description: Limit to characters that are a member of this corporation.
+        explode: true
+        in: query
+        name: corporation
+        required: false
+        schema:
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -1112,20 +1120,28 @@ components:
               name: name
               groups:
               - visibility: private
+                autoAccept: true
                 name: name
+                description: description
                 id: 6
               - visibility: private
+                autoAccept: true
                 name: name
+                description: description
                 id: 6
               id: 1
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
             - visibility: private
+              autoAccept: true
               name: name
+              description: description
               id: 6
             - visibility: private
+              autoAccept: true
               name: name
+              description: description
               id: 6
             id: 6
           name: name
@@ -1139,10 +1155,14 @@ components:
           id: 0
         groups:
         - visibility: private
+          autoAccept: true
           name: name
+          description: description
           id: 6
         - visibility: private
+          autoAccept: true
           name: name
+          description: description
           id: 6
       properties:
         character:
@@ -1161,10 +1181,14 @@ components:
         name: name
         groups:
         - visibility: private
+          autoAccept: true
           name: name
+          description: description
           id: 6
         - visibility: private
+          autoAccept: true
           name: name
+          description: description
           id: 6
         id: 1
       properties:
@@ -1198,10 +1222,14 @@ components:
         name: name
         groups:
         - visibility: private
+          autoAccept: true
           name: name
+          description: description
           id: 6
         - visibility: private
+          autoAccept: true
           name: name
+          description: description
           id: 6
         id: 0
       properties:
@@ -1239,20 +1267,28 @@ components:
             name: name
             groups:
             - visibility: private
+              autoAccept: true
               name: name
+              description: description
               id: 6
             - visibility: private
+              autoAccept: true
               name: name
+              description: description
               id: 6
             id: 1
           trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
           name: name
           groups:
           - visibility: private
+            autoAccept: true
             name: name
+            description: description
             id: 6
           - visibility: private
+            autoAccept: true
             name: name
+            description: description
             id: 6
           id: 6
         name: name
@@ -1331,20 +1367,28 @@ components:
           name: name
           groups:
           - visibility: private
+            autoAccept: true
             name: name
+            description: description
             id: 6
           - visibility: private
+            autoAccept: true
             name: name
+            description: description
             id: 6
           id: 1
         trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
         name: name
         groups:
         - visibility: private
+          autoAccept: true
           name: name
+          description: description
           id: 6
         - visibility: private
+          autoAccept: true
           name: name
+          description: description
           id: 6
         id: 6
       properties:
@@ -1399,20 +1443,28 @@ components:
               name: name
               groups:
               - visibility: private
+                autoAccept: true
                 name: name
+                description: description
                 id: 6
               - visibility: private
+                autoAccept: true
                 name: name
+                description: description
                 id: 6
               id: 1
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
             - visibility: private
+              autoAccept: true
               name: name
+              description: description
               id: 6
             - visibility: private
+              autoAccept: true
               name: name
+              description: description
               id: 6
             id: 6
           name: name
@@ -1451,20 +1503,28 @@ components:
                 name: name
                 groups:
                 - visibility: private
+                  autoAccept: true
                   name: name
+                  description: description
                   id: 6
                 - visibility: private
+                  autoAccept: true
                   name: name
+                  description: description
                   id: 6
                 id: 1
               trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
               name: name
               groups:
               - visibility: private
+                autoAccept: true
                 name: name
+                description: description
                 id: 6
               - visibility: private
+                autoAccept: true
                 name: name
+                description: description
                 id: 6
               id: 6
             name: name
@@ -1487,20 +1547,28 @@ components:
                 name: name
                 groups:
                 - visibility: private
+                  autoAccept: true
                   name: name
+                  description: description
                   id: 6
                 - visibility: private
+                  autoAccept: true
                   name: name
+                  description: description
                   id: 6
                 id: 1
               trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
               name: name
               groups:
               - visibility: private
+                autoAccept: true
                 name: name
+                description: description
                 id: 6
               - visibility: private
+                autoAccept: true
                 name: name
+                description: description
                 id: 6
               id: 6
             name: name
@@ -1519,10 +1587,14 @@ components:
             name: name
             groups:
             - visibility: private
+              autoAccept: true
               name: name
+              description: description
               id: 6
             - visibility: private
+              autoAccept: true
               name: name
+              description: description
               id: 6
             id: 0
           - roles:
@@ -1531,10 +1603,14 @@ components:
             name: name
             groups:
             - visibility: private
+              autoAccept: true
               name: name
+              description: description
               id: 6
             - visibility: private
+              autoAccept: true
               name: name
+              description: description
               id: 6
             id: 0
           incomingCharacters:
@@ -1567,18 +1643,26 @@ components:
           name: name
           groups:
           - visibility: private
+            autoAccept: true
             name: name
+            description: description
             id: 6
           - visibility: private
+            autoAccept: true
             name: name
+            description: description
             id: 6
           id: 1
           managerGroups:
           - visibility: private
+            autoAccept: true
             name: name
+            description: description
             id: 6
           - visibility: private
+            autoAccept: true
             name: name
+            description: description
             id: 6
           removedCharacters:
           - newPlayerName: newPlayerName
@@ -1678,7 +1762,9 @@ components:
     Group:
       example:
         visibility: private
+        autoAccept: true
         name: name
+        description: description
         id: 6
       properties:
         id:
@@ -1691,12 +1777,17 @@ components:
           nullable: true
           pattern: ^[-._a-zA-Z0-9]+$
           type: string
+        description:
+          maxLength: 1024
+          nullable: true
+          type: string
         visibility:
           enum:
           - private
           - public
-          - conditioned
           type: string
+        autoAccept:
+          type: boolean
       required:
       - id
       - name
@@ -1741,20 +1832,28 @@ components:
               name: name
               groups:
               - visibility: private
+                autoAccept: true
                 name: name
+                description: description
                 id: 6
               - visibility: private
+                autoAccept: true
                 name: name
+                description: description
                 id: 6
               id: 1
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
             - visibility: private
+              autoAccept: true
               name: name
+              description: description
               id: 6
             - visibility: private
+              autoAccept: true
               name: name
+              description: description
               id: 6
             id: 6
           name: name
@@ -1777,20 +1876,28 @@ components:
               name: name
               groups:
               - visibility: private
+                autoAccept: true
                 name: name
+                description: description
                 id: 6
               - visibility: private
+                autoAccept: true
                 name: name
+                description: description
                 id: 6
               id: 1
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
             - visibility: private
+              autoAccept: true
               name: name
+              description: description
               id: 6
             - visibility: private
+              autoAccept: true
               name: name
+              description: description
               id: 6
             id: 6
           name: name
@@ -1809,10 +1916,14 @@ components:
           name: name
           groups:
           - visibility: private
+            autoAccept: true
             name: name
+            description: description
             id: 6
           - visibility: private
+            autoAccept: true
             name: name
+            description: description
             id: 6
           id: 0
         - roles:
@@ -1821,10 +1932,14 @@ components:
           name: name
           groups:
           - visibility: private
+            autoAccept: true
             name: name
+            description: description
             id: 6
           - visibility: private
+            autoAccept: true
             name: name
+            description: description
             id: 6
           id: 0
         incomingCharacters:
@@ -1857,18 +1972,26 @@ components:
         name: name
         groups:
         - visibility: private
+          autoAccept: true
           name: name
+          description: description
           id: 6
         - visibility: private
+          autoAccept: true
           name: name
+          description: description
           id: 6
         id: 1
         managerGroups:
         - visibility: private
+          autoAccept: true
           name: name
+          description: description
           id: 6
         - visibility: private
+          autoAccept: true
           name: name
+          description: description
           id: 6
         removedCharacters:
         - newPlayerName: newPlayerName

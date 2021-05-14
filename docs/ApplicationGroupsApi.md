@@ -432,7 +432,7 @@ Name | Type | Description  | Notes
 
 ## GroupMembersV1
 
-> []int32 GroupMembersV1(ctx, groupId).Execute()
+> []int32 GroupMembersV1(ctx, groupId).Corporation(corporation).Execute()
 
 Returns the main character IDs from all group members.
 
@@ -452,10 +452,11 @@ import (
 
 func main() {
     groupId := int32(56) // int32 | Group ID.
+    corporation := int32(56) // int32 | Limit to characters that are a member of this corporation. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationGroupsApi.GroupMembersV1(context.Background(), groupId).Execute()
+    resp, r, err := api_client.ApplicationGroupsApi.GroupMembersV1(context.Background(), groupId).Corporation(corporation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationGroupsApi.GroupMembersV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -481,6 +482,7 @@ Other parameters are passed through a pointer to a apiGroupMembersV1Request stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **corporation** | **int32** | Limit to characters that are a member of this corporation. | 
 
 ### Return type
 
