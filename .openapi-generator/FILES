@@ -22,7 +22,9 @@ docs/CharacterNameChange.md
 docs/Corporation.md
 docs/CorporationMember.md
 docs/EsiLocation.md
+docs/EsiToken.md
 docs/EsiType.md
+docs/EveLogin.md
 docs/Group.md
 docs/GroupApplication.md
 docs/MonthlyAppRequests.md
@@ -49,7 +51,9 @@ model_character_name_change.go
 model_corporation.go
 model_corporation_member.go
 model_esi_location.go
+model_esi_token.go
 model_esi_type.go
+model_eve_login.go
 model_group.go
 model_group_application.go
 model_monthly_app_requests.go

@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ValidToken** | Pointer to **NullableBool** | Shows if character&#39;s default refresh token is valid or not.                         This is null if there is no refresh token (EVE SSOv1 only)                         or a valid token but without scopes (SSOv2). | [optional] 
+**ValidTokenTime** | Pointer to **NullableTime** | Date and time when the valid token property was last changed. | [optional] 
 **Id** | **int64** | EVE character ID. | 
 **Name** | **string** | EVE character name. | 
 **Main** | Pointer to **bool** |  | [optional] 
-**ValidToken** | Pointer to **NullableBool** | Shows if character&#39;s refresh token is valid or not.  This is null if there is no refresh token (EVE SSOv1 only) or a valid token but without scopes (SSOv2). | [optional] 
-**ValidTokenTime** | Pointer to **NullableTime** | Date and time when that valid token property was last changed. | [optional] 
+**EsiTokens** | Pointer to [**[]EsiToken**](EsiToken.md) | ESI tokens of the character (API: not included by default). | [optional] 
 **Created** | Pointer to **NullableTime** |  | [optional] 
 **LastUpdate** | Pointer to **NullableTime** | Last ESI update. | [optional] 
 **Corporation** | Pointer to [**Corporation**](Corporation.md) |  | [optional] 
@@ -32,71 +33,6 @@ will change when the set of required properties is changed
 NewCharacterWithDefaults instantiates a new Character object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *Character) GetId() int64`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Character) GetIdOk() (*int64, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Character) SetId(v int64)`
-
-SetId sets Id field to given value.
-
-
-### GetName
-
-`func (o *Character) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *Character) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *Character) SetName(v string)`
-
-SetName sets Name field to given value.
-
-
-### GetMain
-
-`func (o *Character) GetMain() bool`
-
-GetMain returns the Main field if non-nil, zero value otherwise.
-
-### GetMainOk
-
-`func (o *Character) GetMainOk() (*bool, bool)`
-
-GetMainOk returns a tuple with the Main field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMain
-
-`func (o *Character) SetMain(v bool)`
-
-SetMain sets Main field to given value.
-
-### HasMain
-
-`func (o *Character) HasMain() bool`
-
-HasMain returns a boolean if a field has been set.
 
 ### GetValidToken
 
@@ -168,6 +104,96 @@ HasValidTokenTime returns a boolean if a field has been set.
 `func (o *Character) UnsetValidTokenTime()`
 
 UnsetValidTokenTime ensures that no value is present for ValidTokenTime, not even an explicit nil
+### GetId
+
+`func (o *Character) GetId() int64`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Character) GetIdOk() (*int64, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Character) SetId(v int64)`
+
+SetId sets Id field to given value.
+
+
+### GetName
+
+`func (o *Character) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *Character) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *Character) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetMain
+
+`func (o *Character) GetMain() bool`
+
+GetMain returns the Main field if non-nil, zero value otherwise.
+
+### GetMainOk
+
+`func (o *Character) GetMainOk() (*bool, bool)`
+
+GetMainOk returns a tuple with the Main field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMain
+
+`func (o *Character) SetMain(v bool)`
+
+SetMain sets Main field to given value.
+
+### HasMain
+
+`func (o *Character) HasMain() bool`
+
+HasMain returns a boolean if a field has been set.
+
+### GetEsiTokens
+
+`func (o *Character) GetEsiTokens() []EsiToken`
+
+GetEsiTokens returns the EsiTokens field if non-nil, zero value otherwise.
+
+### GetEsiTokensOk
+
+`func (o *Character) GetEsiTokensOk() (*[]EsiToken, bool)`
+
+GetEsiTokensOk returns a tuple with the EsiTokens field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEsiTokens
+
+`func (o *Character) SetEsiTokens(v []EsiToken)`
+
+SetEsiTokens sets EsiTokens field to given value.
+
+### HasEsiTokens
+
+`func (o *Character) HasEsiTokens() bool`
+
+HasEsiTokens returns a boolean if a field has been set.
+
 ### GetCreated
 
 `func (o *Character) GetCreated() time.Time`

@@ -4,9 +4,80 @@ All URIs are relative to *https://localhost/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**EsiEveLoginCharactersV1**](ApplicationESIApi.md#EsiEveLoginCharactersV1) | **Get** /app/v1/esi/eve-login/{name}/characters | Returns character IDs of characters that have a valid ESI token of the specified EVE login.
 [**EsiPostV1**](ApplicationESIApi.md#EsiPostV1) | **Post** /app/v1/esi | Same as GET /app/v1/esi, but for POST requests.
 [**EsiV1**](ApplicationESIApi.md#EsiV1) | **Get** /app/v1/esi | Makes an ESI GET request on behalf on an EVE character and returns the result.
 
+
+
+## EsiEveLoginCharactersV1
+
+> []int32 EsiEveLoginCharactersV1(ctx, name).Execute()
+
+Returns character IDs of characters that have a valid ESI token of the specified EVE login.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string | EVE login name, 'core.default' is not allowed.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationESIApi.EsiEveLoginCharactersV1(context.Background(), name).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationESIApi.EsiEveLoginCharactersV1``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EsiEveLoginCharactersV1`: []int32
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationESIApi.EsiEveLoginCharactersV1`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string** | EVE login name, &#39;core.default&#39; is not allowed. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEsiEveLoginCharactersV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+**[]int32**
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## EsiPostV1
@@ -29,7 +100,7 @@ import (
 
 func main() {
     esiPathQuery := "esiPathQuery_example" // string | The ESI path and query string (without the datasource parameter).
-    datasource := "datasource_example" // string | The EVE character ID those token should be used to make the ESI request
+    datasource := "datasource_example" // string | The EVE character ID those token should be used to make the ESI request. Optionally                             followed by a colon and the name of an EVE login to use an alternative ESI token.
     body := "body_example" // string | JSON encoded data.
 
     configuration := openapiclient.NewConfiguration()
@@ -56,7 +127,7 @@ Other parameters are passed through a pointer to a apiEsiPostV1Request struct vi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **esiPathQuery** | **string** | The ESI path and query string (without the datasource parameter). | 
- **datasource** | **string** | The EVE character ID those token should be used to make the ESI request | 
+ **datasource** | **string** | The EVE character ID those token should be used to make the ESI request. Optionally                             followed by a colon and the name of an EVE login to use an alternative ESI token. | 
  **body** | **string** | JSON encoded data. | 
 
 ### Return type
@@ -99,7 +170,7 @@ import (
 
 func main() {
     esiPathQuery := "esiPathQuery_example" // string | The ESI path and query string (without the datasource parameter).
-    datasource := "datasource_example" // string | The EVE character ID those token should be used to make the ESI request
+    datasource := "datasource_example" // string | The EVE character ID those token should be used to make the ESI request. Optionally                             followed by a colon and the name of an EVE login to use an alternative ESI token.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -125,7 +196,7 @@ Other parameters are passed through a pointer to a apiEsiV1Request struct via th
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **esiPathQuery** | **string** | The ESI path and query string (without the datasource parameter). | 
- **datasource** | **string** | The EVE character ID those token should be used to make the ESI request | 
+ **datasource** | **string** | The EVE character ID those token should be used to make the ESI request. Optionally                             followed by a colon and the name of an EVE login to use an alternative ESI token. | 
 
 ### Return type
 

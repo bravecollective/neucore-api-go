@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** | App name | 
 **Roles** | Pointer to [**[]Role**](Role.md) | Roles for authorization. | [optional] 
 **Groups** | Pointer to [**[]Group**](Group.md) | Groups the app can see. | [optional] 
+**EveLogins** | Pointer to [**[]EveLogin**](EveLogin.md) |  | [optional] 
 
 ## Methods
 
@@ -117,6 +118,31 @@ SetGroups sets Groups field to given value.
 `func (o *App) HasGroups() bool`
 
 HasGroups returns a boolean if a field has been set.
+
+### GetEveLogins
+
+`func (o *App) GetEveLogins() []EveLogin`
+
+GetEveLogins returns the EveLogins field if non-nil, zero value otherwise.
+
+### GetEveLoginsOk
+
+`func (o *App) GetEveLoginsOk() (*[]EveLogin, bool)`
+
+GetEveLoginsOk returns a tuple with the EveLogins field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEveLogins
+
+`func (o *App) SetEveLogins(v []EveLogin)`
+
+SetEveLogins sets EveLogins field to given value.
+
+### HasEveLogins
+
+`func (o *App) HasEveLogins() bool`
+
+HasEveLogins returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

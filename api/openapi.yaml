@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: Client library of Neucore API
   title: Neucore API
-  version: 1.22.0
+  version: 1.26.0
 servers:
 - url: https://localhost/api
 tags:
@@ -409,6 +409,47 @@ paths:
       summary: Returns a list of all known characters from the corporation.
       tags:
       - Application - Characters
+  /app/v1/esi/eve-login/{name}/characters:
+    get:
+      description: 'Needs role: app-esi.'
+      operationId: esiEveLoginCharactersV1
+      parameters:
+      - description: EVE login name, 'core.default' is not allowed.
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          maxLength: 20
+          pattern: ^[-._a-zA-Z0-9]+$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: integer
+                type: array
+        "403":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: EVE login not found.
+      security:
+      - BearerAuth: []
+      summary: Returns character IDs of characters that have a valid ESI token of
+        the specified EVE login.
+      tags:
+      - Application - ESI
   /app/v1/esi:
     get:
       description: |-
@@ -430,8 +471,9 @@ paths:
         schema:
           type: string
         style: form
-      - description: The EVE character ID those token should be used to make the ESI
-          request
+      - description: |-
+          The EVE character ID those token should be used to make the ESI request. Optionally
+                                      followed by a colon and the name of an EVE login to use an alternative ESI token.
         explode: true
         in: query
         name: datasource
@@ -532,8 +574,9 @@ paths:
         schema:
           type: string
         style: form
-      - description: The EVE character ID those token should be used to make the ESI
-          request
+      - description: |-
+          The EVE character ID those token should be used to make the ESI request. Optionally
+                                      followed by a colon and the name of an EVE login to use an alternative ESI token.
         explode: true
         in: query
         name: datasource
@@ -554,7 +597,7 @@ paths:
             application/json:
               schema:
                 type: string
-          description: Same as GET ​/app​/v1​/esi, see there for details.
+          description: Same as GET /app/v1/esi, see there for details.
           headers:
             Expires:
               description: RFC7231 formatted datetime string
@@ -1074,6 +1117,7 @@ components:
   schemas:
     ServiceAccount:
       example:
+        displayName: displayName
         serviceId: 0
         serviceName: serviceName
         characterId: 6
@@ -1099,8 +1143,12 @@ components:
           - Unknown
           nullable: true
           type: string
+        displayName:
+          nullable: true
+          type: string
       required:
       - characterId
+      - displayName
       - serviceId
       - serviceName
       - status
@@ -1129,7 +1177,7 @@ components:
                 name: name
                 description: description
                 id: 6
-              id: 1
+              id: 5
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
@@ -1143,16 +1191,25 @@ components:
               name: name
               description: description
               id: 6
-            id: 6
+            id: 1
           name: name
-          main: true
           validTokenTime: 2000-01-23T04:56:07.000+00:00
+          main: true
           characterNameChanges:
           - oldName: oldName
             changeDate: 2000-01-23T04:56:07.000+00:00
           - oldName: oldName
             changeDate: 2000-01-23T04:56:07.000+00:00
           id: 0
+          esiTokens:
+          - validToken: true
+            hasRoles: true
+            validTokenTime: 2000-01-23T04:56:07.000+00:00
+            eveLoginId: 6
+          - validToken: true
+            hasRoles: true
+            validTokenTime: 2000-01-23T04:56:07.000+00:00
+            eveLoginId: 6
         groups:
         - visibility: private
           autoAccept: true
@@ -1176,6 +1233,7 @@ components:
       - groups
       type: object
     Alliance:
+      description: EVE Alliance.
       example:
         ticker: ticker
         name: name
@@ -1190,7 +1248,7 @@ components:
           name: name
           description: description
           id: 6
-        id: 1
+        id: 5
       properties:
         id:
           description: EVE alliance ID.
@@ -1216,6 +1274,21 @@ components:
       type: object
     App:
       example:
+        eveLogins:
+        - esiScopes: esiScopes
+          name: name
+          description: description
+          id: 1
+          eveRoles:
+          - eveRoles
+          - eveRoles
+        - esiScopes: esiScopes
+          name: name
+          description: description
+          id: 1
+          eveRoles:
+          - eveRoles
+          - eveRoles
         roles:
         - null
         - null
@@ -1250,11 +1323,16 @@ components:
           items:
             $ref: '#/components/schemas/Group'
           type: array
+        eveLogins:
+          items:
+            $ref: '#/components/schemas/EveLogin'
+          type: array
       required:
       - id
       - name
       type: object
     Character:
+      description: An EVE character.
       example:
         validToken: true
         created: 2000-01-23T04:56:07.000+00:00
@@ -1276,7 +1354,7 @@ components:
               name: name
               description: description
               id: 6
-            id: 1
+            id: 5
           trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
           name: name
           groups:
@@ -1290,17 +1368,38 @@ components:
             name: name
             description: description
             id: 6
-          id: 6
+          id: 1
         name: name
-        main: true
         validTokenTime: 2000-01-23T04:56:07.000+00:00
+        main: true
         characterNameChanges:
         - oldName: oldName
           changeDate: 2000-01-23T04:56:07.000+00:00
         - oldName: oldName
           changeDate: 2000-01-23T04:56:07.000+00:00
         id: 0
+        esiTokens:
+        - validToken: true
+          hasRoles: true
+          validTokenTime: 2000-01-23T04:56:07.000+00:00
+          eveLoginId: 6
+        - validToken: true
+          hasRoles: true
+          validTokenTime: 2000-01-23T04:56:07.000+00:00
+          eveLoginId: 6
       properties:
+        validToken:
+          description: |-
+            Shows if character's default refresh token is valid or not.
+                                    This is null if there is no refresh token (EVE SSOv1 only)
+                                    or a valid token but without scopes (SSOv2).
+          nullable: true
+          type: boolean
+        validTokenTime:
+          description: Date and time when the valid token property was last changed.
+          format: date-time
+          nullable: true
+          type: string
         id:
           description: EVE character ID.
           format: int64
@@ -1310,19 +1409,11 @@ components:
           type: string
         main:
           type: boolean
-        validToken:
-          description: |-
-            Shows if character's refresh token is valid or not.
-
-            This is null if there is no refresh token (EVE SSOv1 only)
-            or a valid token but without scopes (SSOv2).
-          nullable: true
-          type: boolean
-        validTokenTime:
-          description: Date and time when that valid token property was last changed.
-          format: date-time
-          nullable: true
-          type: string
+        esiTokens:
+          description: 'ESI tokens of the character (API: not included by default).'
+          items:
+            $ref: '#/components/schemas/EsiToken'
+          type: array
         created:
           format: date-time
           nullable: true
@@ -1344,6 +1435,7 @@ components:
       - name
       type: object
     CharacterNameChange:
+      description: A previous character name.
       example:
         oldName: oldName
         changeDate: 2000-01-23T04:56:07.000+00:00
@@ -1359,6 +1451,7 @@ components:
       - oldName
       type: object
     Corporation:
+      description: EVE corporation.
       example:
         autoAllowlist: true
         ticker: ticker
@@ -1376,7 +1469,7 @@ components:
             name: name
             description: description
             id: 6
-          id: 1
+          id: 5
         trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
         name: name
         groups:
@@ -1390,7 +1483,7 @@ components:
           name: name
           description: description
           id: 6
-        id: 6
+        id: 1
       properties:
         id:
           description: EVE corporation ID.
@@ -1452,7 +1545,7 @@ components:
                 name: name
                 description: description
                 id: 6
-              id: 1
+              id: 5
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
@@ -1466,16 +1559,25 @@ components:
               name: name
               description: description
               id: 6
-            id: 6
+            id: 1
           name: name
-          main: true
           validTokenTime: 2000-01-23T04:56:07.000+00:00
+          main: true
           characterNameChanges:
           - oldName: oldName
             changeDate: 2000-01-23T04:56:07.000+00:00
           - oldName: oldName
             changeDate: 2000-01-23T04:56:07.000+00:00
           id: 0
+          esiTokens:
+          - validToken: true
+            hasRoles: true
+            validTokenTime: 2000-01-23T04:56:07.000+00:00
+            eveLoginId: 6
+          - validToken: true
+            hasRoles: true
+            validTokenTime: 2000-01-23T04:56:07.000+00:00
+            eveLoginId: 6
         missingCharacterMailSentNumber: 5
         name: name
         shipType:
@@ -1512,7 +1614,7 @@ components:
                   name: name
                   description: description
                   id: 6
-                id: 1
+                id: 5
               trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
               name: name
               groups:
@@ -1526,16 +1628,25 @@ components:
                 name: name
                 description: description
                 id: 6
-              id: 6
+              id: 1
             name: name
-            main: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
+            main: true
             characterNameChanges:
             - oldName: oldName
               changeDate: 2000-01-23T04:56:07.000+00:00
             - oldName: oldName
               changeDate: 2000-01-23T04:56:07.000+00:00
             id: 0
+            esiTokens:
+            - validToken: true
+              hasRoles: true
+              validTokenTime: 2000-01-23T04:56:07.000+00:00
+              eveLoginId: 6
+            - validToken: true
+              hasRoles: true
+              validTokenTime: 2000-01-23T04:56:07.000+00:00
+              eveLoginId: 6
           - validToken: true
             created: 2000-01-23T04:56:07.000+00:00
             lastUpdate: 2000-01-23T04:56:07.000+00:00
@@ -1556,7 +1667,7 @@ components:
                   name: name
                   description: description
                   id: 6
-                id: 1
+                id: 5
               trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
               name: name
               groups:
@@ -1570,18 +1681,42 @@ components:
                 name: name
                 description: description
                 id: 6
-              id: 6
+              id: 1
             name: name
-            main: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
+            main: true
             characterNameChanges:
             - oldName: oldName
               changeDate: 2000-01-23T04:56:07.000+00:00
             - oldName: oldName
               changeDate: 2000-01-23T04:56:07.000+00:00
             id: 0
+            esiTokens:
+            - validToken: true
+              hasRoles: true
+              validTokenTime: 2000-01-23T04:56:07.000+00:00
+              eveLoginId: 6
+            - validToken: true
+              hasRoles: true
+              validTokenTime: 2000-01-23T04:56:07.000+00:00
+              eveLoginId: 6
           managerApps:
-          - roles:
+          - eveLogins:
+            - esiScopes: esiScopes
+              name: name
+              description: description
+              id: 1
+              eveRoles:
+              - eveRoles
+              - eveRoles
+            - esiScopes: esiScopes
+              name: name
+              description: description
+              id: 1
+              eveRoles:
+              - eveRoles
+              - eveRoles
+            roles:
             - null
             - null
             name: name
@@ -1597,7 +1732,22 @@ components:
               description: description
               id: 6
             id: 0
-          - roles:
+          - eveLogins:
+            - esiScopes: esiScopes
+              name: name
+              description: description
+              id: 1
+              eveRoles:
+              - eveRoles
+              - eveRoles
+            - esiScopes: esiScopes
+              name: name
+              description: description
+              id: 1
+              eveRoles:
+              - eveRoles
+              - eveRoles
+            roles:
             - null
             - null
             name: name
@@ -1627,16 +1777,19 @@ components:
             characterId: 5
             removedDate: 2000-01-23T04:56:07.000+00:00
           serviceAccounts:
-          - serviceId: 0
+          - displayName: displayName
+            serviceId: 0
             serviceName: serviceName
             characterId: 6
             username: username
             status: Pending
-          - serviceId: 0
+          - displayName: displayName
+            serviceId: 0
             serviceName: serviceName
             characterId: 6
             username: username
             status: Pending
+          corporationName: corporationName
           roles:
           - null
           - null
@@ -1724,6 +1877,7 @@ components:
       - name
       type: object
     EsiLocation:
+      description: An EVE location (System, Station, Structure, ...)
       example:
         name: name
         id: 6
@@ -1745,7 +1899,44 @@ components:
       - id
       - name
       type: object
+    EsiToken:
+      example:
+        validToken: true
+        hasRoles: true
+        validTokenTime: 2000-01-23T04:56:07.000+00:00
+        eveLoginId: 6
+      properties:
+        eveLoginId:
+          description: ID of EveLogin
+          type: integer
+        validToken:
+          description: |-
+            Shows if the refresh token is valid or not.
+
+            This is null if there is no refresh token (EVE SSOv1 only)
+            or a valid token but without scopes (SSOv2).
+          nullable: true
+          type: boolean
+        validTokenTime:
+          description: Date and time when the valid token property was last changed.
+          format: date-time
+          nullable: true
+          type: string
+        hasRoles:
+          description: |-
+            Shows if the EVE character has all required roles for the login.
+
+            Null if the login does not require any roles or if the token is invalid.
+          nullable: true
+          type: boolean
+      required:
+      - eveLoginId
+      - hasRoles
+      - validToken
+      - validTokenTime
+      type: object
     EsiType:
+      description: An EVE name from the category "inventory_type".
       example:
         name: name
         id: 1
@@ -1756,6 +1947,43 @@ components:
         name:
           type: string
       required:
+      - id
+      - name
+      type: object
+    EveLogin:
+      example:
+        esiScopes: esiScopes
+        name: name
+        description: description
+        id: 1
+        eveRoles:
+        - eveRoles
+        - eveRoles
+      properties:
+        id:
+          nullable: true
+          type: integer
+        name:
+          description: Names starting with 'core.' are reserved for internal use.
+          maxLength: 20
+          nullable: false
+          pattern: ^[-._a-zA-Z0-9]+$
+          type: string
+        description:
+          maxLength: 1024
+          type: string
+        esiScopes:
+          maxLength: 8192
+          type: string
+        eveRoles:
+          description: 'Maximum length of all roles separated by comma: 1024.'
+          items:
+            type: string
+          type: array
+      required:
+      - description
+      - esiScopes
+      - eveRoles
       - id
       - name
       type: object
@@ -1841,7 +2069,7 @@ components:
                 name: name
                 description: description
                 id: 6
-              id: 1
+              id: 5
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
@@ -1855,16 +2083,25 @@ components:
               name: name
               description: description
               id: 6
-            id: 6
+            id: 1
           name: name
-          main: true
           validTokenTime: 2000-01-23T04:56:07.000+00:00
+          main: true
           characterNameChanges:
           - oldName: oldName
             changeDate: 2000-01-23T04:56:07.000+00:00
           - oldName: oldName
             changeDate: 2000-01-23T04:56:07.000+00:00
           id: 0
+          esiTokens:
+          - validToken: true
+            hasRoles: true
+            validTokenTime: 2000-01-23T04:56:07.000+00:00
+            eveLoginId: 6
+          - validToken: true
+            hasRoles: true
+            validTokenTime: 2000-01-23T04:56:07.000+00:00
+            eveLoginId: 6
         - validToken: true
           created: 2000-01-23T04:56:07.000+00:00
           lastUpdate: 2000-01-23T04:56:07.000+00:00
@@ -1885,7 +2122,7 @@ components:
                 name: name
                 description: description
                 id: 6
-              id: 1
+              id: 5
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
@@ -1899,18 +2136,42 @@ components:
               name: name
               description: description
               id: 6
-            id: 6
+            id: 1
           name: name
-          main: true
           validTokenTime: 2000-01-23T04:56:07.000+00:00
+          main: true
           characterNameChanges:
           - oldName: oldName
             changeDate: 2000-01-23T04:56:07.000+00:00
           - oldName: oldName
             changeDate: 2000-01-23T04:56:07.000+00:00
           id: 0
+          esiTokens:
+          - validToken: true
+            hasRoles: true
+            validTokenTime: 2000-01-23T04:56:07.000+00:00
+            eveLoginId: 6
+          - validToken: true
+            hasRoles: true
+            validTokenTime: 2000-01-23T04:56:07.000+00:00
+            eveLoginId: 6
         managerApps:
-        - roles:
+        - eveLogins:
+          - esiScopes: esiScopes
+            name: name
+            description: description
+            id: 1
+            eveRoles:
+            - eveRoles
+            - eveRoles
+          - esiScopes: esiScopes
+            name: name
+            description: description
+            id: 1
+            eveRoles:
+            - eveRoles
+            - eveRoles
+          roles:
           - null
           - null
           name: name
@@ -1926,7 +2187,22 @@ components:
             description: description
             id: 6
           id: 0
-        - roles:
+        - eveLogins:
+          - esiScopes: esiScopes
+            name: name
+            description: description
+            id: 1
+            eveRoles:
+            - eveRoles
+            - eveRoles
+          - esiScopes: esiScopes
+            name: name
+            description: description
+            id: 1
+            eveRoles:
+            - eveRoles
+            - eveRoles
+          roles:
           - null
           - null
           name: name
@@ -1956,16 +2232,19 @@ components:
           characterId: 5
           removedDate: 2000-01-23T04:56:07.000+00:00
         serviceAccounts:
-        - serviceId: 0
+        - displayName: displayName
+          serviceId: 0
           serviceName: serviceName
           characterId: 6
           username: username
           status: Pending
-        - serviceId: 0
+        - displayName: displayName
+          serviceId: 0
           serviceName: serviceName
           characterId: 6
           username: username
           status: Pending
+        corporationName: corporationName
         roles:
         - null
         - null
@@ -2013,7 +2292,11 @@ components:
           items:
             $ref: '#/components/schemas/ServiceAccount'
           type: array
+        corporationName:
+          description: 'Corporation of main character (API: not included by default)'
+          type: string
         id:
+          nullable: true
           type: integer
         name:
           description: |-
@@ -2098,6 +2381,7 @@ components:
           description: How it was removed (deleted or moved to another account).
           enum:
           - moved
+          - moved-owner-changed
           - deleted-manually
           - deleted-biomassed
           - deleted-owner-changed
@@ -2111,6 +2395,7 @@ components:
       - removedDate
       type: object
     Role:
+      description: Roles are used to determined player permissions.
       enum:
       - app
       - app-groups
@@ -2155,6 +2440,8 @@ components:
           type: string
         psr4Path:
           type: string
+        oneAccount:
+          type: boolean
         requiredGroups:
           items:
             type: integer
@@ -2165,6 +2452,7 @@ components:
           - password
           - email
           - status
+          - displayName
           items:
             type: string
           type: array
@@ -2189,9 +2477,12 @@ components:
           type: string
         textPending:
           type: string
+        configurationData:
+          type: string
       required:
       - URLs
       - actions
+      - configurationData
       - properties
       - textAccount
       - textPending
@@ -2213,6 +2504,10 @@ components:
       - url
       type: object
     SystemVariable:
+      description: |-
+        A system settings variable.
+
+        This is also used as a storage for Storage\Variables with the prefix "__storage__" if APCu is not available.
       properties:
         name:
           description: Variable name.

@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ServiceAccounts** | Pointer to [**[]ServiceAccount**](ServiceAccount.md) | External service accounts (API: not included by default) | [optional] 
-**Id** | **int32** |  | 
+**CorporationName** | Pointer to **string** | Corporation of main character (API: not included by default) | [optional] 
+**Id** | **NullableInt32** |  | 
 **Name** | **string** | A name for the player.  This is the EVE character name of the current main character or of the last main character if there is currently none. | 
 **Status** | Pointer to **string** | Player account status. | [optional] 
 **Roles** | Pointer to [**[]Role**](Role.md) | Roles for authorization. | [optional] 
@@ -20,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewPlayer
 
-`func NewPlayer(id int32, name string, ) *Player`
+`func NewPlayer(id NullableInt32, name string, ) *Player`
 
 NewPlayer instantiates a new Player object
 This constructor will assign default values to properties that have it defined,
@@ -60,6 +61,31 @@ SetServiceAccounts sets ServiceAccounts field to given value.
 
 HasServiceAccounts returns a boolean if a field has been set.
 
+### GetCorporationName
+
+`func (o *Player) GetCorporationName() string`
+
+GetCorporationName returns the CorporationName field if non-nil, zero value otherwise.
+
+### GetCorporationNameOk
+
+`func (o *Player) GetCorporationNameOk() (*string, bool)`
+
+GetCorporationNameOk returns a tuple with the CorporationName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCorporationName
+
+`func (o *Player) SetCorporationName(v string)`
+
+SetCorporationName sets CorporationName field to given value.
+
+### HasCorporationName
+
+`func (o *Player) HasCorporationName() bool`
+
+HasCorporationName returns a boolean if a field has been set.
+
 ### GetId
 
 `func (o *Player) GetId() int32`
@@ -80,6 +106,16 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### SetIdNil
+
+`func (o *Player) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *Player) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetName
 
 `func (o *Player) GetName() string`

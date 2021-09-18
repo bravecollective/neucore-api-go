@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **PhpClass** | Pointer to **string** |  | [optional] 
 **Psr4Prefix** | Pointer to **string** |  | [optional] 
 **Psr4Path** | Pointer to **string** |  | [optional] 
+**OneAccount** | Pointer to **bool** |  | [optional] 
 **RequiredGroups** | Pointer to **[]int32** |  | [optional] 
 **Properties** | **[]string** |  | 
 **ShowPassword** | Pointer to **bool** |  | [optional] 
@@ -16,12 +17,13 @@ Name | Type | Description | Notes
 **TextTop** | **string** |  | 
 **TextRegister** | **string** |  | 
 **TextPending** | **string** |  | 
+**ConfigurationData** | **string** |  | 
 
 ## Methods
 
 ### NewServiceConfiguration
 
-`func NewServiceConfiguration(properties []string, actions []string, uRLs []ServiceConfigurationURL, textAccount string, textTop string, textRegister string, textPending string, ) *ServiceConfiguration`
+`func NewServiceConfiguration(properties []string, actions []string, uRLs []ServiceConfigurationURL, textAccount string, textTop string, textRegister string, textPending string, configurationData string, ) *ServiceConfiguration`
 
 NewServiceConfiguration instantiates a new ServiceConfiguration object
 This constructor will assign default values to properties that have it defined,
@@ -110,6 +112,31 @@ SetPsr4Path sets Psr4Path field to given value.
 `func (o *ServiceConfiguration) HasPsr4Path() bool`
 
 HasPsr4Path returns a boolean if a field has been set.
+
+### GetOneAccount
+
+`func (o *ServiceConfiguration) GetOneAccount() bool`
+
+GetOneAccount returns the OneAccount field if non-nil, zero value otherwise.
+
+### GetOneAccountOk
+
+`func (o *ServiceConfiguration) GetOneAccountOk() (*bool, bool)`
+
+GetOneAccountOk returns a tuple with the OneAccount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOneAccount
+
+`func (o *ServiceConfiguration) SetOneAccount(v bool)`
+
+SetOneAccount sets OneAccount field to given value.
+
+### HasOneAccount
+
+`func (o *ServiceConfiguration) HasOneAccount() bool`
+
+HasOneAccount returns a boolean if a field has been set.
 
 ### GetRequiredGroups
 
@@ -299,6 +326,26 @@ and a boolean to check if the value has been set.
 `func (o *ServiceConfiguration) SetTextPending(v string)`
 
 SetTextPending sets TextPending field to given value.
+
+
+### GetConfigurationData
+
+`func (o *ServiceConfiguration) GetConfigurationData() string`
+
+GetConfigurationData returns the ConfigurationData field if non-nil, zero value otherwise.
+
+### GetConfigurationDataOk
+
+`func (o *ServiceConfiguration) GetConfigurationDataOk() (*string, bool)`
+
+GetConfigurationDataOk returns a tuple with the ConfigurationData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigurationData
+
+`func (o *ServiceConfiguration) SetConfigurationData(v string)`
+
+SetConfigurationData sets ConfigurationData field to given value.
 
 
 

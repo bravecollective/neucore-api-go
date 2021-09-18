@@ -9,12 +9,13 @@ Name | Type | Description | Notes
 **CharacterId** | **int64** |  | 
 **Username** | **NullableString** |  | 
 **Status** | **NullableString** |  | 
+**DisplayName** | **NullableString** |  | 
 
 ## Methods
 
 ### NewServiceAccount
 
-`func NewServiceAccount(serviceId int32, serviceName NullableString, characterId int64, username NullableString, status NullableString, ) *ServiceAccount`
+`func NewServiceAccount(serviceId int32, serviceName NullableString, characterId int64, username NullableString, status NullableString, displayName NullableString, ) *ServiceAccount`
 
 NewServiceAccount instantiates a new ServiceAccount object
 This constructor will assign default values to properties that have it defined,
@@ -159,6 +160,36 @@ SetStatus sets Status field to given value.
 `func (o *ServiceAccount) UnsetStatus()`
 
 UnsetStatus ensures that no value is present for Status, not even an explicit nil
+### GetDisplayName
+
+`func (o *ServiceAccount) GetDisplayName() string`
+
+GetDisplayName returns the DisplayName field if non-nil, zero value otherwise.
+
+### GetDisplayNameOk
+
+`func (o *ServiceAccount) GetDisplayNameOk() (*string, bool)`
+
+GetDisplayNameOk returns a tuple with the DisplayName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayName
+
+`func (o *ServiceAccount) SetDisplayName(v string)`
+
+SetDisplayName sets DisplayName field to given value.
+
+
+### SetDisplayNameNil
+
+`func (o *ServiceAccount) SetDisplayNameNil(b bool)`
+
+ SetDisplayNameNil sets the value for DisplayName to be an explicit nil
+
+### UnsetDisplayName
+`func (o *ServiceAccount) UnsetDisplayName()`
+
+UnsetDisplayName ensures that no value is present for DisplayName, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
