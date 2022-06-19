@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ValidToken** | **NullableBool** | Shows if the refresh token is valid or not.  This is null if there is no refresh token (EVE SSOv1 only) or a valid token but without scopes (SSOv2). | 
 **ValidTokenTime** | **NullableTime** | Date and time when the valid token property was last changed. | 
 **HasRoles** | **NullableBool** | Shows if the EVE character has all required roles for the login.  Null if the login does not require any roles or if the token is invalid. | 
+**LastChecked** | Pointer to **NullableTime** | When the refresh token was last checked for validity. | [optional] 
 
 ## Methods
 
@@ -138,6 +139,41 @@ SetHasRoles sets HasRoles field to given value.
 `func (o *EsiToken) UnsetHasRoles()`
 
 UnsetHasRoles ensures that no value is present for HasRoles, not even an explicit nil
+### GetLastChecked
+
+`func (o *EsiToken) GetLastChecked() time.Time`
+
+GetLastChecked returns the LastChecked field if non-nil, zero value otherwise.
+
+### GetLastCheckedOk
+
+`func (o *EsiToken) GetLastCheckedOk() (*time.Time, bool)`
+
+GetLastCheckedOk returns a tuple with the LastChecked field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastChecked
+
+`func (o *EsiToken) SetLastChecked(v time.Time)`
+
+SetLastChecked sets LastChecked field to given value.
+
+### HasLastChecked
+
+`func (o *EsiToken) HasLastChecked() bool`
+
+HasLastChecked returns a boolean if a field has been set.
+
+### SetLastCheckedNil
+
+`func (o *EsiToken) SetLastCheckedNil(b bool)`
+
+ SetLastCheckedNil sets the value for LastChecked to be an explicit nil
+
+### UnsetLastChecked
+`func (o *EsiToken) UnsetLastChecked()`
+
+UnsetLastChecked ensures that no value is present for LastChecked, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

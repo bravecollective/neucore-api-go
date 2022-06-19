@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | 
-**Category** | **string** |  | 
-**Name** | **string** |  | 
+**Id** | **NullableInt64** |  | 
+**Category** | **NullableString** |  | 
+**Name** | **NullableString** |  | 
 
 ## Methods
 
 ### NewEsiLocation
 
-`func NewEsiLocation(id int64, category string, name string, ) *EsiLocation`
+`func NewEsiLocation(id NullableInt64, category NullableString, name NullableString, ) *EsiLocation`
 
 NewEsiLocation instantiates a new EsiLocation object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +47,16 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### SetIdNil
+
+`func (o *EsiLocation) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *EsiLocation) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetCategory
 
 `func (o *EsiLocation) GetCategory() string`
@@ -67,6 +77,16 @@ and a boolean to check if the value has been set.
 SetCategory sets Category field to given value.
 
 
+### SetCategoryNil
+
+`func (o *EsiLocation) SetCategoryNil(b bool)`
+
+ SetCategoryNil sets the value for Category to be an explicit nil
+
+### UnsetCategory
+`func (o *EsiLocation) UnsetCategory()`
+
+UnsetCategory ensures that no value is present for Category, not even an explicit nil
 ### GetName
 
 `func (o *EsiLocation) GetName() string`
@@ -87,6 +107,16 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### SetNameNil
+
+`func (o *EsiLocation) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *EsiLocation) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

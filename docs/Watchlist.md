@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Name** | **string** |  | 
+**Id** | **NullableInt32** |  | 
+**Name** | **NullableString** |  | 
 **LockWatchlistSettings** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
 ### NewWatchlist
 
-`func NewWatchlist(id int32, name string, ) *Watchlist`
+`func NewWatchlist(id NullableInt32, name NullableString, ) *Watchlist`
 
 NewWatchlist instantiates a new Watchlist object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +47,16 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### SetIdNil
+
+`func (o *Watchlist) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *Watchlist) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetName
 
 `func (o *Watchlist) GetName() string`
@@ -67,6 +77,16 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### SetNameNil
+
+`func (o *Watchlist) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *Watchlist) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetLockWatchlistSettings
 
 `func (o *Watchlist) GetLockWatchlistSettings() bool`

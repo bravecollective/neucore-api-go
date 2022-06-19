@@ -7,17 +7,17 @@ Name | Type | Description | Notes
 **NewPlayerId** | Pointer to **int32** |  | [optional] 
 **NewPlayerName** | Pointer to **string** |  | [optional] 
 **Player** | Pointer to [**Player**](Player.md) |  | [optional] 
-**CharacterId** | **int64** | EVE character ID. | 
-**CharacterName** | **string** | EVE character name. | 
-**RemovedDate** | **time.Time** | Date of removal. | 
-**Reason** | **string** | How it was removed (deleted or moved to another account). | 
+**CharacterId** | **NullableInt64** | EVE character ID. | 
+**CharacterName** | **NullableString** | EVE character name. | 
+**RemovedDate** | **NullableTime** | Date of removal. | 
+**Reason** | **NullableString** | How it was removed (deleted or moved to another account). | 
 **DeletedBy** | Pointer to [**Player**](Player.md) |  | [optional] 
 
 ## Methods
 
 ### NewRemovedCharacter
 
-`func NewRemovedCharacter(characterId int64, characterName string, removedDate time.Time, reason string, ) *RemovedCharacter`
+`func NewRemovedCharacter(characterId NullableInt64, characterName NullableString, removedDate NullableTime, reason NullableString, ) *RemovedCharacter`
 
 NewRemovedCharacter instantiates a new RemovedCharacter object
 This constructor will assign default values to properties that have it defined,
@@ -127,6 +127,16 @@ and a boolean to check if the value has been set.
 SetCharacterId sets CharacterId field to given value.
 
 
+### SetCharacterIdNil
+
+`func (o *RemovedCharacter) SetCharacterIdNil(b bool)`
+
+ SetCharacterIdNil sets the value for CharacterId to be an explicit nil
+
+### UnsetCharacterId
+`func (o *RemovedCharacter) UnsetCharacterId()`
+
+UnsetCharacterId ensures that no value is present for CharacterId, not even an explicit nil
 ### GetCharacterName
 
 `func (o *RemovedCharacter) GetCharacterName() string`
@@ -147,6 +157,16 @@ and a boolean to check if the value has been set.
 SetCharacterName sets CharacterName field to given value.
 
 
+### SetCharacterNameNil
+
+`func (o *RemovedCharacter) SetCharacterNameNil(b bool)`
+
+ SetCharacterNameNil sets the value for CharacterName to be an explicit nil
+
+### UnsetCharacterName
+`func (o *RemovedCharacter) UnsetCharacterName()`
+
+UnsetCharacterName ensures that no value is present for CharacterName, not even an explicit nil
 ### GetRemovedDate
 
 `func (o *RemovedCharacter) GetRemovedDate() time.Time`
@@ -167,6 +187,16 @@ and a boolean to check if the value has been set.
 SetRemovedDate sets RemovedDate field to given value.
 
 
+### SetRemovedDateNil
+
+`func (o *RemovedCharacter) SetRemovedDateNil(b bool)`
+
+ SetRemovedDateNil sets the value for RemovedDate to be an explicit nil
+
+### UnsetRemovedDate
+`func (o *RemovedCharacter) UnsetRemovedDate()`
+
+UnsetRemovedDate ensures that no value is present for RemovedDate, not even an explicit nil
 ### GetReason
 
 `func (o *RemovedCharacter) GetReason() string`
@@ -187,6 +217,16 @@ and a boolean to check if the value has been set.
 SetReason sets Reason field to given value.
 
 
+### SetReasonNil
+
+`func (o *RemovedCharacter) SetReasonNil(b bool)`
+
+ SetReasonNil sets the value for Reason to be an explicit nil
+
+### UnsetReason
+`func (o *RemovedCharacter) UnsetReason()`
+
+UnsetReason ensures that no value is present for Reason, not even an explicit nil
 ### GetDeletedBy
 
 `func (o *RemovedCharacter) GetDeletedBy() Player`

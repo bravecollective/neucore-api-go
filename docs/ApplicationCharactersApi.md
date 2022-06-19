@@ -43,8 +43,8 @@ func main() {
     requestBody := []int32{int32(123)} // []int32 | Array with EVE character IDs.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationCharactersApi.CharacterListV1(context.Background()).RequestBody(requestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationCharactersApi.CharacterListV1(context.Background()).RequestBody(requestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCharactersApi.CharacterListV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -109,8 +109,8 @@ func main() {
     requestBody := []int32{int32(123)} // []int32 | EVE character IDs array.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationCharactersApi.CharactersBulkV1(context.Background()).RequestBody(requestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationCharactersApi.CharactersBulkV1(context.Background()).RequestBody(requestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCharactersApi.CharactersBulkV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -175,8 +175,8 @@ func main() {
     characterId := int32(56) // int32 | EVE character ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationCharactersApi.CharactersV1(context.Background(), characterId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationCharactersApi.CharactersV1(context.Background(), characterId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCharactersApi.CharactersV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -245,8 +245,8 @@ func main() {
     corporationId := int32(56) // int32 | EVE corporation ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationCharactersApi.CorporationCharactersV1(context.Background(), corporationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationCharactersApi.CorporationCharactersV1(context.Background(), corporationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCharactersApi.CorporationCharactersV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -315,8 +315,8 @@ func main() {
     corporationId := int32(56) // int32 | EVE corporation ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationCharactersApi.CorporationPlayersV1(context.Background(), corporationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationCharactersApi.CorporationPlayersV1(context.Background(), corporationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCharactersApi.CorporationPlayersV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -385,8 +385,8 @@ func main() {
     characterId := int32(56) // int32 | EVE character ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationCharactersApi.IncomingCharactersV1(context.Background(), characterId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationCharactersApi.IncomingCharactersV1(context.Background(), characterId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCharactersApi.IncomingCharactersV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -455,8 +455,8 @@ func main() {
     cid := int32(56) // int32 | EVE character ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationCharactersApi.MainV1(context.Background(), cid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationCharactersApi.MainV1(context.Background(), cid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCharactersApi.MainV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -525,8 +525,8 @@ func main() {
     cid := int32(56) // int32 | EVE character ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationCharactersApi.MainV2(context.Background(), cid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationCharactersApi.MainV2(context.Background(), cid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCharactersApi.MainV2``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -595,8 +595,8 @@ func main() {
     playerId := int32(56) // int32 | Player ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationCharactersApi.PlayerCharactersV1(context.Background(), playerId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationCharactersApi.PlayerCharactersV1(context.Background(), playerId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCharactersApi.PlayerCharactersV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -665,8 +665,8 @@ func main() {
     characterId := int32(56) // int32 | EVE character ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationCharactersApi.PlayerV1(context.Background(), characterId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationCharactersApi.PlayerV1(context.Background(), characterId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCharactersApi.PlayerV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -735,8 +735,8 @@ func main() {
     characterId := int32(56) // int32 | EVE character ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationCharactersApi.PlayerWithCharactersV1(context.Background(), characterId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationCharactersApi.PlayerWithCharactersV1(context.Background(), characterId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCharactersApi.PlayerWithCharactersV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -805,8 +805,8 @@ func main() {
     characterId := int32(56) // int32 | EVE character ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationCharactersApi.RemovedCharactersV1(context.Background(), characterId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationCharactersApi.RemovedCharactersV1(context.Background(), characterId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCharactersApi.RemovedCharactersV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

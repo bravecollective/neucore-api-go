@@ -4,26 +4,26 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PhpClass** | Pointer to **string** |  | [optional] 
-**Psr4Prefix** | Pointer to **string** |  | [optional] 
-**Psr4Path** | Pointer to **string** |  | [optional] 
-**OneAccount** | Pointer to **bool** |  | [optional] 
+**PhpClass** | Pointer to **NullableString** |  | [optional] 
+**Psr4Prefix** | Pointer to **NullableString** |  | [optional] 
+**Psr4Path** | Pointer to **NullableString** |  | [optional] 
+**OneAccount** | Pointer to **NullableBool** |  | [optional] 
 **RequiredGroups** | Pointer to **[]int32** |  | [optional] 
 **Properties** | **[]string** |  | 
-**ShowPassword** | Pointer to **bool** |  | [optional] 
+**ShowPassword** | Pointer to **NullableBool** |  | [optional] 
 **Actions** | **[]string** |  | 
 **URLs** | [**[]ServiceConfigurationURL**](ServiceConfigurationURL.md) |  | 
-**TextAccount** | **string** |  | 
-**TextTop** | **string** |  | 
-**TextRegister** | **string** |  | 
-**TextPending** | **string** |  | 
+**TextAccount** | **NullableString** |  | 
+**TextTop** | **NullableString** |  | 
+**TextRegister** | **NullableString** |  | 
+**TextPending** | **NullableString** |  | 
 **ConfigurationData** | **string** |  | 
 
 ## Methods
 
 ### NewServiceConfiguration
 
-`func NewServiceConfiguration(properties []string, actions []string, uRLs []ServiceConfigurationURL, textAccount string, textTop string, textRegister string, textPending string, configurationData string, ) *ServiceConfiguration`
+`func NewServiceConfiguration(properties []string, actions []string, uRLs []ServiceConfigurationURL, textAccount NullableString, textTop NullableString, textRegister NullableString, textPending NullableString, configurationData string, ) *ServiceConfiguration`
 
 NewServiceConfiguration instantiates a new ServiceConfiguration object
 This constructor will assign default values to properties that have it defined,
@@ -63,6 +63,16 @@ SetPhpClass sets PhpClass field to given value.
 
 HasPhpClass returns a boolean if a field has been set.
 
+### SetPhpClassNil
+
+`func (o *ServiceConfiguration) SetPhpClassNil(b bool)`
+
+ SetPhpClassNil sets the value for PhpClass to be an explicit nil
+
+### UnsetPhpClass
+`func (o *ServiceConfiguration) UnsetPhpClass()`
+
+UnsetPhpClass ensures that no value is present for PhpClass, not even an explicit nil
 ### GetPsr4Prefix
 
 `func (o *ServiceConfiguration) GetPsr4Prefix() string`
@@ -88,6 +98,16 @@ SetPsr4Prefix sets Psr4Prefix field to given value.
 
 HasPsr4Prefix returns a boolean if a field has been set.
 
+### SetPsr4PrefixNil
+
+`func (o *ServiceConfiguration) SetPsr4PrefixNil(b bool)`
+
+ SetPsr4PrefixNil sets the value for Psr4Prefix to be an explicit nil
+
+### UnsetPsr4Prefix
+`func (o *ServiceConfiguration) UnsetPsr4Prefix()`
+
+UnsetPsr4Prefix ensures that no value is present for Psr4Prefix, not even an explicit nil
 ### GetPsr4Path
 
 `func (o *ServiceConfiguration) GetPsr4Path() string`
@@ -113,6 +133,16 @@ SetPsr4Path sets Psr4Path field to given value.
 
 HasPsr4Path returns a boolean if a field has been set.
 
+### SetPsr4PathNil
+
+`func (o *ServiceConfiguration) SetPsr4PathNil(b bool)`
+
+ SetPsr4PathNil sets the value for Psr4Path to be an explicit nil
+
+### UnsetPsr4Path
+`func (o *ServiceConfiguration) UnsetPsr4Path()`
+
+UnsetPsr4Path ensures that no value is present for Psr4Path, not even an explicit nil
 ### GetOneAccount
 
 `func (o *ServiceConfiguration) GetOneAccount() bool`
@@ -138,6 +168,16 @@ SetOneAccount sets OneAccount field to given value.
 
 HasOneAccount returns a boolean if a field has been set.
 
+### SetOneAccountNil
+
+`func (o *ServiceConfiguration) SetOneAccountNil(b bool)`
+
+ SetOneAccountNil sets the value for OneAccount to be an explicit nil
+
+### UnsetOneAccount
+`func (o *ServiceConfiguration) UnsetOneAccount()`
+
+UnsetOneAccount ensures that no value is present for OneAccount, not even an explicit nil
 ### GetRequiredGroups
 
 `func (o *ServiceConfiguration) GetRequiredGroups() []int32`
@@ -163,6 +203,16 @@ SetRequiredGroups sets RequiredGroups field to given value.
 
 HasRequiredGroups returns a boolean if a field has been set.
 
+### SetRequiredGroupsNil
+
+`func (o *ServiceConfiguration) SetRequiredGroupsNil(b bool)`
+
+ SetRequiredGroupsNil sets the value for RequiredGroups to be an explicit nil
+
+### UnsetRequiredGroups
+`func (o *ServiceConfiguration) UnsetRequiredGroups()`
+
+UnsetRequiredGroups ensures that no value is present for RequiredGroups, not even an explicit nil
 ### GetProperties
 
 `func (o *ServiceConfiguration) GetProperties() []string`
@@ -183,6 +233,16 @@ and a boolean to check if the value has been set.
 SetProperties sets Properties field to given value.
 
 
+### SetPropertiesNil
+
+`func (o *ServiceConfiguration) SetPropertiesNil(b bool)`
+
+ SetPropertiesNil sets the value for Properties to be an explicit nil
+
+### UnsetProperties
+`func (o *ServiceConfiguration) UnsetProperties()`
+
+UnsetProperties ensures that no value is present for Properties, not even an explicit nil
 ### GetShowPassword
 
 `func (o *ServiceConfiguration) GetShowPassword() bool`
@@ -208,6 +268,16 @@ SetShowPassword sets ShowPassword field to given value.
 
 HasShowPassword returns a boolean if a field has been set.
 
+### SetShowPasswordNil
+
+`func (o *ServiceConfiguration) SetShowPasswordNil(b bool)`
+
+ SetShowPasswordNil sets the value for ShowPassword to be an explicit nil
+
+### UnsetShowPassword
+`func (o *ServiceConfiguration) UnsetShowPassword()`
+
+UnsetShowPassword ensures that no value is present for ShowPassword, not even an explicit nil
 ### GetActions
 
 `func (o *ServiceConfiguration) GetActions() []string`
@@ -228,6 +298,16 @@ and a boolean to check if the value has been set.
 SetActions sets Actions field to given value.
 
 
+### SetActionsNil
+
+`func (o *ServiceConfiguration) SetActionsNil(b bool)`
+
+ SetActionsNil sets the value for Actions to be an explicit nil
+
+### UnsetActions
+`func (o *ServiceConfiguration) UnsetActions()`
+
+UnsetActions ensures that no value is present for Actions, not even an explicit nil
 ### GetURLs
 
 `func (o *ServiceConfiguration) GetURLs() []ServiceConfigurationURL`
@@ -268,6 +348,16 @@ and a boolean to check if the value has been set.
 SetTextAccount sets TextAccount field to given value.
 
 
+### SetTextAccountNil
+
+`func (o *ServiceConfiguration) SetTextAccountNil(b bool)`
+
+ SetTextAccountNil sets the value for TextAccount to be an explicit nil
+
+### UnsetTextAccount
+`func (o *ServiceConfiguration) UnsetTextAccount()`
+
+UnsetTextAccount ensures that no value is present for TextAccount, not even an explicit nil
 ### GetTextTop
 
 `func (o *ServiceConfiguration) GetTextTop() string`
@@ -288,6 +378,16 @@ and a boolean to check if the value has been set.
 SetTextTop sets TextTop field to given value.
 
 
+### SetTextTopNil
+
+`func (o *ServiceConfiguration) SetTextTopNil(b bool)`
+
+ SetTextTopNil sets the value for TextTop to be an explicit nil
+
+### UnsetTextTop
+`func (o *ServiceConfiguration) UnsetTextTop()`
+
+UnsetTextTop ensures that no value is present for TextTop, not even an explicit nil
 ### GetTextRegister
 
 `func (o *ServiceConfiguration) GetTextRegister() string`
@@ -308,6 +408,16 @@ and a boolean to check if the value has been set.
 SetTextRegister sets TextRegister field to given value.
 
 
+### SetTextRegisterNil
+
+`func (o *ServiceConfiguration) SetTextRegisterNil(b bool)`
+
+ SetTextRegisterNil sets the value for TextRegister to be an explicit nil
+
+### UnsetTextRegister
+`func (o *ServiceConfiguration) UnsetTextRegister()`
+
+UnsetTextRegister ensures that no value is present for TextRegister, not even an explicit nil
 ### GetTextPending
 
 `func (o *ServiceConfiguration) GetTextPending() string`
@@ -328,6 +438,16 @@ and a boolean to check if the value has been set.
 SetTextPending sets TextPending field to given value.
 
 
+### SetTextPendingNil
+
+`func (o *ServiceConfiguration) SetTextPendingNil(b bool)`
+
+ SetTextPendingNil sets the value for TextPending to be an explicit nil
+
+### UnsetTextPending
+`func (o *ServiceConfiguration) UnsetTextPending()`
+
+UnsetTextPending ensures that no value is present for TextPending, not even an explicit nil
 ### GetConfigurationData
 
 `func (o *ServiceConfiguration) GetConfigurationData() string`

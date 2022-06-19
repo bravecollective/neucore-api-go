@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** | App ID | 
-**Name** | **string** | App name | 
+**Id** | **NullableInt32** | App ID | 
+**Name** | **NullableString** | App name | 
 **Roles** | Pointer to [**[]Role**](Role.md) | Roles for authorization. | [optional] 
 **Groups** | Pointer to [**[]Group**](Group.md) | Groups the app can see. | [optional] 
 **EveLogins** | Pointer to [**[]EveLogin**](EveLogin.md) |  | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewApp
 
-`func NewApp(id int32, name string, ) *App`
+`func NewApp(id NullableInt32, name NullableString, ) *App`
 
 NewApp instantiates a new App object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +49,16 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### SetIdNil
+
+`func (o *App) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *App) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetName
 
 `func (o *App) GetName() string`
@@ -69,6 +79,16 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### SetNameNil
+
+`func (o *App) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *App) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetRoles
 
 `func (o *App) GetRoles() []Role`

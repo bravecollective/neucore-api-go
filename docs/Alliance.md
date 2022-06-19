@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** | EVE alliance ID. | 
+**Id** | **NullableInt64** | EVE alliance ID. | 
 **Name** | **NullableString** | EVE alliance name. | 
 **Ticker** | **NullableString** | Alliance ticker. | 
 **Groups** | Pointer to [**[]Group**](Group.md) | Groups for automatic assignment (API: not included by default). | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewAlliance
 
-`func NewAlliance(id int64, name NullableString, ticker NullableString, ) *Alliance`
+`func NewAlliance(id NullableInt64, name NullableString, ticker NullableString, ) *Alliance`
 
 NewAlliance instantiates a new Alliance object
 This constructor will assign default values to properties that have it defined,
@@ -48,6 +48,16 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### SetIdNil
+
+`func (o *Alliance) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *Alliance) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetName
 
 `func (o *Alliance) GetName() string`

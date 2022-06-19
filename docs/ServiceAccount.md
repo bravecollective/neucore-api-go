@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **CharacterId** | **int64** |  | 
 **Username** | **NullableString** |  | 
 **Status** | **NullableString** |  | 
-**DisplayName** | **NullableString** |  | 
+**Name** | **NullableString** |  | 
 
 ## Methods
 
 ### NewServiceAccount
 
-`func NewServiceAccount(serviceId int32, serviceName NullableString, characterId int64, username NullableString, status NullableString, displayName NullableString, ) *ServiceAccount`
+`func NewServiceAccount(serviceId int32, serviceName NullableString, characterId int64, username NullableString, status NullableString, name NullableString, ) *ServiceAccount`
 
 NewServiceAccount instantiates a new ServiceAccount object
 This constructor will assign default values to properties that have it defined,
@@ -160,36 +160,36 @@ SetStatus sets Status field to given value.
 `func (o *ServiceAccount) UnsetStatus()`
 
 UnsetStatus ensures that no value is present for Status, not even an explicit nil
-### GetDisplayName
+### GetName
 
-`func (o *ServiceAccount) GetDisplayName() string`
+`func (o *ServiceAccount) GetName() string`
 
-GetDisplayName returns the DisplayName field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetDisplayNameOk
+### GetNameOk
 
-`func (o *ServiceAccount) GetDisplayNameOk() (*string, bool)`
+`func (o *ServiceAccount) GetNameOk() (*string, bool)`
 
-GetDisplayNameOk returns a tuple with the DisplayName field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDisplayName
+### SetName
 
-`func (o *ServiceAccount) SetDisplayName(v string)`
+`func (o *ServiceAccount) SetName(v string)`
 
-SetDisplayName sets DisplayName field to given value.
+SetName sets Name field to given value.
 
 
-### SetDisplayNameNil
+### SetNameNil
 
-`func (o *ServiceAccount) SetDisplayNameNil(b bool)`
+`func (o *ServiceAccount) SetNameNil(b bool)`
 
- SetDisplayNameNil sets the value for DisplayName to be an explicit nil
+ SetNameNil sets the value for Name to be an explicit nil
 
-### UnsetDisplayName
-`func (o *ServiceAccount) UnsetDisplayName()`
+### UnsetName
+`func (o *ServiceAccount) UnsetName()`
 
-UnsetDisplayName ensures that no value is present for DisplayName, not even an explicit nil
+UnsetName ensures that no value is present for Name, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

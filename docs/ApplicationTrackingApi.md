@@ -35,8 +35,8 @@ func main() {
     account := "account_example" // string | Limit to members with (true) or without (false) an account. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationTrackingApi.MemberTrackingV1(context.Background(), id).Inactive(inactive).Active(active).Account(account).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationTrackingApi.MemberTrackingV1(context.Background(), id).Inactive(inactive).Active(active).Account(account).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationTrackingApi.MemberTrackingV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

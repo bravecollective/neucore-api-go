@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** | EVE corporation ID. | 
+**Id** | **NullableInt64** | EVE corporation ID. | 
 **Name** | **NullableString** | EVE corporation name. | 
 **Ticker** | **NullableString** | Corporation ticker. | 
 **Alliance** | Pointer to [**Alliance**](Alliance.md) |  | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewCorporation
 
-`func NewCorporation(id int64, name NullableString, ticker NullableString, ) *Corporation`
+`func NewCorporation(id NullableInt64, name NullableString, ticker NullableString, ) *Corporation`
 
 NewCorporation instantiates a new Corporation object
 This constructor will assign default values to properties that have it defined,
@@ -51,6 +51,16 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### SetIdNil
+
+`func (o *Corporation) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *Corporation) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetName
 
 `func (o *Corporation) GetName() string`

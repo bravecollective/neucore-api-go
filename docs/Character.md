@@ -5,8 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ValidToken** | Pointer to **NullableBool** | Shows if character&#39;s default refresh token is valid or not.                         This is null if there is no refresh token (EVE SSOv1 only)                         or a valid token but without scopes (SSOv2). | [optional] 
-**ValidTokenTime** | Pointer to **NullableTime** | Date and time when the valid token property was last changed. | [optional] 
-**Id** | **int64** | EVE character ID. | 
+**ValidTokenTime** | Pointer to **NullableTime** | Date and time when the valid token property of the default token was last changed. | [optional] 
+**TokenLastChecked** | Pointer to **NullableTime** | Date and time when the default token was last checked. | [optional] 
+**Id** | **NullableInt64** | EVE character ID. | 
 **Name** | **string** | EVE character name. | 
 **Main** | Pointer to **bool** |  | [optional] 
 **EsiTokens** | Pointer to [**[]EsiToken**](EsiToken.md) | ESI tokens of the character (API: not included by default). | [optional] 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewCharacter
 
-`func NewCharacter(id int64, name string, ) *Character`
+`func NewCharacter(id NullableInt64, name string, ) *Character`
 
 NewCharacter instantiates a new Character object
 This constructor will assign default values to properties that have it defined,
@@ -104,6 +105,41 @@ HasValidTokenTime returns a boolean if a field has been set.
 `func (o *Character) UnsetValidTokenTime()`
 
 UnsetValidTokenTime ensures that no value is present for ValidTokenTime, not even an explicit nil
+### GetTokenLastChecked
+
+`func (o *Character) GetTokenLastChecked() time.Time`
+
+GetTokenLastChecked returns the TokenLastChecked field if non-nil, zero value otherwise.
+
+### GetTokenLastCheckedOk
+
+`func (o *Character) GetTokenLastCheckedOk() (*time.Time, bool)`
+
+GetTokenLastCheckedOk returns a tuple with the TokenLastChecked field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenLastChecked
+
+`func (o *Character) SetTokenLastChecked(v time.Time)`
+
+SetTokenLastChecked sets TokenLastChecked field to given value.
+
+### HasTokenLastChecked
+
+`func (o *Character) HasTokenLastChecked() bool`
+
+HasTokenLastChecked returns a boolean if a field has been set.
+
+### SetTokenLastCheckedNil
+
+`func (o *Character) SetTokenLastCheckedNil(b bool)`
+
+ SetTokenLastCheckedNil sets the value for TokenLastChecked to be an explicit nil
+
+### UnsetTokenLastChecked
+`func (o *Character) UnsetTokenLastChecked()`
+
+UnsetTokenLastChecked ensures that no value is present for TokenLastChecked, not even an explicit nil
 ### GetId
 
 `func (o *Character) GetId() int64`
@@ -124,6 +160,16 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### SetIdNil
+
+`func (o *Character) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *Character) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetName
 
 `func (o *Character) GetName() string`

@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: Client library of Neucore API
   title: Neucore API
-  version: 1.26.0
+  version: 1.33.0
 servers:
 - url: https://localhost/api
 tags:
@@ -15,7 +15,7 @@ tags:
 paths:
   /app/v1/show:
     get:
-      description: 'Needs role: app'
+      description: "Needs role: app"
       operationId: showV1
       responses:
         "200":
@@ -34,8 +34,8 @@ paths:
   /app/v1/main/{cid}:
     get:
       deprecated: true
-      description: 'Needs role: app-chars.<br>It is possible that an account has no
-        main character.'
+      description: "Needs role: app-chars.<br>It is possible that an account has no\
+        \ main character."
       operationId: mainV1
       parameters:
       - description: EVE character ID.
@@ -67,8 +67,8 @@ paths:
       - Application - Characters
   /app/v2/main/{cid}:
     get:
-      description: 'Needs role: app-chars.<br>It is possible that an account has no
-        main character.'
+      description: "Needs role: app-chars.<br>It is possible that an account has no\
+        \ main character."
       operationId: mainV2
       parameters:
       - description: EVE character ID.
@@ -91,7 +91,7 @@ paths:
         "403":
           description: Not authorized.
         "404":
-          description: 'Reason phrase: Character not found.'
+          description: "Reason phrase: Character not found."
       security:
       - BearerAuth: []
       summary: Returns the main character of the player account to which the character
@@ -100,7 +100,7 @@ paths:
       - Application - Characters
   /app/v1/player/{characterId}:
     get:
-      description: 'Needs role: app-chars.'
+      description: "Needs role: app-chars."
       operationId: playerV1
       parameters:
       - description: EVE character ID.
@@ -117,7 +117,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Player'
-          description: The player, only id and name properties are returned.
+          description: "The player, only id and name properties are returned."
         "403":
           description: Not authorized.
         "404":
@@ -129,7 +129,7 @@ paths:
       - Application - Characters
   /app/v1/characters/{characterId}:
     get:
-      description: 'Needs role: app-chars.'
+      description: "Needs role: app-chars."
       operationId: charactersV1
       parameters:
       - description: EVE character ID.
@@ -161,7 +161,7 @@ paths:
       - Application - Characters
   /app/v1/characters:
     post:
-      description: 'Needs role: app-chars.'
+      description: "Needs role: app-chars."
       operationId: charactersBulkV1
       requestBody:
         content:
@@ -195,7 +195,7 @@ paths:
       - Application - Characters
   /app/v1/character-list:
     post:
-      description: 'Needs role: app-chars.'
+      description: "Needs role: app-chars."
       operationId: characterListV1
       requestBody:
         content:
@@ -226,7 +226,7 @@ paths:
       - Application - Characters
   /app/v1/player-chars/{playerId}:
     get:
-      description: 'Needs role: app-chars.'
+      description: "Needs role: app-chars."
       operationId: playerCharactersV1
       parameters:
       - description: Player ID.
@@ -257,7 +257,7 @@ paths:
       - Application - Characters
   /app/v1/player-with-characters/{characterId}:
     get:
-      description: 'Needs role: app-chars.'
+      description: "Needs role: app-chars."
       operationId: playerWithCharactersV1
       parameters:
       - description: EVE character ID.
@@ -274,7 +274,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Player'
-          description: The player, only id, name and characters properties are returned.
+          description: "The player, only id, name and characters properties are returned."
         "403":
           description: Not authorized.
         "404":
@@ -287,7 +287,7 @@ paths:
       - Application - Characters
   /app/v1/removed-characters/{characterId}:
     get:
-      description: 'Needs role: app-chars.'
+      description: "Needs role: app-chars."
       operationId: removedCharactersV1
       parameters:
       - description: EVE character ID.
@@ -320,7 +320,7 @@ paths:
       - Application - Characters
   /app/v1/incoming-characters/{characterId}:
     get:
-      description: 'Needs role: app-chars.'
+      description: "Needs role: app-chars."
       operationId: incomingCharactersV1
       parameters:
       - description: EVE character ID.
@@ -353,7 +353,7 @@ paths:
       - Application - Characters
   /app/v1/corp-players/{corporationId}:
     get:
-      description: 'Needs role: app-chars.'
+      description: "Needs role: app-chars."
       operationId: corporationPlayersV1
       parameters:
       - description: EVE corporation ID.
@@ -372,7 +372,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Player'
                 type: array
-          description: List of players, only id and name properties are returned.
+          description: "List of players, only id and name properties are returned."
         "403":
           description: Not authorized.
       security:
@@ -382,7 +382,7 @@ paths:
       - Application - Characters
   /app/v1/corp-characters/{corporationId}:
     get:
-      description: 'Needs role: app-chars.'
+      description: "Needs role: app-chars."
       operationId: corporationCharactersV1
       parameters:
       - description: EVE corporation ID.
@@ -411,17 +411,17 @@ paths:
       - Application - Characters
   /app/v1/esi/eve-login/{name}/characters:
     get:
-      description: 'Needs role: app-esi.'
+      description: "Needs role: app-esi."
       operationId: esiEveLoginCharactersV1
       parameters:
-      - description: EVE login name, 'core.default' is not allowed.
+      - description: "EVE login name, 'core.default' is not allowed."
         explode: false
         in: path
         name: name
         required: true
         schema:
           maxLength: 20
-          pattern: ^[-._a-zA-Z0-9]+$
+          pattern: "^[-._a-zA-Z0-9]+$"
           type: string
         style: simple
       responses:
@@ -432,6 +432,7 @@ paths:
                 items:
                   type: integer
                 type: array
+          description: ""
         "403":
           content:
             application/json:
@@ -452,16 +453,208 @@ paths:
       - Application - ESI
   /app/v1/esi:
     get:
-      description: |-
-        Needs role: app-esi<br>
-             *         Public ESI routes are not allowed.<br>
-             *         The following headers from ESI are passed through to the response if they exist:
-                       Content-Type Expires X-Esi-Error-Limit-Remain X-Esi-Error-Limit-Reset X-Pages warning, Warning<br>
-             *         The HTTP status code from ESI is also passed through, so there may be more than the documented ones.<br>
-             *         The ESI path and query parameters can alternatively be appended to the path of this endpoint,
-                       this allows to use OpenAPI clients that were generated for the ESI API,
-                       see doc/app-esi-examples.php for more.
+      deprecated: true
       operationId: esiV1
+      parameters:
+      - explode: true
+        in: query
+        name: esi-path-query
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: datasource
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+          headers:
+            Expires:
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "304":
+          description: ""
+          headers:
+            Expires:
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "401":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "420":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "429":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: "Too many errors, see reason phrase for more."
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "503":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "504":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security:
+      - BearerAuth: []
+      summary: See GET /app/v2/esi
+      tags:
+      - Application - ESI
+    post:
+      deprecated: true
+      operationId: esiPostV1
+      parameters:
+      - explode: true
+        in: query
+        name: esi-path-query
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: datasource
+        required: true
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+        description: ""
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+          headers:
+            Expires:
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "304":
+          description: ""
+          headers:
+            Expires:
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "401":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "420":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "429":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: "Too many errors, see reason phrase for more."
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "503":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "504":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security:
+      - BearerAuth: []
+      summary: See POST /app/v2/esi
+      tags:
+      - Application - ESI
+  /app/v2/esi:
+    get:
+      description: "Needs role: app-esi<br>\n     *         Public ESI routes are\
+        \ not allowed.<br>\n     *         The following headers from ESI are passed\
+        \ through to the response if they exist:\n               Content-Type Expires\
+        \ X-Esi-Error-Limit-Remain X-Esi-Error-Limit-Reset X-Pages warning, Warning<br>\n\
+        \     *         The HTTP status code from ESI is also passed through, so there\
+        \ may be more than the documented ones.<br>\n     *         The ESI path and\
+        \ query parameters can alternatively be appended to the path of this endpoint,\n\
+        \               this allows to use OpenAPI clients that were generated for\
+        \ the ESI API,\n               see doc/app-esi-examples.php for more."
+      operationId: esiV2
       parameters:
       - description: The ESI path and query string (without the datasource parameter).
         explode: true
@@ -487,16 +680,16 @@ paths:
             application/json:
               schema:
                 type: string
-          description: |-
-            The data from ESI.<br>
-                                        Please note that the JSON schema type can be an object, array or number etc.,
-                                        unfortunately there is no way to document this.
+          description: "The data from ESI.<br>\n                            Please\
+            \ note that the JSON schema type can be an object, array or number etc.,\n\
+            \                            unfortunately there is no way to document\
+            \ this."
           headers:
             Expires:
               description: RFC7231 formatted datetime string
               explode: false
               schema:
-                type: integer
+                type: string
               style: simple
         "304":
           description: Not modified
@@ -505,14 +698,14 @@ paths:
               description: RFC7231 formatted datetime string
               explode: false
               schema:
-                type: integer
+                type: string
               style: simple
         "400":
           content:
             application/json:
               schema:
                 type: string
-          description: Bad request, see reason phrase and/or body for more.
+          description: "Bad request, see reason phrase and/or body for more."
         "401":
           content:
             application/json:
@@ -536,9 +729,14 @@ paths:
             application/json:
               schema:
                 type: string
-          description: |-
-            Maximum permissible ESI error limit reached (X-Esi-Error-Limit-Remain <= 20)
-                                        or API rate limit exceeded.
+          description: "Too many errors, see body for more."
+          headers:
+            Retry-After:
+              description: Delay in seconds.
+              explode: false
+              schema:
+                type: string
+              style: simple
         "500":
           content:
             application/json:
@@ -564,20 +762,16 @@ paths:
       tags:
       - Application - ESI
     post:
-      operationId: esiPostV1
+      operationId: esiPostV2
       parameters:
-      - description: The ESI path and query string (without the datasource parameter).
-        explode: true
+      - explode: true
         in: query
         name: esi-path-query
         required: true
         schema:
           type: string
         style: form
-      - description: |-
-          The EVE character ID those token should be used to make the ESI request. Optionally
-                                      followed by a colon and the name of an EVE login to use an alternative ESI token.
-        explode: true
+      - explode: true
         in: query
         name: datasource
         required: true
@@ -597,83 +791,86 @@ paths:
             application/json:
               schema:
                 type: string
-          description: Same as GET /app/v1/esi, see there for details.
+          description: ""
           headers:
             Expires:
-              description: RFC7231 formatted datetime string
               explode: false
               schema:
-                type: integer
+                type: string
               style: simple
         "304":
-          description: Not modified
+          description: ""
           headers:
             Expires:
-              description: RFC7231 formatted datetime string
               explode: false
               schema:
-                type: integer
+                type: string
               style: simple
         "400":
           content:
             application/json:
               schema:
                 type: string
-          description: Bad request, see reason phrase and/or body for more.
+          description: ""
         "401":
           content:
             application/json:
               schema:
                 type: string
-          description: Unauthorized
+          description: ""
         "403":
           content:
             application/json:
               schema:
                 type: string
-          description: Forbidden
+          description: ""
         "420":
           content:
             application/json:
               schema:
                 type: string
-          description: Error limited
+          description: ""
         "429":
           content:
             application/json:
               schema:
                 type: string
-          description: |-
-            Maximum permissible ESI error limit reached (X-Esi-Error-Limit-Remain <= 20)
-                                        or API rate limit exceeded.
+          description: ""
+          headers:
+            Retry-After:
+              description: Delay in seconds.
+              explode: false
+              schema:
+                type: string
+              style: simple
         "500":
           content:
             application/json:
               schema:
                 type: string
-          description: Internal server error
+          description: ""
         "503":
           content:
             application/json:
               schema:
                 type: string
-          description: Service unavailable
+          description: ""
         "504":
           content:
             application/json:
               schema:
                 type: string
-          description: Gateway timeout
+          description: ""
       security:
       - BearerAuth: []
-      summary: Same as GET /app/v1/esi, but for POST requests.
+      summary: "Same as GET /app/v2/esi, but for POST requests."
       tags:
       - Application - ESI
   /app/v1/groups/{cid}:
     get:
       deprecated: true
-      description: 'Needs role: app-groups.<br>Returns only groups that have been
-        added to the app as well.'
+      description: "Needs role: app-groups.<br>Returns only groups that have been\
+        \ added to the app as well."
       operationId: groupsV1
       parameters:
       - description: EVE character ID.
@@ -704,8 +901,8 @@ paths:
       - Application - Groups
   /app/v2/groups/{cid}:
     get:
-      description: 'Needs role: app-groups.<br>Returns only groups that have been
-        added to the app as well.'
+      description: "Needs role: app-groups.<br>Returns only groups that have been\
+        \ added to the app as well."
       operationId: groupsV2
       parameters:
       - description: EVE character ID.
@@ -728,7 +925,7 @@ paths:
         "403":
           description: Not authorized.
         "404":
-          description: 'Reason phrase: Character not found.'
+          description: "Reason phrase: Character not found."
       security:
       - BearerAuth: []
       summary: Return groups of the character's player account.
@@ -736,10 +933,9 @@ paths:
       - Application - Groups
   /app/v1/groups:
     post:
-      description: |-
-        Needs role: app-groups.<br>
-             *                  Returns only groups that have been added to the app as well.
-             *                  Skips characters that are not found in the local database.
+      description: "Needs role: app-groups.<br>\n     *                  Returns only\
+        \ groups that have been added to the app as well.\n     *                \
+        \  Skips characters that are not found in the local database."
       operationId: groupsBulkV1
       requestBody:
         content:
@@ -758,23 +954,23 @@ paths:
                 items:
                   $ref: '#/components/schemas/CharacterGroups'
                 type: array
-          description: List of characters (id, name and corporation properties only)
-            with groups.
+          description: "List of characters (id, name and corporation properties only)\
+            \ with groups."
         "400":
           description: Invalid body.
         "403":
           description: Not authorized.
       security:
       - BearerAuth: []
-      summary: Return groups of multiple players, identified by one of their character
-        IDs.
+      summary: "Return groups of multiple players, identified by one of their character\
+        \ IDs."
       tags:
       - Application - Groups
   /app/v1/corp-groups/{cid}:
     get:
       deprecated: true
-      description: 'Needs role: app-groups.<br>Returns only groups that have been
-        added to the app as well.'
+      description: "Needs role: app-groups.<br>Returns only groups that have been\
+        \ added to the app as well."
       operationId: corpGroupsV1
       parameters:
       - description: EVE corporation ID.
@@ -805,8 +1001,8 @@ paths:
       - Application - Groups
   /app/v2/corp-groups/{cid}:
     get:
-      description: 'Needs role: app-groups.<br>Returns only groups that have been
-        added to the app as well.'
+      description: "Needs role: app-groups.<br>Returns only groups that have been\
+        \ added to the app as well."
       operationId: corpGroupsV2
       parameters:
       - description: EVE corporation ID.
@@ -829,7 +1025,7 @@ paths:
         "403":
           description: Not authorized.
         "404":
-          description: 'Reason phrase: Corporation not found.'
+          description: "Reason phrase: Corporation not found."
       security:
       - BearerAuth: []
       summary: Return groups of the corporation.
@@ -837,10 +1033,9 @@ paths:
       - Application - Groups
   /app/v1/corp-groups:
     post:
-      description: |-
-        Needs role: app-groups.<br>
-             *                  Returns only groups that have been added to the app as well.
-             *                  Skips corporations that are not found in the local database.
+      description: "Needs role: app-groups.<br>\n     *                  Returns only\
+        \ groups that have been added to the app as well.\n     *                \
+        \  Skips corporations that are not found in the local database."
       operationId: corpGroupsBulkV1
       requestBody:
         content:
@@ -872,8 +1067,8 @@ paths:
   /app/v1/alliance-groups/{aid}:
     get:
       deprecated: true
-      description: 'Needs role: app-groups.<br>Returns only groups that have been
-        added to the app as well.'
+      description: "Needs role: app-groups.<br>Returns only groups that have been\
+        \ added to the app as well."
       operationId: allianceGroupsV1
       parameters:
       - description: EVE alliance ID.
@@ -904,8 +1099,8 @@ paths:
       - Application - Groups
   /app/v2/alliance-groups/{aid}:
     get:
-      description: 'Needs role: app-groups.<br>Returns only groups that have been
-        added to the app as well.'
+      description: "Needs role: app-groups.<br>Returns only groups that have been\
+        \ added to the app as well."
       operationId: allianceGroupsV2
       parameters:
       - description: EVE alliance ID.
@@ -928,7 +1123,7 @@ paths:
         "403":
           description: Not authorized.
         "404":
-          description: 'Reason phrase: Alliance not found.'
+          description: "Reason phrase: Alliance not found."
       security:
       - BearerAuth: []
       summary: Return groups of the alliance.
@@ -936,10 +1131,9 @@ paths:
       - Application - Groups
   /app/v1/alliance-groups:
     post:
-      description: |-
-        Needs role: app-groups.<br>
-             *                  Returns only groups that have been added to the app as well.
-             *                  Skips alliances that are not found in the local database.
+      description: "Needs role: app-groups.<br>\n     *                  Returns only\
+        \ groups that have been added to the app as well.\n     *                \
+        \  Skips alliances that are not found in the local database."
       operationId: allianceGroupsBulkV1
       requestBody:
         content:
@@ -970,10 +1164,9 @@ paths:
       - Application - Groups
   /app/v1/groups-with-fallback:
     get:
-      description: |-
-        Needs role: app-groups.<br>
-             *                  Returns only groups that have been added to the app as well.<br>
-             *                  It is not checked if character, corporation and alliance match.
+      description: "Needs role: app-groups.<br>\n     *                  Returns only\
+        \ groups that have been added to the app as well.<br>\n     *            \
+        \      It is not checked if character, corporation and alliance match."
       operationId: groupsWithFallbackV1
       parameters:
       - description: EVE character ID.
@@ -1013,13 +1206,13 @@ paths:
           description: Not authorized.
       security:
       - BearerAuth: []
-      summary: Returns groups from the character's account, if available, or the corporation
-        and alliance.
+      summary: "Returns groups from the character's account, if available, or the\
+        \ corporation and alliance."
       tags:
       - Application - Groups
   /app/v1/group-members/{groupId}:
     get:
-      description: 'Needs role: app-groups.'
+      description: "Needs role: app-groups."
       operationId: groupMembersV1
       parameters:
       - description: Group ID.
@@ -1058,7 +1251,7 @@ paths:
       - Application - Groups
   /app/v1/corporation/{id}/member-tracking:
     get:
-      description: 'Needs role: app-tracking'
+      description: "Needs role: app-tracking"
       operationId: memberTrackingV1
       parameters:
       - description: EVE corporation ID.
@@ -1117,7 +1310,7 @@ components:
   schemas:
     ServiceAccount:
       example:
-        displayName: displayName
+        name: name
         serviceId: 0
         serviceName: serviceName
         characterId: 6
@@ -1143,12 +1336,12 @@ components:
           - Unknown
           nullable: true
           type: string
-        displayName:
+        name:
           nullable: true
           type: string
       required:
       - characterId
-      - displayName
+      - name
       - serviceId
       - serviceName
       - status
@@ -1158,6 +1351,7 @@ components:
       example:
         character:
           validToken: true
+          tokenLastChecked: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
           lastUpdate: 2000-01-23T04:56:07.000+00:00
           corporation:
@@ -1167,12 +1361,14 @@ components:
               ticker: ticker
               name: name
               groups:
-              - visibility: private
+              - isDefault: true
+                visibility: private
                 autoAccept: true
                 name: name
                 description: description
                 id: 6
-              - visibility: private
+              - isDefault: true
+                visibility: private
                 autoAccept: true
                 name: name
                 description: description
@@ -1181,12 +1377,14 @@ components:
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
-            - visibility: private
+            - isDefault: true
+              visibility: private
               autoAccept: true
               name: name
               description: description
               id: 6
-            - visibility: private
+            - isDefault: true
+              visibility: private
               autoAccept: true
               name: name
               description: description
@@ -1206,17 +1404,21 @@ components:
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            lastChecked: 2000-01-23T04:56:07.000+00:00
           - validToken: true
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            lastChecked: 2000-01-23T04:56:07.000+00:00
         groups:
-        - visibility: private
+        - isDefault: true
+          visibility: private
           autoAccept: true
           name: name
           description: description
           id: 6
-        - visibility: private
+        - isDefault: true
+          visibility: private
           autoAccept: true
           name: name
           description: description
@@ -1238,12 +1440,14 @@ components:
         ticker: ticker
         name: name
         groups:
-        - visibility: private
+        - isDefault: true
+          visibility: private
           autoAccept: true
           name: name
           description: description
           id: 6
-        - visibility: private
+        - isDefault: true
+          visibility: private
           autoAccept: true
           name: name
           description: description
@@ -1253,6 +1457,7 @@ components:
         id:
           description: EVE alliance ID.
           format: int64
+          nullable: true
           type: integer
         name:
           description: EVE alliance name.
@@ -1263,7 +1468,7 @@ components:
           nullable: true
           type: string
         groups:
-          description: 'Groups for automatic assignment (API: not included by default).'
+          description: "Groups for automatic assignment (API: not included by default)."
           items:
             $ref: '#/components/schemas/Group'
           type: array
@@ -1294,12 +1499,14 @@ components:
         - null
         name: name
         groups:
-        - visibility: private
+        - isDefault: true
+          visibility: private
           autoAccept: true
           name: name
           description: description
           id: 6
-        - visibility: private
+        - isDefault: true
+          visibility: private
           autoAccept: true
           name: name
           description: description
@@ -1308,10 +1515,12 @@ components:
       properties:
         id:
           description: App ID
+          nullable: true
           type: integer
         name:
           description: App name
           maxLength: 255
+          nullable: true
           type: string
         roles:
           description: Roles for authorization.
@@ -1332,9 +1541,9 @@ components:
       - name
       type: object
     Character:
-      description: An EVE character.
       example:
         validToken: true
+        tokenLastChecked: 2000-01-23T04:56:07.000+00:00
         created: 2000-01-23T04:56:07.000+00:00
         lastUpdate: 2000-01-23T04:56:07.000+00:00
         corporation:
@@ -1344,12 +1553,14 @@ components:
             ticker: ticker
             name: name
             groups:
-            - visibility: private
+            - isDefault: true
+              visibility: private
               autoAccept: true
               name: name
               description: description
               id: 6
-            - visibility: private
+            - isDefault: true
+              visibility: private
               autoAccept: true
               name: name
               description: description
@@ -1358,12 +1569,14 @@ components:
           trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
           name: name
           groups:
-          - visibility: private
+          - isDefault: true
+            visibility: private
             autoAccept: true
             name: name
             description: description
             id: 6
-          - visibility: private
+          - isDefault: true
+            visibility: private
             autoAccept: true
             name: name
             description: description
@@ -1383,10 +1596,12 @@ components:
           hasRoles: true
           validTokenTime: 2000-01-23T04:56:07.000+00:00
           eveLoginId: 6
+          lastChecked: 2000-01-23T04:56:07.000+00:00
         - validToken: true
           hasRoles: true
           validTokenTime: 2000-01-23T04:56:07.000+00:00
           eveLoginId: 6
+          lastChecked: 2000-01-23T04:56:07.000+00:00
       properties:
         validToken:
           description: |-
@@ -1396,13 +1611,20 @@ components:
           nullable: true
           type: boolean
         validTokenTime:
-          description: Date and time when the valid token property was last changed.
+          description: Date and time when the valid token property of the default
+            token was last changed.
+          format: date-time
+          nullable: true
+          type: string
+        tokenLastChecked:
+          description: Date and time when the default token was last checked.
           format: date-time
           nullable: true
           type: string
         id:
           description: EVE character ID.
           format: int64
+          nullable: true
           type: integer
         name:
           description: EVE character name.
@@ -1410,7 +1632,7 @@ components:
         main:
           type: boolean
         esiTokens:
-          description: 'ESI tokens of the character (API: not included by default).'
+          description: "ESI tokens of the character (API: not included by default)."
           items:
             $ref: '#/components/schemas/EsiToken'
           type: array
@@ -1426,7 +1648,7 @@ components:
         corporation:
           $ref: '#/components/schemas/Corporation'
         characterNameChanges:
-          description: 'List of previous character names (API: not included by default).'
+          description: "List of previous character names (API: not included by default)."
           items:
             $ref: '#/components/schemas/CharacterNameChange'
           type: array
@@ -1459,12 +1681,14 @@ components:
           ticker: ticker
           name: name
           groups:
-          - visibility: private
+          - isDefault: true
+            visibility: private
             autoAccept: true
             name: name
             description: description
             id: 6
-          - visibility: private
+          - isDefault: true
+            visibility: private
             autoAccept: true
             name: name
             description: description
@@ -1473,12 +1697,14 @@ components:
         trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
         name: name
         groups:
-        - visibility: private
+        - isDefault: true
+          visibility: private
           autoAccept: true
           name: name
           description: description
           id: 6
-        - visibility: private
+        - isDefault: true
+          visibility: private
           autoAccept: true
           name: name
           description: description
@@ -1488,6 +1714,7 @@ components:
         id:
           description: EVE corporation ID.
           format: int64
+          nullable: true
           type: integer
         name:
           description: EVE corporation name.
@@ -1500,19 +1727,19 @@ components:
         alliance:
           $ref: '#/components/schemas/Alliance'
         groups:
-          description: 'Groups for automatic assignment (API: not included by default).'
+          description: "Groups for automatic assignment (API: not included by default)."
           items:
             $ref: '#/components/schemas/Group'
           type: array
         trackingLastUpdate:
-          description: 'Last update of corporation member tracking data (API: not
-            included by default).'
+          description: "Last update of corporation member tracking data (API: not\
+            \ included by default)."
           format: date-time
           nullable: true
           type: string
         autoAllowlist:
-          description: 'True if this corporation was automatically placed on the allowlist
-            of a watchlist (API: not included by default).'
+          description: "True if this corporation was automatically placed on the allowlist\
+            \ of a watchlist (API: not included by default)."
           type: boolean
       required:
       - id
@@ -1520,12 +1747,13 @@ components:
       - ticker
       type: object
     CorporationMember:
-      description: The player property contains only id and name, character does not
-        contain corporation.
+      description: "The player property contains only id and name, character does\
+        \ not contain corporation."
       example:
         missingCharacterMailSentDate: 2000-01-23T04:56:07.000+00:00
         character:
           validToken: true
+          tokenLastChecked: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
           lastUpdate: 2000-01-23T04:56:07.000+00:00
           corporation:
@@ -1535,12 +1763,14 @@ components:
               ticker: ticker
               name: name
               groups:
-              - visibility: private
+              - isDefault: true
+                visibility: private
                 autoAccept: true
                 name: name
                 description: description
                 id: 6
-              - visibility: private
+              - isDefault: true
+                visibility: private
                 autoAccept: true
                 name: name
                 description: description
@@ -1549,12 +1779,14 @@ components:
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
-            - visibility: private
+            - isDefault: true
+              visibility: private
               autoAccept: true
               name: name
               description: description
               id: 6
-            - visibility: private
+            - isDefault: true
+              visibility: private
               autoAccept: true
               name: name
               description: description
@@ -1574,10 +1806,12 @@ components:
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            lastChecked: 2000-01-23T04:56:07.000+00:00
           - validToken: true
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            lastChecked: 2000-01-23T04:56:07.000+00:00
         missingCharacterMailSentNumber: 5
         name: name
         shipType:
@@ -1595,6 +1829,7 @@ components:
         player:
           characters:
           - validToken: true
+            tokenLastChecked: 2000-01-23T04:56:07.000+00:00
             created: 2000-01-23T04:56:07.000+00:00
             lastUpdate: 2000-01-23T04:56:07.000+00:00
             corporation:
@@ -1604,12 +1839,14 @@ components:
                 ticker: ticker
                 name: name
                 groups:
-                - visibility: private
+                - isDefault: true
+                  visibility: private
                   autoAccept: true
                   name: name
                   description: description
                   id: 6
-                - visibility: private
+                - isDefault: true
+                  visibility: private
                   autoAccept: true
                   name: name
                   description: description
@@ -1618,12 +1855,14 @@ components:
               trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
               name: name
               groups:
-              - visibility: private
+              - isDefault: true
+                visibility: private
                 autoAccept: true
                 name: name
                 description: description
                 id: 6
-              - visibility: private
+              - isDefault: true
+                visibility: private
                 autoAccept: true
                 name: name
                 description: description
@@ -1643,11 +1882,14 @@ components:
               hasRoles: true
               validTokenTime: 2000-01-23T04:56:07.000+00:00
               eveLoginId: 6
+              lastChecked: 2000-01-23T04:56:07.000+00:00
             - validToken: true
               hasRoles: true
               validTokenTime: 2000-01-23T04:56:07.000+00:00
               eveLoginId: 6
+              lastChecked: 2000-01-23T04:56:07.000+00:00
           - validToken: true
+            tokenLastChecked: 2000-01-23T04:56:07.000+00:00
             created: 2000-01-23T04:56:07.000+00:00
             lastUpdate: 2000-01-23T04:56:07.000+00:00
             corporation:
@@ -1657,12 +1899,14 @@ components:
                 ticker: ticker
                 name: name
                 groups:
-                - visibility: private
+                - isDefault: true
+                  visibility: private
                   autoAccept: true
                   name: name
                   description: description
                   id: 6
-                - visibility: private
+                - isDefault: true
+                  visibility: private
                   autoAccept: true
                   name: name
                   description: description
@@ -1671,12 +1915,14 @@ components:
               trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
               name: name
               groups:
-              - visibility: private
+              - isDefault: true
+                visibility: private
                 autoAccept: true
                 name: name
                 description: description
                 id: 6
-              - visibility: private
+              - isDefault: true
+                visibility: private
                 autoAccept: true
                 name: name
                 description: description
@@ -1696,10 +1942,12 @@ components:
               hasRoles: true
               validTokenTime: 2000-01-23T04:56:07.000+00:00
               eveLoginId: 6
+              lastChecked: 2000-01-23T04:56:07.000+00:00
             - validToken: true
               hasRoles: true
               validTokenTime: 2000-01-23T04:56:07.000+00:00
               eveLoginId: 6
+              lastChecked: 2000-01-23T04:56:07.000+00:00
           managerApps:
           - eveLogins:
             - esiScopes: esiScopes
@@ -1721,12 +1969,14 @@ components:
             - null
             name: name
             groups:
-            - visibility: private
+            - isDefault: true
+              visibility: private
               autoAccept: true
               name: name
               description: description
               id: 6
-            - visibility: private
+            - isDefault: true
+              visibility: private
               autoAccept: true
               name: name
               description: description
@@ -1752,12 +2002,14 @@ components:
             - null
             name: name
             groups:
-            - visibility: private
+            - isDefault: true
+              visibility: private
               autoAccept: true
               name: name
               description: description
               id: 6
-            - visibility: private
+            - isDefault: true
+              visibility: private
               autoAccept: true
               name: name
               description: description
@@ -1769,21 +2021,25 @@ components:
             newPlayerId: 5
             characterName: characterName
             characterId: 5
+            deletedBy: null
+            player: null
             removedDate: 2000-01-23T04:56:07.000+00:00
           - newPlayerName: newPlayerName
             reason: moved
             newPlayerId: 5
             characterName: characterName
             characterId: 5
+            deletedBy: null
+            player: null
             removedDate: 2000-01-23T04:56:07.000+00:00
           serviceAccounts:
-          - displayName: displayName
+          - name: name
             serviceId: 0
             serviceName: serviceName
             characterId: 6
             username: username
             status: Pending
-          - displayName: displayName
+          - name: name
             serviceId: 0
             serviceName: serviceName
             characterId: 6
@@ -1795,24 +2051,28 @@ components:
           - null
           name: name
           groups:
-          - visibility: private
+          - isDefault: true
+            visibility: private
             autoAccept: true
             name: name
             description: description
             id: 6
-          - visibility: private
+          - isDefault: true
+            visibility: private
             autoAccept: true
             name: name
             description: description
             id: 6
           id: 1
           managerGroups:
-          - visibility: private
+          - isDefault: true
+            visibility: private
             autoAccept: true
             name: name
             description: description
             id: 6
-          - visibility: private
+          - isDefault: true
+            visibility: private
             autoAccept: true
             name: name
             description: description
@@ -1823,12 +2083,16 @@ components:
             newPlayerId: 5
             characterName: characterName
             characterId: 5
+            deletedBy: null
+            player: null
             removedDate: 2000-01-23T04:56:07.000+00:00
           - newPlayerName: newPlayerName
             reason: moved
             newPlayerId: 5
             characterName: characterName
             characterId: 5
+            deletedBy: null
+            player: null
             removedDate: 2000-01-23T04:56:07.000+00:00
           status: standard
       properties:
@@ -1866,18 +2130,18 @@ components:
           nullable: true
           type: string
         missingCharacterMailSentResult:
-          description: Result of the last sent mail (OK, Blocked, CSPA charge > 0)
+          description: "Result of the last sent mail (OK, Blocked, CSPA charge > 0)"
           nullable: true
           type: string
         missingCharacterMailSentNumber:
-          description: Number of mails sent, is reset when the character is added.
+          description: "Number of mails sent, is reset when the character is added."
           type: integer
       required:
       - id
       - name
       type: object
     EsiLocation:
-      description: An EVE location (System, Station, Structure, ...)
+      description: "An EVE location (System, Station, Structure, ...)"
       example:
         name: name
         id: 6
@@ -1885,14 +2149,17 @@ components:
       properties:
         id:
           format: int64
+          nullable: true
           type: integer
         category:
           enum:
           - system
           - station
           - structure
+          nullable: true
           type: string
         name:
+          nullable: true
           type: string
       required:
       - category
@@ -1905,6 +2172,7 @@ components:
         hasRoles: true
         validTokenTime: 2000-01-23T04:56:07.000+00:00
         eveLoginId: 6
+        lastChecked: 2000-01-23T04:56:07.000+00:00
       properties:
         eveLoginId:
           description: ID of EveLogin
@@ -1929,6 +2197,11 @@ components:
             Null if the login does not require any roles or if the token is invalid.
           nullable: true
           type: boolean
+        lastChecked:
+          description: When the refresh token was last checked for validity.
+          format: date-time
+          nullable: true
+          type: string
       required:
       - eveLoginId
       - hasRoles
@@ -1967,7 +2240,7 @@ components:
           description: Names starting with 'core.' are reserved for internal use.
           maxLength: 20
           nullable: false
-          pattern: ^[-._a-zA-Z0-9]+$
+          pattern: "^[-._a-zA-Z0-9]+$"
           type: string
         description:
           maxLength: 1024
@@ -1976,7 +2249,7 @@ components:
           maxLength: 8192
           type: string
         eveRoles:
-          description: 'Maximum length of all roles separated by comma: 1024.'
+          description: "Maximum length of all roles separated by comma: 1024."
           items:
             type: string
           type: array
@@ -1989,6 +2262,7 @@ components:
       type: object
     Group:
       example:
+        isDefault: true
         visibility: private
         autoAccept: true
         name: name
@@ -2003,7 +2277,7 @@ components:
           description: A unique group name (can be changed).
           maxLength: 64
           nullable: true
-          pattern: ^[-._a-zA-Z0-9]+$
+          pattern: "^[-._a-zA-Z0-9]+$"
           type: string
         description:
           maxLength: 1024
@@ -2015,6 +2289,8 @@ components:
           - public
           type: string
         autoAccept:
+          type: boolean
+        isDefault:
           type: boolean
       required:
       - id
@@ -2050,6 +2326,7 @@ components:
       example:
         characters:
         - validToken: true
+          tokenLastChecked: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
           lastUpdate: 2000-01-23T04:56:07.000+00:00
           corporation:
@@ -2059,12 +2336,14 @@ components:
               ticker: ticker
               name: name
               groups:
-              - visibility: private
+              - isDefault: true
+                visibility: private
                 autoAccept: true
                 name: name
                 description: description
                 id: 6
-              - visibility: private
+              - isDefault: true
+                visibility: private
                 autoAccept: true
                 name: name
                 description: description
@@ -2073,12 +2352,14 @@ components:
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
-            - visibility: private
+            - isDefault: true
+              visibility: private
               autoAccept: true
               name: name
               description: description
               id: 6
-            - visibility: private
+            - isDefault: true
+              visibility: private
               autoAccept: true
               name: name
               description: description
@@ -2098,11 +2379,14 @@ components:
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            lastChecked: 2000-01-23T04:56:07.000+00:00
           - validToken: true
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            lastChecked: 2000-01-23T04:56:07.000+00:00
         - validToken: true
+          tokenLastChecked: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
           lastUpdate: 2000-01-23T04:56:07.000+00:00
           corporation:
@@ -2112,12 +2396,14 @@ components:
               ticker: ticker
               name: name
               groups:
-              - visibility: private
+              - isDefault: true
+                visibility: private
                 autoAccept: true
                 name: name
                 description: description
                 id: 6
-              - visibility: private
+              - isDefault: true
+                visibility: private
                 autoAccept: true
                 name: name
                 description: description
@@ -2126,12 +2412,14 @@ components:
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
-            - visibility: private
+            - isDefault: true
+              visibility: private
               autoAccept: true
               name: name
               description: description
               id: 6
-            - visibility: private
+            - isDefault: true
+              visibility: private
               autoAccept: true
               name: name
               description: description
@@ -2151,10 +2439,12 @@ components:
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            lastChecked: 2000-01-23T04:56:07.000+00:00
           - validToken: true
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            lastChecked: 2000-01-23T04:56:07.000+00:00
         managerApps:
         - eveLogins:
           - esiScopes: esiScopes
@@ -2176,12 +2466,14 @@ components:
           - null
           name: name
           groups:
-          - visibility: private
+          - isDefault: true
+            visibility: private
             autoAccept: true
             name: name
             description: description
             id: 6
-          - visibility: private
+          - isDefault: true
+            visibility: private
             autoAccept: true
             name: name
             description: description
@@ -2207,12 +2499,14 @@ components:
           - null
           name: name
           groups:
-          - visibility: private
+          - isDefault: true
+            visibility: private
             autoAccept: true
             name: name
             description: description
             id: 6
-          - visibility: private
+          - isDefault: true
+            visibility: private
             autoAccept: true
             name: name
             description: description
@@ -2224,21 +2518,25 @@ components:
           newPlayerId: 5
           characterName: characterName
           characterId: 5
+          deletedBy: null
+          player: null
           removedDate: 2000-01-23T04:56:07.000+00:00
         - newPlayerName: newPlayerName
           reason: moved
           newPlayerId: 5
           characterName: characterName
           characterId: 5
+          deletedBy: null
+          player: null
           removedDate: 2000-01-23T04:56:07.000+00:00
         serviceAccounts:
-        - displayName: displayName
+        - name: name
           serviceId: 0
           serviceName: serviceName
           characterId: 6
           username: username
           status: Pending
-        - displayName: displayName
+        - name: name
           serviceId: 0
           serviceName: serviceName
           characterId: 6
@@ -2250,24 +2548,28 @@ components:
         - null
         name: name
         groups:
-        - visibility: private
+        - isDefault: true
+          visibility: private
           autoAccept: true
           name: name
           description: description
           id: 6
-        - visibility: private
+        - isDefault: true
+          visibility: private
           autoAccept: true
           name: name
           description: description
           id: 6
         id: 1
         managerGroups:
-        - visibility: private
+        - isDefault: true
+          visibility: private
           autoAccept: true
           name: name
           description: description
           id: 6
-        - visibility: private
+        - isDefault: true
+          visibility: private
           autoAccept: true
           name: name
           description: description
@@ -2278,22 +2580,26 @@ components:
           newPlayerId: 5
           characterName: characterName
           characterId: 5
+          deletedBy: null
+          player: null
           removedDate: 2000-01-23T04:56:07.000+00:00
         - newPlayerName: newPlayerName
           reason: moved
           newPlayerId: 5
           characterName: characterName
           characterId: 5
+          deletedBy: null
+          player: null
           removedDate: 2000-01-23T04:56:07.000+00:00
         status: standard
       properties:
         serviceAccounts:
-          description: 'External service accounts (API: not included by default)'
+          description: "External service accounts (API: not included by default)"
           items:
             $ref: '#/components/schemas/ServiceAccount'
           type: array
         corporationName:
-          description: 'Corporation of main character (API: not included by default)'
+          description: "Corporation of main character (API: not included by default)"
           type: string
         id:
           nullable: true
@@ -2336,14 +2642,14 @@ components:
             $ref: '#/components/schemas/App'
           type: array
         removedCharacters:
-          description: 'Characters that were removed from a player (API: not included
-            by default).'
+          description: "Characters that were removed from a player (API: not included\
+            \ by default)."
           items:
             $ref: '#/components/schemas/RemovedCharacter'
           type: array
         incomingCharacters:
-          description: 'Characters that were moved from another player account to
-            this account (API: not included by default).'
+          description: "Characters that were moved from another player account to\
+            \ this account (API: not included by default)."
           items:
             $ref: '#/components/schemas/RemovedCharacter'
           type: array
@@ -2358,6 +2664,8 @@ components:
         newPlayerId: 5
         characterName: characterName
         characterId: 5
+        deletedBy: null
+        player: null
         removedDate: 2000-01-23T04:56:07.000+00:00
       properties:
         newPlayerId:
@@ -2369,22 +2677,27 @@ components:
         characterId:
           description: EVE character ID.
           format: int64
+          nullable: true
           type: integer
         characterName:
           description: EVE character name.
+          nullable: true
           type: string
         removedDate:
           description: Date of removal.
           format: date-time
+          nullable: true
           type: string
         reason:
           description: How it was removed (deleted or moved to another account).
           enum:
           - moved
           - moved-owner-changed
-          - deleted-manually
           - deleted-biomassed
           - deleted-owner-changed
+          - deleted-lost-access
+          - deleted-manually
+          nullable: true
           type: string
         deletedBy:
           $ref: '#/components/schemas/Player'
@@ -2435,16 +2748,21 @@ components:
     ServiceConfiguration:
       properties:
         phpClass:
+          nullable: true
           type: string
         psr4Prefix:
+          nullable: true
           type: string
         psr4Path:
+          nullable: true
           type: string
         oneAccount:
+          nullable: true
           type: boolean
         requiredGroups:
           items:
             type: integer
+          nullable: true
           type: array
         properties:
           enum:
@@ -2452,11 +2770,13 @@ components:
           - password
           - email
           - status
-          - displayName
+          - name
           items:
             type: string
+          nullable: true
           type: array
         showPassword:
+          nullable: true
           type: boolean
         actions:
           enum:
@@ -2464,18 +2784,23 @@ components:
           - reset-password
           items:
             type: string
+          nullable: true
           type: array
         URLs:
           items:
             $ref: '#/components/schemas/ServiceConfigurationURL'
           type: array
         textAccount:
+          nullable: true
           type: string
         textTop:
+          nullable: true
           type: string
         textRegister:
+          nullable: true
           type: string
         textPending:
+          nullable: true
           type: string
         configurationData:
           type: string
@@ -2492,7 +2817,7 @@ components:
     ServiceConfigurationURL:
       properties:
         url:
-          description: 'placeholders: {username}, {password}, {email}'
+          description: "placeholders: {username}, {password}, {email}"
           type: string
         title:
           type: string
@@ -2524,8 +2849,10 @@ components:
     Watchlist:
       properties:
         id:
+          nullable: true
           type: integer
         name:
+          nullable: true
           type: string
         lockWatchlistSettings:
           type: boolean

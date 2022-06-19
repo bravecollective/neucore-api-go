@@ -42,8 +42,8 @@ func main() {
     requestBody := []int32{int32(123)} // []int32 | EVE alliance IDs array.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationGroupsApi.AllianceGroupsBulkV1(context.Background()).RequestBody(requestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationGroupsApi.AllianceGroupsBulkV1(context.Background()).RequestBody(requestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationGroupsApi.AllianceGroupsBulkV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -108,8 +108,8 @@ func main() {
     aid := int32(56) // int32 | EVE alliance ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationGroupsApi.AllianceGroupsV1(context.Background(), aid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationGroupsApi.AllianceGroupsV1(context.Background(), aid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationGroupsApi.AllianceGroupsV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -178,8 +178,8 @@ func main() {
     aid := int32(56) // int32 | EVE alliance ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationGroupsApi.AllianceGroupsV2(context.Background(), aid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationGroupsApi.AllianceGroupsV2(context.Background(), aid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationGroupsApi.AllianceGroupsV2``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -248,8 +248,8 @@ func main() {
     requestBody := []int32{int32(123)} // []int32 | EVE corporation IDs array.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationGroupsApi.CorpGroupsBulkV1(context.Background()).RequestBody(requestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationGroupsApi.CorpGroupsBulkV1(context.Background()).RequestBody(requestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationGroupsApi.CorpGroupsBulkV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -314,8 +314,8 @@ func main() {
     cid := int32(56) // int32 | EVE corporation ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationGroupsApi.CorpGroupsV1(context.Background(), cid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationGroupsApi.CorpGroupsV1(context.Background(), cid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationGroupsApi.CorpGroupsV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -384,8 +384,8 @@ func main() {
     cid := int32(56) // int32 | EVE corporation ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationGroupsApi.CorpGroupsV2(context.Background(), cid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationGroupsApi.CorpGroupsV2(context.Background(), cid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationGroupsApi.CorpGroupsV2``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -455,8 +455,8 @@ func main() {
     corporation := int32(56) // int32 | Limit to characters that are a member of this corporation. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationGroupsApi.GroupMembersV1(context.Background(), groupId).Corporation(corporation).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationGroupsApi.GroupMembersV1(context.Background(), groupId).Corporation(corporation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationGroupsApi.GroupMembersV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -526,8 +526,8 @@ func main() {
     requestBody := []int32{int32(123)} // []int32 | EVE character IDs array.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationGroupsApi.GroupsBulkV1(context.Background()).RequestBody(requestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationGroupsApi.GroupsBulkV1(context.Background()).RequestBody(requestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationGroupsApi.GroupsBulkV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -592,8 +592,8 @@ func main() {
     cid := int32(56) // int32 | EVE character ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationGroupsApi.GroupsV1(context.Background(), cid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationGroupsApi.GroupsV1(context.Background(), cid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationGroupsApi.GroupsV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -662,8 +662,8 @@ func main() {
     cid := int32(56) // int32 | EVE character ID.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationGroupsApi.GroupsV2(context.Background(), cid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationGroupsApi.GroupsV2(context.Background(), cid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationGroupsApi.GroupsV2``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -734,8 +734,8 @@ func main() {
     alliance := int32(56) // int32 | EVE alliance ID. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationGroupsApi.GroupsWithFallbackV1(context.Background()).Character(character).Corporation(corporation).Alliance(alliance).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationGroupsApi.GroupsWithFallbackV1(context.Background()).Character(character).Corporation(corporation).Alliance(alliance).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationGroupsApi.GroupsWithFallbackV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
