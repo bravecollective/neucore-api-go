@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: Client library of Neucore API
   title: Neucore API
-  version: 1.33.0
+  version: 1.36.0
 servers:
 - url: https://localhost/api
 tags:
@@ -414,7 +414,7 @@ paths:
       description: "Needs role: app-esi."
       operationId: esiEveLoginCharactersV1
       parameters:
-      - description: "EVE login name, 'core.default' is not allowed."
+      - description: EVE login name.
         explode: false
         in: path
         name: name
@@ -447,8 +447,49 @@ paths:
           description: EVE login not found.
       security:
       - BearerAuth: []
-      summary: Returns character IDs of characters that have a valid ESI token of
-        the specified EVE login.
+      summary: Returns character IDs of characters that have an ESI token (including
+        invalid) of an EVE login.
+      tags:
+      - Application - ESI
+  /app/v1/esi/eve-login/{name}/token-data:
+    get:
+      description: "Needs role: app-esi."
+      operationId: esiEveLoginTokenDataV1
+      parameters:
+      - description: "EVE login name, 'core.default' is not allowed."
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          maxLength: 20
+          pattern: "^[-._a-zA-Z0-9]+$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/EsiTokenData'
+                type: array
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: EVE login not found.
+      security:
+      - BearerAuth: []
+      summary: Returns data of valid tokens for an EVE login.
       tags:
       - Application - ESI
   /app/v1/esi:
@@ -653,7 +694,7 @@ paths:
         \ may be more than the documented ones.<br>\n     *         The ESI path and\
         \ query parameters can alternatively be appended to the path of this endpoint,\n\
         \               this allows to use OpenAPI clients that were generated for\
-        \ the ESI API,\n               see doc/app-esi-examples.php for more."
+        \ the ESI API,\n               see doc/api-examples for more."
       operationId: esiV2
       parameters:
       - description: The ESI path and query string (without the datasource parameter).
@@ -1308,44 +1349,33 @@ paths:
       - Application - Tracking
 components:
   schemas:
-    ServiceAccount:
+    EsiTokenData:
       example:
-        name: name
-        serviceId: 0
-        serviceName: serviceName
-        characterId: 6
-        username: username
-        status: Pending
+        allianceId: 1
+        corporationId: 6
+        characterName: characterName
+        lastChecked: lastChecked
+        characterId: 0
       properties:
-        serviceId:
-          type: integer
-        serviceName:
+        lastChecked:
           nullable: true
           type: string
         characterId:
-          format: int64
           type: integer
-        username:
-          nullable: true
+        characterName:
           type: string
-        status:
-          enum:
-          - Pending
-          - Active
-          - Deactivated
-          - Unknown
+        corporationId:
           nullable: true
-          type: string
-        name:
+          type: integer
+        allianceId:
           nullable: true
-          type: string
+          type: integer
       required:
+      - allianceId
       - characterId
-      - name
-      - serviceId
-      - serviceName
-      - status
-      - username
+      - characterName
+      - corporationId
+      - lastChecked
       type: object
     CharacterGroups:
       example:
@@ -1373,7 +1403,7 @@ components:
                 name: name
                 description: description
                 id: 6
-              id: 5
+              id: 2
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
@@ -1389,7 +1419,7 @@ components:
               name: name
               description: description
               id: 6
-            id: 1
+            id: 5
           name: name
           validTokenTime: 2000-01-23T04:56:07.000+00:00
           main: true
@@ -1401,15 +1431,23 @@ components:
           id: 0
           esiTokens:
           - validToken: true
+            character: null
+            playerName: playerName
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            characterId: 1
             lastChecked: 2000-01-23T04:56:07.000+00:00
+            playerId: 5
           - validToken: true
+            character: null
+            playerName: playerName
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            characterId: 1
             lastChecked: 2000-01-23T04:56:07.000+00:00
+            playerId: 5
         groups:
         - isDefault: true
           visibility: private
@@ -1434,6 +1472,127 @@ components:
       - character
       - groups
       type: object
+    ServiceAccount:
+      example:
+        name: name
+        serviceId: 0
+        serviceName: serviceName
+        characterId: 6
+        username: username
+        status: Pending
+      properties:
+        serviceId:
+          type: integer
+        serviceName:
+          type: string
+        characterId:
+          format: int64
+          type: integer
+        username:
+          nullable: true
+          type: string
+        status:
+          enum:
+          - Pending
+          - Active
+          - Deactivated
+          - Unknown
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+      required:
+      - characterId
+      - name
+      - serviceId
+      - serviceName
+      - status
+      - username
+      type: object
+    ServiceConfiguration:
+      properties:
+        phpClass:
+          nullable: true
+          type: string
+        psr4Prefix:
+          nullable: true
+          type: string
+        psr4Path:
+          nullable: true
+          type: string
+        oneAccount:
+          nullable: true
+          type: boolean
+        requiredGroups:
+          items:
+            type: integer
+          nullable: true
+          type: array
+        properties:
+          enum:
+          - username
+          - password
+          - email
+          - status
+          - name
+          items:
+            type: string
+          nullable: true
+          type: array
+        showPassword:
+          nullable: true
+          type: boolean
+        actions:
+          enum:
+          - update-account
+          - reset-password
+          items:
+            type: string
+          nullable: true
+          type: array
+        URLs:
+          items:
+            $ref: '#/components/schemas/ServiceConfigurationURL'
+          type: array
+        textAccount:
+          nullable: true
+          type: string
+        textTop:
+          nullable: true
+          type: string
+        textRegister:
+          nullable: true
+          type: string
+        textPending:
+          nullable: true
+          type: string
+        configurationData:
+          type: string
+      required:
+      - URLs
+      - actions
+      - configurationData
+      - properties
+      - textAccount
+      - textPending
+      - textRegister
+      - textTop
+      type: object
+    ServiceConfigurationURL:
+      properties:
+        url:
+          description: "placeholders: {username}, {password}, {email}"
+          type: string
+        title:
+          type: string
+        target:
+          type: string
+      required:
+      - target
+      - title
+      - url
+      type: object
     Alliance:
       description: EVE Alliance.
       example:
@@ -1452,7 +1611,7 @@ components:
           name: name
           description: description
           id: 6
-        id: 5
+        id: 2
       properties:
         id:
           description: EVE alliance ID.
@@ -1565,7 +1724,7 @@ components:
               name: name
               description: description
               id: 6
-            id: 5
+            id: 2
           trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
           name: name
           groups:
@@ -1581,7 +1740,7 @@ components:
             name: name
             description: description
             id: 6
-          id: 1
+          id: 5
         name: name
         validTokenTime: 2000-01-23T04:56:07.000+00:00
         main: true
@@ -1593,15 +1752,23 @@ components:
         id: 0
         esiTokens:
         - validToken: true
+          character: null
+          playerName: playerName
           hasRoles: true
           validTokenTime: 2000-01-23T04:56:07.000+00:00
           eveLoginId: 6
+          characterId: 1
           lastChecked: 2000-01-23T04:56:07.000+00:00
+          playerId: 5
         - validToken: true
+          character: null
+          playerName: playerName
           hasRoles: true
           validTokenTime: 2000-01-23T04:56:07.000+00:00
           eveLoginId: 6
+          characterId: 1
           lastChecked: 2000-01-23T04:56:07.000+00:00
+          playerId: 5
       properties:
         validToken:
           description: |-
@@ -1693,7 +1860,7 @@ components:
             name: name
             description: description
             id: 6
-          id: 5
+          id: 2
         trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
         name: name
         groups:
@@ -1709,7 +1876,7 @@ components:
           name: name
           description: description
           id: 6
-        id: 1
+        id: 5
       properties:
         id:
           description: EVE corporation ID.
@@ -1775,7 +1942,7 @@ components:
                 name: name
                 description: description
                 id: 6
-              id: 5
+              id: 2
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
@@ -1791,7 +1958,7 @@ components:
               name: name
               description: description
               id: 6
-            id: 1
+            id: 5
           name: name
           validTokenTime: 2000-01-23T04:56:07.000+00:00
           main: true
@@ -1803,15 +1970,23 @@ components:
           id: 0
           esiTokens:
           - validToken: true
+            character: null
+            playerName: playerName
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            characterId: 1
             lastChecked: 2000-01-23T04:56:07.000+00:00
+            playerId: 5
           - validToken: true
+            character: null
+            playerName: playerName
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            characterId: 1
             lastChecked: 2000-01-23T04:56:07.000+00:00
+            playerId: 5
         missingCharacterMailSentNumber: 5
         name: name
         shipType:
@@ -1827,6 +2002,70 @@ components:
         missingCharacterMailSentResult: missingCharacterMailSentResult
         startDate: 2000-01-23T04:56:07.000+00:00
         player:
+          incomingCharacters:
+          - newPlayerName: newPlayerName
+            reason: moved
+            newPlayerId: 5
+            characterName: characterName
+            characterId: 5
+            deletedBy: null
+            player: null
+            removedDate: 2000-01-23T04:56:07.000+00:00
+          - newPlayerName: newPlayerName
+            reason: moved
+            newPlayerId: 5
+            characterName: characterName
+            characterId: 5
+            deletedBy: null
+            player: null
+            removedDate: 2000-01-23T04:56:07.000+00:00
+          serviceAccounts:
+          - name: name
+            serviceId: 0
+            serviceName: serviceName
+            characterId: 6
+            username: username
+            status: Pending
+          - name: name
+            serviceId: 0
+            serviceName: serviceName
+            characterId: 6
+            username: username
+            status: Pending
+          corporationName: corporationName
+          roles:
+          - null
+          - null
+          groups:
+          - isDefault: true
+            visibility: private
+            autoAccept: true
+            name: name
+            description: description
+            id: 6
+          - isDefault: true
+            visibility: private
+            autoAccept: true
+            name: name
+            description: description
+            id: 6
+          removedCharacters:
+          - newPlayerName: newPlayerName
+            reason: moved
+            newPlayerId: 5
+            characterName: characterName
+            characterId: 5
+            deletedBy: null
+            player: null
+            removedDate: 2000-01-23T04:56:07.000+00:00
+          - newPlayerName: newPlayerName
+            reason: moved
+            newPlayerId: 5
+            characterName: characterName
+            characterId: 5
+            deletedBy: null
+            player: null
+            removedDate: 2000-01-23T04:56:07.000+00:00
           characters:
           - validToken: true
             tokenLastChecked: 2000-01-23T04:56:07.000+00:00
@@ -1851,7 +2090,7 @@ components:
                   name: name
                   description: description
                   id: 6
-                id: 5
+                id: 2
               trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
               name: name
               groups:
@@ -1867,7 +2106,7 @@ components:
                 name: name
                 description: description
                 id: 6
-              id: 1
+              id: 5
             name: name
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             main: true
@@ -1879,15 +2118,23 @@ components:
             id: 0
             esiTokens:
             - validToken: true
+              character: null
+              playerName: playerName
               hasRoles: true
               validTokenTime: 2000-01-23T04:56:07.000+00:00
               eveLoginId: 6
+              characterId: 1
               lastChecked: 2000-01-23T04:56:07.000+00:00
+              playerId: 5
             - validToken: true
+              character: null
+              playerName: playerName
               hasRoles: true
               validTokenTime: 2000-01-23T04:56:07.000+00:00
               eveLoginId: 6
+              characterId: 1
               lastChecked: 2000-01-23T04:56:07.000+00:00
+              playerId: 5
           - validToken: true
             tokenLastChecked: 2000-01-23T04:56:07.000+00:00
             created: 2000-01-23T04:56:07.000+00:00
@@ -1911,7 +2158,7 @@ components:
                   name: name
                   description: description
                   id: 6
-                id: 5
+                id: 2
               trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
               name: name
               groups:
@@ -1927,7 +2174,7 @@ components:
                 name: name
                 description: description
                 id: 6
-              id: 1
+              id: 5
             name: name
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             main: true
@@ -1939,15 +2186,23 @@ components:
             id: 0
             esiTokens:
             - validToken: true
+              character: null
+              playerName: playerName
               hasRoles: true
               validTokenTime: 2000-01-23T04:56:07.000+00:00
               eveLoginId: 6
+              characterId: 1
               lastChecked: 2000-01-23T04:56:07.000+00:00
+              playerId: 5
             - validToken: true
+              character: null
+              playerName: playerName
               hasRoles: true
               validTokenTime: 2000-01-23T04:56:07.000+00:00
               eveLoginId: 6
+              characterId: 1
               lastChecked: 2000-01-23T04:56:07.000+00:00
+              playerId: 5
           managerApps:
           - eveLogins:
             - esiScopes: esiScopes
@@ -2015,54 +2270,8 @@ components:
               description: description
               id: 6
             id: 0
-          incomingCharacters:
-          - newPlayerName: newPlayerName
-            reason: moved
-            newPlayerId: 5
-            characterName: characterName
-            characterId: 5
-            deletedBy: null
-            player: null
-            removedDate: 2000-01-23T04:56:07.000+00:00
-          - newPlayerName: newPlayerName
-            reason: moved
-            newPlayerId: 5
-            characterName: characterName
-            characterId: 5
-            deletedBy: null
-            player: null
-            removedDate: 2000-01-23T04:56:07.000+00:00
-          serviceAccounts:
-          - name: name
-            serviceId: 0
-            serviceName: serviceName
-            characterId: 6
-            username: username
-            status: Pending
-          - name: name
-            serviceId: 0
-            serviceName: serviceName
-            characterId: 6
-            username: username
-            status: Pending
-          corporationName: corporationName
-          roles:
-          - null
-          - null
           name: name
-          groups:
-          - isDefault: true
-            visibility: private
-            autoAccept: true
-            name: name
-            description: description
-            id: 6
-          - isDefault: true
-            visibility: private
-            autoAccept: true
-            name: name
-            description: description
-            id: 6
+          allianceName: allianceName
           id: 1
           managerGroups:
           - isDefault: true
@@ -2077,23 +2286,7 @@ components:
             name: name
             description: description
             id: 6
-          removedCharacters:
-          - newPlayerName: newPlayerName
-            reason: moved
-            newPlayerId: 5
-            characterName: characterName
-            characterId: 5
-            deletedBy: null
-            player: null
-            removedDate: 2000-01-23T04:56:07.000+00:00
-          - newPlayerName: newPlayerName
-            reason: moved
-            newPlayerId: 5
-            characterName: characterName
-            characterId: 5
-            deletedBy: null
-            player: null
-            removedDate: 2000-01-23T04:56:07.000+00:00
+          characterId: characterId
           status: standard
       properties:
         player:
@@ -2169,14 +2362,29 @@ components:
     EsiToken:
       example:
         validToken: true
+        character: null
+        playerName: playerName
         hasRoles: true
         validTokenTime: 2000-01-23T04:56:07.000+00:00
         eveLoginId: 6
+        characterId: 1
         lastChecked: 2000-01-23T04:56:07.000+00:00
+        playerId: 5
       properties:
         eveLoginId:
           description: ID of EveLogin
           type: integer
+        characterId:
+          description: ID of Character
+          type: integer
+        playerId:
+          description: ID of Player
+          type: integer
+        playerName:
+          description: Name of Player
+          type: string
+        character:
+          $ref: '#/components/schemas/Character'
         validToken:
           description: |-
             Shows if the refresh token is valid or not.
@@ -2203,8 +2411,10 @@ components:
           nullable: true
           type: string
       required:
+      - characterId
       - eveLoginId
       - hasRoles
+      - playerId
       - validToken
       - validTokenTime
       type: object
@@ -2324,6 +2534,70 @@ components:
       type: object
     Player:
       example:
+        incomingCharacters:
+        - newPlayerName: newPlayerName
+          reason: moved
+          newPlayerId: 5
+          characterName: characterName
+          characterId: 5
+          deletedBy: null
+          player: null
+          removedDate: 2000-01-23T04:56:07.000+00:00
+        - newPlayerName: newPlayerName
+          reason: moved
+          newPlayerId: 5
+          characterName: characterName
+          characterId: 5
+          deletedBy: null
+          player: null
+          removedDate: 2000-01-23T04:56:07.000+00:00
+        serviceAccounts:
+        - name: name
+          serviceId: 0
+          serviceName: serviceName
+          characterId: 6
+          username: username
+          status: Pending
+        - name: name
+          serviceId: 0
+          serviceName: serviceName
+          characterId: 6
+          username: username
+          status: Pending
+        corporationName: corporationName
+        roles:
+        - null
+        - null
+        groups:
+        - isDefault: true
+          visibility: private
+          autoAccept: true
+          name: name
+          description: description
+          id: 6
+        - isDefault: true
+          visibility: private
+          autoAccept: true
+          name: name
+          description: description
+          id: 6
+        removedCharacters:
+        - newPlayerName: newPlayerName
+          reason: moved
+          newPlayerId: 5
+          characterName: characterName
+          characterId: 5
+          deletedBy: null
+          player: null
+          removedDate: 2000-01-23T04:56:07.000+00:00
+        - newPlayerName: newPlayerName
+          reason: moved
+          newPlayerId: 5
+          characterName: characterName
+          characterId: 5
+          deletedBy: null
+          player: null
+          removedDate: 2000-01-23T04:56:07.000+00:00
         characters:
         - validToken: true
           tokenLastChecked: 2000-01-23T04:56:07.000+00:00
@@ -2348,7 +2622,7 @@ components:
                 name: name
                 description: description
                 id: 6
-              id: 5
+              id: 2
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
@@ -2364,7 +2638,7 @@ components:
               name: name
               description: description
               id: 6
-            id: 1
+            id: 5
           name: name
           validTokenTime: 2000-01-23T04:56:07.000+00:00
           main: true
@@ -2376,15 +2650,23 @@ components:
           id: 0
           esiTokens:
           - validToken: true
+            character: null
+            playerName: playerName
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            characterId: 1
             lastChecked: 2000-01-23T04:56:07.000+00:00
+            playerId: 5
           - validToken: true
+            character: null
+            playerName: playerName
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            characterId: 1
             lastChecked: 2000-01-23T04:56:07.000+00:00
+            playerId: 5
         - validToken: true
           tokenLastChecked: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
@@ -2408,7 +2690,7 @@ components:
                 name: name
                 description: description
                 id: 6
-              id: 5
+              id: 2
             trackingLastUpdate: 2000-01-23T04:56:07.000+00:00
             name: name
             groups:
@@ -2424,7 +2706,7 @@ components:
               name: name
               description: description
               id: 6
-            id: 1
+            id: 5
           name: name
           validTokenTime: 2000-01-23T04:56:07.000+00:00
           main: true
@@ -2436,15 +2718,23 @@ components:
           id: 0
           esiTokens:
           - validToken: true
+            character: null
+            playerName: playerName
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            characterId: 1
             lastChecked: 2000-01-23T04:56:07.000+00:00
+            playerId: 5
           - validToken: true
+            character: null
+            playerName: playerName
             hasRoles: true
             validTokenTime: 2000-01-23T04:56:07.000+00:00
             eveLoginId: 6
+            characterId: 1
             lastChecked: 2000-01-23T04:56:07.000+00:00
+            playerId: 5
         managerApps:
         - eveLogins:
           - esiScopes: esiScopes
@@ -2512,54 +2802,8 @@ components:
             description: description
             id: 6
           id: 0
-        incomingCharacters:
-        - newPlayerName: newPlayerName
-          reason: moved
-          newPlayerId: 5
-          characterName: characterName
-          characterId: 5
-          deletedBy: null
-          player: null
-          removedDate: 2000-01-23T04:56:07.000+00:00
-        - newPlayerName: newPlayerName
-          reason: moved
-          newPlayerId: 5
-          characterName: characterName
-          characterId: 5
-          deletedBy: null
-          player: null
-          removedDate: 2000-01-23T04:56:07.000+00:00
-        serviceAccounts:
-        - name: name
-          serviceId: 0
-          serviceName: serviceName
-          characterId: 6
-          username: username
-          status: Pending
-        - name: name
-          serviceId: 0
-          serviceName: serviceName
-          characterId: 6
-          username: username
-          status: Pending
-        corporationName: corporationName
-        roles:
-        - null
-        - null
         name: name
-        groups:
-        - isDefault: true
-          visibility: private
-          autoAccept: true
-          name: name
-          description: description
-          id: 6
-        - isDefault: true
-          visibility: private
-          autoAccept: true
-          name: name
-          description: description
-          id: 6
+        allianceName: allianceName
         id: 1
         managerGroups:
         - isDefault: true
@@ -2574,23 +2818,7 @@ components:
           name: name
           description: description
           id: 6
-        removedCharacters:
-        - newPlayerName: newPlayerName
-          reason: moved
-          newPlayerId: 5
-          characterName: characterName
-          characterId: 5
-          deletedBy: null
-          player: null
-          removedDate: 2000-01-23T04:56:07.000+00:00
-        - newPlayerName: newPlayerName
-          reason: moved
-          newPlayerId: 5
-          characterName: characterName
-          characterId: 5
-          deletedBy: null
-          player: null
-          removedDate: 2000-01-23T04:56:07.000+00:00
+        characterId: characterId
         status: standard
       properties:
         serviceAccounts:
@@ -2598,8 +2826,14 @@ components:
           items:
             $ref: '#/components/schemas/ServiceAccount'
           type: array
+        characterId:
+          description: "ID of main character (API: not included by default)"
+          type: string
         corporationName:
           description: "Corporation of main character (API: not included by default)"
+          type: string
+        allianceName:
+          description: "Alliance of main character (API: not included by default)"
           type: string
         id:
           nullable: true
@@ -2745,89 +2979,6 @@ components:
       - id
       - name
       type: object
-    ServiceConfiguration:
-      properties:
-        phpClass:
-          nullable: true
-          type: string
-        psr4Prefix:
-          nullable: true
-          type: string
-        psr4Path:
-          nullable: true
-          type: string
-        oneAccount:
-          nullable: true
-          type: boolean
-        requiredGroups:
-          items:
-            type: integer
-          nullable: true
-          type: array
-        properties:
-          enum:
-          - username
-          - password
-          - email
-          - status
-          - name
-          items:
-            type: string
-          nullable: true
-          type: array
-        showPassword:
-          nullable: true
-          type: boolean
-        actions:
-          enum:
-          - update-account
-          - reset-password
-          items:
-            type: string
-          nullable: true
-          type: array
-        URLs:
-          items:
-            $ref: '#/components/schemas/ServiceConfigurationURL'
-          type: array
-        textAccount:
-          nullable: true
-          type: string
-        textTop:
-          nullable: true
-          type: string
-        textRegister:
-          nullable: true
-          type: string
-        textPending:
-          nullable: true
-          type: string
-        configurationData:
-          type: string
-      required:
-      - URLs
-      - actions
-      - configurationData
-      - properties
-      - textAccount
-      - textPending
-      - textRegister
-      - textTop
-      type: object
-    ServiceConfigurationURL:
-      properties:
-        url:
-          description: "placeholders: {username}, {password}, {email}"
-          type: string
-        title:
-          type: string
-        target:
-          type: string
-      required:
-      - target
-      - title
-      - url
-      type: object
     SystemVariable:
       description: |-
         A system settings variable.
@@ -2904,6 +3055,31 @@ components:
           type: integer
       required:
       - day_of_month
+      - month
+      - requests
+      - year
+      type: object
+    HourlyAppRequests:
+      properties:
+        app_id:
+          type: integer
+        app_name:
+          type: string
+        requests:
+          type: integer
+        year:
+          type: integer
+        month:
+          type: integer
+        day_of_month:
+          type: integer
+        hour:
+          type: integer
+      required:
+      - app_id
+      - app_name
+      - day_of_month
+      - hour
       - month
       - requests
       - year

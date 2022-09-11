@@ -4,7 +4,8 @@ All URIs are relative to *https://localhost/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EsiEveLoginCharactersV1**](ApplicationESIApi.md#EsiEveLoginCharactersV1) | **Get** /app/v1/esi/eve-login/{name}/characters | Returns character IDs of characters that have a valid ESI token of the specified EVE login.
+[**EsiEveLoginCharactersV1**](ApplicationESIApi.md#EsiEveLoginCharactersV1) | **Get** /app/v1/esi/eve-login/{name}/characters | Returns character IDs of characters that have an ESI token (including invalid) of an EVE login.
+[**EsiEveLoginTokenDataV1**](ApplicationESIApi.md#EsiEveLoginTokenDataV1) | **Get** /app/v1/esi/eve-login/{name}/token-data | Returns data of valid tokens for an EVE login.
 [**EsiPostV1**](ApplicationESIApi.md#EsiPostV1) | **Post** /app/v1/esi | See POST /app/v2/esi
 [**EsiPostV2**](ApplicationESIApi.md#EsiPostV2) | **Post** /app/v2/esi | Same as GET /app/v2/esi, but for POST requests.
 [**EsiV1**](ApplicationESIApi.md#EsiV1) | **Get** /app/v1/esi | See GET /app/v2/esi
@@ -16,7 +17,77 @@ Method | HTTP request | Description
 
 > []int32 EsiEveLoginCharactersV1(ctx, name).Execute()
 
-Returns character IDs of characters that have a valid ESI token of the specified EVE login.
+Returns character IDs of characters that have an ESI token (including invalid) of an EVE login.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string | EVE login name.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationESIApi.EsiEveLoginCharactersV1(context.Background(), name).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationESIApi.EsiEveLoginCharactersV1``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EsiEveLoginCharactersV1`: []int32
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationESIApi.EsiEveLoginCharactersV1`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string** | EVE login name. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEsiEveLoginCharactersV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+**[]int32**
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EsiEveLoginTokenDataV1
+
+> []EsiTokenData EsiEveLoginTokenDataV1(ctx, name).Execute()
+
+Returns data of valid tokens for an EVE login.
 
 
 
@@ -37,13 +108,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationESIApi.EsiEveLoginCharactersV1(context.Background(), name).Execute()
+    resp, r, err := apiClient.ApplicationESIApi.EsiEveLoginTokenDataV1(context.Background(), name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationESIApi.EsiEveLoginCharactersV1``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationESIApi.EsiEveLoginTokenDataV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EsiEveLoginCharactersV1`: []int32
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationESIApi.EsiEveLoginCharactersV1`: %v\n", resp)
+    // response from `EsiEveLoginTokenDataV1`: []EsiTokenData
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationESIApi.EsiEveLoginTokenDataV1`: %v\n", resp)
 }
 ```
 
@@ -57,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiEsiEveLoginCharactersV1Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiEsiEveLoginTokenDataV1Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -66,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]int32**
+[**[]EsiTokenData**](EsiTokenData.md)
 
 ### Authorization
 

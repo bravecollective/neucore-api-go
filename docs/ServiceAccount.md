@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ServiceId** | **int32** |  | 
-**ServiceName** | **NullableString** |  | 
+**ServiceName** | **string** |  | 
 **CharacterId** | **int64** |  | 
 **Username** | **NullableString** |  | 
 **Status** | **NullableString** |  | 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewServiceAccount
 
-`func NewServiceAccount(serviceId int32, serviceName NullableString, characterId int64, username NullableString, status NullableString, name NullableString, ) *ServiceAccount`
+`func NewServiceAccount(serviceId int32, serviceName string, characterId int64, username NullableString, status NullableString, name NullableString, ) *ServiceAccount`
 
 NewServiceAccount instantiates a new ServiceAccount object
 This constructor will assign default values to properties that have it defined,
@@ -70,16 +70,6 @@ and a boolean to check if the value has been set.
 SetServiceName sets ServiceName field to given value.
 
 
-### SetServiceNameNil
-
-`func (o *ServiceAccount) SetServiceNameNil(b bool)`
-
- SetServiceNameNil sets the value for ServiceName to be an explicit nil
-
-### UnsetServiceName
-`func (o *ServiceAccount) UnsetServiceName()`
-
-UnsetServiceName ensures that no value is present for ServiceName, not even an explicit nil
 ### GetCharacterId
 
 `func (o *ServiceAccount) GetCharacterId() int64`

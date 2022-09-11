@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ServiceAccounts** | Pointer to [**[]ServiceAccount**](ServiceAccount.md) | External service accounts (API: not included by default) | [optional] 
+**CharacterId** | Pointer to **string** | ID of main character (API: not included by default) | [optional] 
 **CorporationName** | Pointer to **string** | Corporation of main character (API: not included by default) | [optional] 
+**AllianceName** | Pointer to **string** | Alliance of main character (API: not included by default) | [optional] 
 **Id** | **NullableInt32** |  | 
 **Name** | **string** | A name for the player.  This is the EVE character name of the current main character or of the last main character if there is currently none. | 
 **Status** | Pointer to **string** | Player account status. | [optional] 
@@ -61,6 +63,31 @@ SetServiceAccounts sets ServiceAccounts field to given value.
 
 HasServiceAccounts returns a boolean if a field has been set.
 
+### GetCharacterId
+
+`func (o *Player) GetCharacterId() string`
+
+GetCharacterId returns the CharacterId field if non-nil, zero value otherwise.
+
+### GetCharacterIdOk
+
+`func (o *Player) GetCharacterIdOk() (*string, bool)`
+
+GetCharacterIdOk returns a tuple with the CharacterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCharacterId
+
+`func (o *Player) SetCharacterId(v string)`
+
+SetCharacterId sets CharacterId field to given value.
+
+### HasCharacterId
+
+`func (o *Player) HasCharacterId() bool`
+
+HasCharacterId returns a boolean if a field has been set.
+
 ### GetCorporationName
 
 `func (o *Player) GetCorporationName() string`
@@ -85,6 +112,31 @@ SetCorporationName sets CorporationName field to given value.
 `func (o *Player) HasCorporationName() bool`
 
 HasCorporationName returns a boolean if a field has been set.
+
+### GetAllianceName
+
+`func (o *Player) GetAllianceName() string`
+
+GetAllianceName returns the AllianceName field if non-nil, zero value otherwise.
+
+### GetAllianceNameOk
+
+`func (o *Player) GetAllianceNameOk() (*string, bool)`
+
+GetAllianceNameOk returns a tuple with the AllianceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllianceName
+
+`func (o *Player) SetAllianceName(v string)`
+
+SetAllianceName sets AllianceName field to given value.
+
+### HasAllianceName
+
+`func (o *Player) HasAllianceName() bool`
+
+HasAllianceName returns a boolean if a field has been set.
 
 ### GetId
 

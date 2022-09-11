@@ -23,10 +23,12 @@ docs/Corporation.md
 docs/CorporationMember.md
 docs/EsiLocation.md
 docs/EsiToken.md
+docs/EsiTokenData.md
 docs/EsiType.md
 docs/EveLogin.md
 docs/Group.md
 docs/GroupApplication.md
+docs/HourlyAppRequests.md
 docs/MonthlyAppRequests.md
 docs/Player.md
 docs/PlayerLoginStatistics.md
@@ -52,10 +54,12 @@ model_corporation.go
 model_corporation_member.go
 model_esi_location.go
 model_esi_token.go
+model_esi_token_data.go
 model_esi_type.go
 model_eve_login.go
 model_group.go
 model_group_application.go
+model_hourly_app_requests.go
 model_monthly_app_requests.go
 model_player.go
 model_player_login_statistics.go

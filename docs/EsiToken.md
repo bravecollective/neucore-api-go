@@ -5,6 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EveLoginId** | **int32** | ID of EveLogin | 
+**CharacterId** | **int32** | ID of Character | 
+**PlayerId** | **int32** | ID of Player | 
+**PlayerName** | Pointer to **string** | Name of Player | [optional] 
+**Character** | Pointer to [**Character**](Character.md) |  | [optional] 
 **ValidToken** | **NullableBool** | Shows if the refresh token is valid or not.  This is null if there is no refresh token (EVE SSOv1 only) or a valid token but without scopes (SSOv2). | 
 **ValidTokenTime** | **NullableTime** | Date and time when the valid token property was last changed. | 
 **HasRoles** | **NullableBool** | Shows if the EVE character has all required roles for the login.  Null if the login does not require any roles or if the token is invalid. | 
@@ -14,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewEsiToken
 
-`func NewEsiToken(eveLoginId int32, validToken NullableBool, validTokenTime NullableTime, hasRoles NullableBool, ) *EsiToken`
+`func NewEsiToken(eveLoginId int32, characterId int32, playerId int32, validToken NullableBool, validTokenTime NullableTime, hasRoles NullableBool, ) *EsiToken`
 
 NewEsiToken instantiates a new EsiToken object
 This constructor will assign default values to properties that have it defined,
@@ -48,6 +52,96 @@ and a boolean to check if the value has been set.
 
 SetEveLoginId sets EveLoginId field to given value.
 
+
+### GetCharacterId
+
+`func (o *EsiToken) GetCharacterId() int32`
+
+GetCharacterId returns the CharacterId field if non-nil, zero value otherwise.
+
+### GetCharacterIdOk
+
+`func (o *EsiToken) GetCharacterIdOk() (*int32, bool)`
+
+GetCharacterIdOk returns a tuple with the CharacterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCharacterId
+
+`func (o *EsiToken) SetCharacterId(v int32)`
+
+SetCharacterId sets CharacterId field to given value.
+
+
+### GetPlayerId
+
+`func (o *EsiToken) GetPlayerId() int32`
+
+GetPlayerId returns the PlayerId field if non-nil, zero value otherwise.
+
+### GetPlayerIdOk
+
+`func (o *EsiToken) GetPlayerIdOk() (*int32, bool)`
+
+GetPlayerIdOk returns a tuple with the PlayerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPlayerId
+
+`func (o *EsiToken) SetPlayerId(v int32)`
+
+SetPlayerId sets PlayerId field to given value.
+
+
+### GetPlayerName
+
+`func (o *EsiToken) GetPlayerName() string`
+
+GetPlayerName returns the PlayerName field if non-nil, zero value otherwise.
+
+### GetPlayerNameOk
+
+`func (o *EsiToken) GetPlayerNameOk() (*string, bool)`
+
+GetPlayerNameOk returns a tuple with the PlayerName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPlayerName
+
+`func (o *EsiToken) SetPlayerName(v string)`
+
+SetPlayerName sets PlayerName field to given value.
+
+### HasPlayerName
+
+`func (o *EsiToken) HasPlayerName() bool`
+
+HasPlayerName returns a boolean if a field has been set.
+
+### GetCharacter
+
+`func (o *EsiToken) GetCharacter() Character`
+
+GetCharacter returns the Character field if non-nil, zero value otherwise.
+
+### GetCharacterOk
+
+`func (o *EsiToken) GetCharacterOk() (*Character, bool)`
+
+GetCharacterOk returns a tuple with the Character field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCharacter
+
+`func (o *EsiToken) SetCharacter(v Character)`
+
+SetCharacter sets Character field to given value.
+
+### HasCharacter
+
+`func (o *EsiToken) HasCharacter() bool`
+
+HasCharacter returns a boolean if a field has been set.
 
 ### GetValidToken
 
