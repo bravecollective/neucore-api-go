@@ -62,7 +62,7 @@ func (o *App) GetId() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *App) GetIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Id.Get(), o.Id.IsSet()
 }
@@ -88,7 +88,7 @@ func (o *App) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *App) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -100,7 +100,7 @@ func (o *App) SetName(v string) {
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
 func (o *App) GetRoles() []Role {
-	if o == nil || o.Roles == nil {
+	if o == nil || isNil(o.Roles) {
 		var ret []Role
 		return ret
 	}
@@ -110,15 +110,15 @@ func (o *App) GetRoles() []Role {
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *App) GetRolesOk() ([]Role, bool) {
-	if o == nil || o.Roles == nil {
-		return nil, false
+	if o == nil || isNil(o.Roles) {
+    return nil, false
 	}
 	return o.Roles, true
 }
 
 // HasRoles returns a boolean if a field has been set.
 func (o *App) HasRoles() bool {
-	if o != nil && o.Roles != nil {
+	if o != nil && !isNil(o.Roles) {
 		return true
 	}
 
@@ -132,7 +132,7 @@ func (o *App) SetRoles(v []Role) {
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *App) GetGroups() []Group {
-	if o == nil || o.Groups == nil {
+	if o == nil || isNil(o.Groups) {
 		var ret []Group
 		return ret
 	}
@@ -142,15 +142,15 @@ func (o *App) GetGroups() []Group {
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *App) GetGroupsOk() ([]Group, bool) {
-	if o == nil || o.Groups == nil {
-		return nil, false
+	if o == nil || isNil(o.Groups) {
+    return nil, false
 	}
 	return o.Groups, true
 }
 
 // HasGroups returns a boolean if a field has been set.
 func (o *App) HasGroups() bool {
-	if o != nil && o.Groups != nil {
+	if o != nil && !isNil(o.Groups) {
 		return true
 	}
 
@@ -164,7 +164,7 @@ func (o *App) SetGroups(v []Group) {
 
 // GetEveLogins returns the EveLogins field value if set, zero value otherwise.
 func (o *App) GetEveLogins() []EveLogin {
-	if o == nil || o.EveLogins == nil {
+	if o == nil || isNil(o.EveLogins) {
 		var ret []EveLogin
 		return ret
 	}
@@ -174,15 +174,15 @@ func (o *App) GetEveLogins() []EveLogin {
 // GetEveLoginsOk returns a tuple with the EveLogins field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *App) GetEveLoginsOk() ([]EveLogin, bool) {
-	if o == nil || o.EveLogins == nil {
-		return nil, false
+	if o == nil || isNil(o.EveLogins) {
+    return nil, false
 	}
 	return o.EveLogins, true
 }
 
 // HasEveLogins returns a boolean if a field has been set.
 func (o *App) HasEveLogins() bool {
-	if o != nil && o.EveLogins != nil {
+	if o != nil && !isNil(o.EveLogins) {
 		return true
 	}
 
@@ -202,13 +202,13 @@ func (o App) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if o.Roles != nil {
+	if !isNil(o.Roles) {
 		toSerialize["roles"] = o.Roles
 	}
-	if o.Groups != nil {
+	if !isNil(o.Groups) {
 		toSerialize["groups"] = o.Groups
 	}
-	if o.EveLogins != nil {
+	if !isNil(o.EveLogins) {
 		toSerialize["eveLogins"] = o.EveLogins
 	}
 	return json.Marshal(toSerialize)

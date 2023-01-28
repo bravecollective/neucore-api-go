@@ -59,7 +59,7 @@ func (o *MonthlyAppRequests) GetAppId() int32 {
 // and a boolean to check if the value has been set.
 func (o *MonthlyAppRequests) GetAppIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.AppId, true
 }
@@ -83,7 +83,7 @@ func (o *MonthlyAppRequests) GetAppName() string {
 // and a boolean to check if the value has been set.
 func (o *MonthlyAppRequests) GetAppNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.AppName, true
 }
@@ -107,7 +107,7 @@ func (o *MonthlyAppRequests) GetRequests() int32 {
 // and a boolean to check if the value has been set.
 func (o *MonthlyAppRequests) GetRequestsOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Requests, true
 }
@@ -131,7 +131,7 @@ func (o *MonthlyAppRequests) GetYear() int32 {
 // and a boolean to check if the value has been set.
 func (o *MonthlyAppRequests) GetYearOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Year, true
 }
@@ -155,7 +155,7 @@ func (o *MonthlyAppRequests) GetMonth() int32 {
 // and a boolean to check if the value has been set.
 func (o *MonthlyAppRequests) GetMonthOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Month, true
 }

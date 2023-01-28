@@ -59,7 +59,7 @@ func NewServiceConfigurationWithDefaults() *ServiceConfiguration {
 
 // GetPhpClass returns the PhpClass field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceConfiguration) GetPhpClass() string {
-	if o == nil || o.PhpClass.Get() == nil {
+	if o == nil || isNil(o.PhpClass.Get()) {
 		var ret string
 		return ret
 	}
@@ -71,7 +71,7 @@ func (o *ServiceConfiguration) GetPhpClass() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceConfiguration) GetPhpClassOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.PhpClass.Get(), o.PhpClass.IsSet()
 }
@@ -101,7 +101,7 @@ func (o *ServiceConfiguration) UnsetPhpClass() {
 
 // GetPsr4Prefix returns the Psr4Prefix field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceConfiguration) GetPsr4Prefix() string {
-	if o == nil || o.Psr4Prefix.Get() == nil {
+	if o == nil || isNil(o.Psr4Prefix.Get()) {
 		var ret string
 		return ret
 	}
@@ -113,7 +113,7 @@ func (o *ServiceConfiguration) GetPsr4Prefix() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceConfiguration) GetPsr4PrefixOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Psr4Prefix.Get(), o.Psr4Prefix.IsSet()
 }
@@ -143,7 +143,7 @@ func (o *ServiceConfiguration) UnsetPsr4Prefix() {
 
 // GetPsr4Path returns the Psr4Path field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceConfiguration) GetPsr4Path() string {
-	if o == nil || o.Psr4Path.Get() == nil {
+	if o == nil || isNil(o.Psr4Path.Get()) {
 		var ret string
 		return ret
 	}
@@ -155,7 +155,7 @@ func (o *ServiceConfiguration) GetPsr4Path() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceConfiguration) GetPsr4PathOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Psr4Path.Get(), o.Psr4Path.IsSet()
 }
@@ -185,7 +185,7 @@ func (o *ServiceConfiguration) UnsetPsr4Path() {
 
 // GetOneAccount returns the OneAccount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceConfiguration) GetOneAccount() bool {
-	if o == nil || o.OneAccount.Get() == nil {
+	if o == nil || isNil(o.OneAccount.Get()) {
 		var ret bool
 		return ret
 	}
@@ -197,7 +197,7 @@ func (o *ServiceConfiguration) GetOneAccount() bool {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceConfiguration) GetOneAccountOk() (*bool, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.OneAccount.Get(), o.OneAccount.IsSet()
 }
@@ -238,15 +238,15 @@ func (o *ServiceConfiguration) GetRequiredGroups() []int32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceConfiguration) GetRequiredGroupsOk() ([]int32, bool) {
-	if o == nil || o.RequiredGroups == nil {
-		return nil, false
+	if o == nil || isNil(o.RequiredGroups) {
+    return nil, false
 	}
 	return o.RequiredGroups, true
 }
 
 // HasRequiredGroups returns a boolean if a field has been set.
 func (o *ServiceConfiguration) HasRequiredGroups() bool {
-	if o != nil && o.RequiredGroups != nil {
+	if o != nil && isNil(o.RequiredGroups) {
 		return true
 	}
 
@@ -273,8 +273,8 @@ func (o *ServiceConfiguration) GetProperties() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceConfiguration) GetPropertiesOk() ([]string, bool) {
-	if o == nil || o.Properties == nil {
-		return nil, false
+	if o == nil || isNil(o.Properties) {
+    return nil, false
 	}
 	return o.Properties, true
 }
@@ -286,7 +286,7 @@ func (o *ServiceConfiguration) SetProperties(v []string) {
 
 // GetShowPassword returns the ShowPassword field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceConfiguration) GetShowPassword() bool {
-	if o == nil || o.ShowPassword.Get() == nil {
+	if o == nil || isNil(o.ShowPassword.Get()) {
 		var ret bool
 		return ret
 	}
@@ -298,7 +298,7 @@ func (o *ServiceConfiguration) GetShowPassword() bool {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceConfiguration) GetShowPasswordOk() (*bool, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.ShowPassword.Get(), o.ShowPassword.IsSet()
 }
@@ -341,8 +341,8 @@ func (o *ServiceConfiguration) GetActions() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceConfiguration) GetActionsOk() ([]string, bool) {
-	if o == nil || o.Actions == nil {
-		return nil, false
+	if o == nil || isNil(o.Actions) {
+    return nil, false
 	}
 	return o.Actions, true
 }
@@ -366,7 +366,7 @@ func (o *ServiceConfiguration) GetURLs() []ServiceConfigurationURL {
 // and a boolean to check if the value has been set.
 func (o *ServiceConfiguration) GetURLsOk() ([]ServiceConfigurationURL, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.URLs, true
 }
@@ -392,7 +392,7 @@ func (o *ServiceConfiguration) GetTextAccount() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceConfiguration) GetTextAccountOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.TextAccount.Get(), o.TextAccount.IsSet()
 }
@@ -418,7 +418,7 @@ func (o *ServiceConfiguration) GetTextTop() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceConfiguration) GetTextTopOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.TextTop.Get(), o.TextTop.IsSet()
 }
@@ -444,7 +444,7 @@ func (o *ServiceConfiguration) GetTextRegister() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceConfiguration) GetTextRegisterOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.TextRegister.Get(), o.TextRegister.IsSet()
 }
@@ -470,7 +470,7 @@ func (o *ServiceConfiguration) GetTextPending() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceConfiguration) GetTextPendingOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.TextPending.Get(), o.TextPending.IsSet()
 }
@@ -494,7 +494,7 @@ func (o *ServiceConfiguration) GetConfigurationData() string {
 // and a boolean to check if the value has been set.
 func (o *ServiceConfiguration) GetConfigurationDataOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.ConfigurationData, true
 }

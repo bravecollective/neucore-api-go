@@ -63,7 +63,7 @@ func (o *EveLogin) GetId() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EveLogin) GetIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Id.Get(), o.Id.IsSet()
 }
@@ -87,7 +87,7 @@ func (o *EveLogin) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *EveLogin) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Name, true
 }
@@ -111,7 +111,7 @@ func (o *EveLogin) GetDescription() string {
 // and a boolean to check if the value has been set.
 func (o *EveLogin) GetDescriptionOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Description, true
 }
@@ -135,7 +135,7 @@ func (o *EveLogin) GetEsiScopes() string {
 // and a boolean to check if the value has been set.
 func (o *EveLogin) GetEsiScopesOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.EsiScopes, true
 }
@@ -159,7 +159,7 @@ func (o *EveLogin) GetEveRoles() []string {
 // and a boolean to check if the value has been set.
 func (o *EveLogin) GetEveRolesOk() ([]string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.EveRoles, true
 }

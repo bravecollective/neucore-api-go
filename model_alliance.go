@@ -62,7 +62,7 @@ func (o *Alliance) GetId() int64 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Alliance) GetIdOk() (*int64, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Id.Get(), o.Id.IsSet()
 }
@@ -88,7 +88,7 @@ func (o *Alliance) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Alliance) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -114,7 +114,7 @@ func (o *Alliance) GetTicker() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Alliance) GetTickerOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Ticker.Get(), o.Ticker.IsSet()
 }
@@ -126,7 +126,7 @@ func (o *Alliance) SetTicker(v string) {
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *Alliance) GetGroups() []Group {
-	if o == nil || o.Groups == nil {
+	if o == nil || isNil(o.Groups) {
 		var ret []Group
 		return ret
 	}
@@ -136,15 +136,15 @@ func (o *Alliance) GetGroups() []Group {
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Alliance) GetGroupsOk() ([]Group, bool) {
-	if o == nil || o.Groups == nil {
-		return nil, false
+	if o == nil || isNil(o.Groups) {
+    return nil, false
 	}
 	return o.Groups, true
 }
 
 // HasGroups returns a boolean if a field has been set.
 func (o *Alliance) HasGroups() bool {
-	if o != nil && o.Groups != nil {
+	if o != nil && !isNil(o.Groups) {
 		return true
 	}
 
@@ -167,7 +167,7 @@ func (o Alliance) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["ticker"] = o.Ticker.Get()
 	}
-	if o.Groups != nil {
+	if !isNil(o.Groups) {
 		toSerialize["groups"] = o.Groups
 	}
 	return json.Marshal(toSerialize)

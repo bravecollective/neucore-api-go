@@ -55,7 +55,7 @@ func (o *SystemVariable) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *SystemVariable) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Name, true
 }
@@ -81,7 +81,7 @@ func (o *SystemVariable) GetValue() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SystemVariable) GetValueOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Value.Get(), o.Value.IsSet()
 }

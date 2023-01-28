@@ -59,7 +59,7 @@ func NewCharacterWithDefaults() *Character {
 
 // GetValidToken returns the ValidToken field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Character) GetValidToken() bool {
-	if o == nil || o.ValidToken.Get() == nil {
+	if o == nil || isNil(o.ValidToken.Get()) {
 		var ret bool
 		return ret
 	}
@@ -71,7 +71,7 @@ func (o *Character) GetValidToken() bool {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Character) GetValidTokenOk() (*bool, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.ValidToken.Get(), o.ValidToken.IsSet()
 }
@@ -101,7 +101,7 @@ func (o *Character) UnsetValidToken() {
 
 // GetValidTokenTime returns the ValidTokenTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Character) GetValidTokenTime() time.Time {
-	if o == nil || o.ValidTokenTime.Get() == nil {
+	if o == nil || isNil(o.ValidTokenTime.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -113,7 +113,7 @@ func (o *Character) GetValidTokenTime() time.Time {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Character) GetValidTokenTimeOk() (*time.Time, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.ValidTokenTime.Get(), o.ValidTokenTime.IsSet()
 }
@@ -143,7 +143,7 @@ func (o *Character) UnsetValidTokenTime() {
 
 // GetTokenLastChecked returns the TokenLastChecked field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Character) GetTokenLastChecked() time.Time {
-	if o == nil || o.TokenLastChecked.Get() == nil {
+	if o == nil || isNil(o.TokenLastChecked.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -155,7 +155,7 @@ func (o *Character) GetTokenLastChecked() time.Time {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Character) GetTokenLastCheckedOk() (*time.Time, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.TokenLastChecked.Get(), o.TokenLastChecked.IsSet()
 }
@@ -199,7 +199,7 @@ func (o *Character) GetId() int64 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Character) GetIdOk() (*int64, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Id.Get(), o.Id.IsSet()
 }
@@ -223,7 +223,7 @@ func (o *Character) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *Character) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Name, true
 }
@@ -235,7 +235,7 @@ func (o *Character) SetName(v string) {
 
 // GetMain returns the Main field value if set, zero value otherwise.
 func (o *Character) GetMain() bool {
-	if o == nil || o.Main == nil {
+	if o == nil || isNil(o.Main) {
 		var ret bool
 		return ret
 	}
@@ -245,15 +245,15 @@ func (o *Character) GetMain() bool {
 // GetMainOk returns a tuple with the Main field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Character) GetMainOk() (*bool, bool) {
-	if o == nil || o.Main == nil {
-		return nil, false
+	if o == nil || isNil(o.Main) {
+    return nil, false
 	}
 	return o.Main, true
 }
 
 // HasMain returns a boolean if a field has been set.
 func (o *Character) HasMain() bool {
-	if o != nil && o.Main != nil {
+	if o != nil && !isNil(o.Main) {
 		return true
 	}
 
@@ -267,7 +267,7 @@ func (o *Character) SetMain(v bool) {
 
 // GetEsiTokens returns the EsiTokens field value if set, zero value otherwise.
 func (o *Character) GetEsiTokens() []EsiToken {
-	if o == nil || o.EsiTokens == nil {
+	if o == nil || isNil(o.EsiTokens) {
 		var ret []EsiToken
 		return ret
 	}
@@ -277,15 +277,15 @@ func (o *Character) GetEsiTokens() []EsiToken {
 // GetEsiTokensOk returns a tuple with the EsiTokens field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Character) GetEsiTokensOk() ([]EsiToken, bool) {
-	if o == nil || o.EsiTokens == nil {
-		return nil, false
+	if o == nil || isNil(o.EsiTokens) {
+    return nil, false
 	}
 	return o.EsiTokens, true
 }
 
 // HasEsiTokens returns a boolean if a field has been set.
 func (o *Character) HasEsiTokens() bool {
-	if o != nil && o.EsiTokens != nil {
+	if o != nil && !isNil(o.EsiTokens) {
 		return true
 	}
 
@@ -299,7 +299,7 @@ func (o *Character) SetEsiTokens(v []EsiToken) {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Character) GetCreated() time.Time {
-	if o == nil || o.Created.Get() == nil {
+	if o == nil || isNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -311,7 +311,7 @@ func (o *Character) GetCreated() time.Time {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Character) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Created.Get(), o.Created.IsSet()
 }
@@ -341,7 +341,7 @@ func (o *Character) UnsetCreated() {
 
 // GetLastUpdate returns the LastUpdate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Character) GetLastUpdate() time.Time {
-	if o == nil || o.LastUpdate.Get() == nil {
+	if o == nil || isNil(o.LastUpdate.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -353,7 +353,7 @@ func (o *Character) GetLastUpdate() time.Time {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Character) GetLastUpdateOk() (*time.Time, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.LastUpdate.Get(), o.LastUpdate.IsSet()
 }
@@ -383,7 +383,7 @@ func (o *Character) UnsetLastUpdate() {
 
 // GetCorporation returns the Corporation field value if set, zero value otherwise.
 func (o *Character) GetCorporation() Corporation {
-	if o == nil || o.Corporation == nil {
+	if o == nil || isNil(o.Corporation) {
 		var ret Corporation
 		return ret
 	}
@@ -393,15 +393,15 @@ func (o *Character) GetCorporation() Corporation {
 // GetCorporationOk returns a tuple with the Corporation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Character) GetCorporationOk() (*Corporation, bool) {
-	if o == nil || o.Corporation == nil {
-		return nil, false
+	if o == nil || isNil(o.Corporation) {
+    return nil, false
 	}
 	return o.Corporation, true
 }
 
 // HasCorporation returns a boolean if a field has been set.
 func (o *Character) HasCorporation() bool {
-	if o != nil && o.Corporation != nil {
+	if o != nil && !isNil(o.Corporation) {
 		return true
 	}
 
@@ -415,7 +415,7 @@ func (o *Character) SetCorporation(v Corporation) {
 
 // GetCharacterNameChanges returns the CharacterNameChanges field value if set, zero value otherwise.
 func (o *Character) GetCharacterNameChanges() []CharacterNameChange {
-	if o == nil || o.CharacterNameChanges == nil {
+	if o == nil || isNil(o.CharacterNameChanges) {
 		var ret []CharacterNameChange
 		return ret
 	}
@@ -425,15 +425,15 @@ func (o *Character) GetCharacterNameChanges() []CharacterNameChange {
 // GetCharacterNameChangesOk returns a tuple with the CharacterNameChanges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Character) GetCharacterNameChangesOk() ([]CharacterNameChange, bool) {
-	if o == nil || o.CharacterNameChanges == nil {
-		return nil, false
+	if o == nil || isNil(o.CharacterNameChanges) {
+    return nil, false
 	}
 	return o.CharacterNameChanges, true
 }
 
 // HasCharacterNameChanges returns a boolean if a field has been set.
 func (o *Character) HasCharacterNameChanges() bool {
-	if o != nil && o.CharacterNameChanges != nil {
+	if o != nil && !isNil(o.CharacterNameChanges) {
 		return true
 	}
 
@@ -462,10 +462,10 @@ func (o Character) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Main != nil {
+	if !isNil(o.Main) {
 		toSerialize["main"] = o.Main
 	}
-	if o.EsiTokens != nil {
+	if !isNil(o.EsiTokens) {
 		toSerialize["esiTokens"] = o.EsiTokens
 	}
 	if o.Created.IsSet() {
@@ -474,10 +474,10 @@ func (o Character) MarshalJSON() ([]byte, error) {
 	if o.LastUpdate.IsSet() {
 		toSerialize["lastUpdate"] = o.LastUpdate.Get()
 	}
-	if o.Corporation != nil {
+	if !isNil(o.Corporation) {
 		toSerialize["corporation"] = o.Corporation
 	}
-	if o.CharacterNameChanges != nil {
+	if !isNil(o.CharacterNameChanges) {
 		toSerialize["characterNameChanges"] = o.CharacterNameChanges
 	}
 	return json.Marshal(toSerialize)

@@ -63,7 +63,7 @@ func (o *HourlyAppRequests) GetAppId() int32 {
 // and a boolean to check if the value has been set.
 func (o *HourlyAppRequests) GetAppIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.AppId, true
 }
@@ -87,7 +87,7 @@ func (o *HourlyAppRequests) GetAppName() string {
 // and a boolean to check if the value has been set.
 func (o *HourlyAppRequests) GetAppNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.AppName, true
 }
@@ -111,7 +111,7 @@ func (o *HourlyAppRequests) GetRequests() int32 {
 // and a boolean to check if the value has been set.
 func (o *HourlyAppRequests) GetRequestsOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Requests, true
 }
@@ -135,7 +135,7 @@ func (o *HourlyAppRequests) GetYear() int32 {
 // and a boolean to check if the value has been set.
 func (o *HourlyAppRequests) GetYearOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Year, true
 }
@@ -159,7 +159,7 @@ func (o *HourlyAppRequests) GetMonth() int32 {
 // and a boolean to check if the value has been set.
 func (o *HourlyAppRequests) GetMonthOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Month, true
 }
@@ -183,7 +183,7 @@ func (o *HourlyAppRequests) GetDayOfMonth() int32 {
 // and a boolean to check if the value has been set.
 func (o *HourlyAppRequests) GetDayOfMonthOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.DayOfMonth, true
 }
@@ -207,7 +207,7 @@ func (o *HourlyAppRequests) GetHour() int32 {
 // and a boolean to check if the value has been set.
 func (o *HourlyAppRequests) GetHourOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Hour, true
 }

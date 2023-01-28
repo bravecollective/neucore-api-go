@@ -68,7 +68,7 @@ func (o *Corporation) GetId() int64 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Corporation) GetIdOk() (*int64, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Id.Get(), o.Id.IsSet()
 }
@@ -94,7 +94,7 @@ func (o *Corporation) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Corporation) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -120,7 +120,7 @@ func (o *Corporation) GetTicker() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Corporation) GetTickerOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Ticker.Get(), o.Ticker.IsSet()
 }
@@ -132,7 +132,7 @@ func (o *Corporation) SetTicker(v string) {
 
 // GetAlliance returns the Alliance field value if set, zero value otherwise.
 func (o *Corporation) GetAlliance() Alliance {
-	if o == nil || o.Alliance == nil {
+	if o == nil || isNil(o.Alliance) {
 		var ret Alliance
 		return ret
 	}
@@ -142,15 +142,15 @@ func (o *Corporation) GetAlliance() Alliance {
 // GetAllianceOk returns a tuple with the Alliance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Corporation) GetAllianceOk() (*Alliance, bool) {
-	if o == nil || o.Alliance == nil {
-		return nil, false
+	if o == nil || isNil(o.Alliance) {
+    return nil, false
 	}
 	return o.Alliance, true
 }
 
 // HasAlliance returns a boolean if a field has been set.
 func (o *Corporation) HasAlliance() bool {
-	if o != nil && o.Alliance != nil {
+	if o != nil && !isNil(o.Alliance) {
 		return true
 	}
 
@@ -164,7 +164,7 @@ func (o *Corporation) SetAlliance(v Alliance) {
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *Corporation) GetGroups() []Group {
-	if o == nil || o.Groups == nil {
+	if o == nil || isNil(o.Groups) {
 		var ret []Group
 		return ret
 	}
@@ -174,15 +174,15 @@ func (o *Corporation) GetGroups() []Group {
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Corporation) GetGroupsOk() ([]Group, bool) {
-	if o == nil || o.Groups == nil {
-		return nil, false
+	if o == nil || isNil(o.Groups) {
+    return nil, false
 	}
 	return o.Groups, true
 }
 
 // HasGroups returns a boolean if a field has been set.
 func (o *Corporation) HasGroups() bool {
-	if o != nil && o.Groups != nil {
+	if o != nil && !isNil(o.Groups) {
 		return true
 	}
 
@@ -196,7 +196,7 @@ func (o *Corporation) SetGroups(v []Group) {
 
 // GetTrackingLastUpdate returns the TrackingLastUpdate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Corporation) GetTrackingLastUpdate() time.Time {
-	if o == nil || o.TrackingLastUpdate.Get() == nil {
+	if o == nil || isNil(o.TrackingLastUpdate.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -208,7 +208,7 @@ func (o *Corporation) GetTrackingLastUpdate() time.Time {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Corporation) GetTrackingLastUpdateOk() (*time.Time, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.TrackingLastUpdate.Get(), o.TrackingLastUpdate.IsSet()
 }
@@ -238,7 +238,7 @@ func (o *Corporation) UnsetTrackingLastUpdate() {
 
 // GetAutoAllowlist returns the AutoAllowlist field value if set, zero value otherwise.
 func (o *Corporation) GetAutoAllowlist() bool {
-	if o == nil || o.AutoAllowlist == nil {
+	if o == nil || isNil(o.AutoAllowlist) {
 		var ret bool
 		return ret
 	}
@@ -248,15 +248,15 @@ func (o *Corporation) GetAutoAllowlist() bool {
 // GetAutoAllowlistOk returns a tuple with the AutoAllowlist field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Corporation) GetAutoAllowlistOk() (*bool, bool) {
-	if o == nil || o.AutoAllowlist == nil {
-		return nil, false
+	if o == nil || isNil(o.AutoAllowlist) {
+    return nil, false
 	}
 	return o.AutoAllowlist, true
 }
 
 // HasAutoAllowlist returns a boolean if a field has been set.
 func (o *Corporation) HasAutoAllowlist() bool {
-	if o != nil && o.AutoAllowlist != nil {
+	if o != nil && !isNil(o.AutoAllowlist) {
 		return true
 	}
 
@@ -279,16 +279,16 @@ func (o Corporation) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["ticker"] = o.Ticker.Get()
 	}
-	if o.Alliance != nil {
+	if !isNil(o.Alliance) {
 		toSerialize["alliance"] = o.Alliance
 	}
-	if o.Groups != nil {
+	if !isNil(o.Groups) {
 		toSerialize["groups"] = o.Groups
 	}
 	if o.TrackingLastUpdate.IsSet() {
 		toSerialize["trackingLastUpdate"] = o.TrackingLastUpdate.Get()
 	}
-	if o.AutoAllowlist != nil {
+	if !isNil(o.AutoAllowlist) {
 		toSerialize["autoAllowlist"] = o.AutoAllowlist
 	}
 	return json.Marshal(toSerialize)

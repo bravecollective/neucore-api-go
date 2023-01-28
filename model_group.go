@@ -61,7 +61,7 @@ func (o *Group) GetId() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Group) GetIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Id.Get(), o.Id.IsSet()
 }
@@ -87,7 +87,7 @@ func (o *Group) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Group) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -99,7 +99,7 @@ func (o *Group) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Group) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || isNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -111,7 +111,7 @@ func (o *Group) GetDescription() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Group) GetDescriptionOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Description.Get(), o.Description.IsSet()
 }
@@ -141,7 +141,7 @@ func (o *Group) UnsetDescription() {
 
 // GetVisibility returns the Visibility field value if set, zero value otherwise.
 func (o *Group) GetVisibility() string {
-	if o == nil || o.Visibility == nil {
+	if o == nil || isNil(o.Visibility) {
 		var ret string
 		return ret
 	}
@@ -151,15 +151,15 @@ func (o *Group) GetVisibility() string {
 // GetVisibilityOk returns a tuple with the Visibility field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetVisibilityOk() (*string, bool) {
-	if o == nil || o.Visibility == nil {
-		return nil, false
+	if o == nil || isNil(o.Visibility) {
+    return nil, false
 	}
 	return o.Visibility, true
 }
 
 // HasVisibility returns a boolean if a field has been set.
 func (o *Group) HasVisibility() bool {
-	if o != nil && o.Visibility != nil {
+	if o != nil && !isNil(o.Visibility) {
 		return true
 	}
 
@@ -173,7 +173,7 @@ func (o *Group) SetVisibility(v string) {
 
 // GetAutoAccept returns the AutoAccept field value if set, zero value otherwise.
 func (o *Group) GetAutoAccept() bool {
-	if o == nil || o.AutoAccept == nil {
+	if o == nil || isNil(o.AutoAccept) {
 		var ret bool
 		return ret
 	}
@@ -183,15 +183,15 @@ func (o *Group) GetAutoAccept() bool {
 // GetAutoAcceptOk returns a tuple with the AutoAccept field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetAutoAcceptOk() (*bool, bool) {
-	if o == nil || o.AutoAccept == nil {
-		return nil, false
+	if o == nil || isNil(o.AutoAccept) {
+    return nil, false
 	}
 	return o.AutoAccept, true
 }
 
 // HasAutoAccept returns a boolean if a field has been set.
 func (o *Group) HasAutoAccept() bool {
-	if o != nil && o.AutoAccept != nil {
+	if o != nil && !isNil(o.AutoAccept) {
 		return true
 	}
 
@@ -205,7 +205,7 @@ func (o *Group) SetAutoAccept(v bool) {
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise.
 func (o *Group) GetIsDefault() bool {
-	if o == nil || o.IsDefault == nil {
+	if o == nil || isNil(o.IsDefault) {
 		var ret bool
 		return ret
 	}
@@ -215,15 +215,15 @@ func (o *Group) GetIsDefault() bool {
 // GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || o.IsDefault == nil {
-		return nil, false
+	if o == nil || isNil(o.IsDefault) {
+    return nil, false
 	}
 	return o.IsDefault, true
 }
 
 // HasIsDefault returns a boolean if a field has been set.
 func (o *Group) HasIsDefault() bool {
-	if o != nil && o.IsDefault != nil {
+	if o != nil && !isNil(o.IsDefault) {
 		return true
 	}
 
@@ -246,13 +246,13 @@ func (o Group) MarshalJSON() ([]byte, error) {
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if o.Visibility != nil {
+	if !isNil(o.Visibility) {
 		toSerialize["visibility"] = o.Visibility
 	}
-	if o.AutoAccept != nil {
+	if !isNil(o.AutoAccept) {
 		toSerialize["autoAccept"] = o.AutoAccept
 	}
-	if o.IsDefault != nil {
+	if !isNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
 	}
 	return json.Marshal(toSerialize)

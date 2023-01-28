@@ -54,7 +54,7 @@ func (o *CharacterNameChange) GetOldName() string {
 // and a boolean to check if the value has been set.
 func (o *CharacterNameChange) GetOldNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.OldName, true
 }
@@ -80,7 +80,7 @@ func (o *CharacterNameChange) GetChangeDate() time.Time {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CharacterNameChange) GetChangeDateOk() (*time.Time, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.ChangeDate.Get(), o.ChangeDate.IsSet()
 }

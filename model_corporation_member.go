@@ -57,7 +57,7 @@ func NewCorporationMemberWithDefaults() *CorporationMember {
 
 // GetPlayer returns the Player field value if set, zero value otherwise.
 func (o *CorporationMember) GetPlayer() Player {
-	if o == nil || o.Player == nil {
+	if o == nil || isNil(o.Player) {
 		var ret Player
 		return ret
 	}
@@ -67,15 +67,15 @@ func (o *CorporationMember) GetPlayer() Player {
 // GetPlayerOk returns a tuple with the Player field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorporationMember) GetPlayerOk() (*Player, bool) {
-	if o == nil || o.Player == nil {
-		return nil, false
+	if o == nil || isNil(o.Player) {
+    return nil, false
 	}
 	return o.Player, true
 }
 
 // HasPlayer returns a boolean if a field has been set.
 func (o *CorporationMember) HasPlayer() bool {
-	if o != nil && o.Player != nil {
+	if o != nil && !isNil(o.Player) {
 		return true
 	}
 
@@ -101,7 +101,7 @@ func (o *CorporationMember) GetId() int64 {
 // and a boolean to check if the value has been set.
 func (o *CorporationMember) GetIdOk() (*int64, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Id, true
 }
@@ -127,7 +127,7 @@ func (o *CorporationMember) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CorporationMember) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -139,7 +139,7 @@ func (o *CorporationMember) SetName(v string) {
 
 // GetLocation returns the Location field value if set, zero value otherwise.
 func (o *CorporationMember) GetLocation() EsiLocation {
-	if o == nil || o.Location == nil {
+	if o == nil || isNil(o.Location) {
 		var ret EsiLocation
 		return ret
 	}
@@ -149,15 +149,15 @@ func (o *CorporationMember) GetLocation() EsiLocation {
 // GetLocationOk returns a tuple with the Location field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorporationMember) GetLocationOk() (*EsiLocation, bool) {
-	if o == nil || o.Location == nil {
-		return nil, false
+	if o == nil || isNil(o.Location) {
+    return nil, false
 	}
 	return o.Location, true
 }
 
 // HasLocation returns a boolean if a field has been set.
 func (o *CorporationMember) HasLocation() bool {
-	if o != nil && o.Location != nil {
+	if o != nil && !isNil(o.Location) {
 		return true
 	}
 
@@ -171,7 +171,7 @@ func (o *CorporationMember) SetLocation(v EsiLocation) {
 
 // GetLogoffDate returns the LogoffDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CorporationMember) GetLogoffDate() time.Time {
-	if o == nil || o.LogoffDate.Get() == nil {
+	if o == nil || isNil(o.LogoffDate.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -183,7 +183,7 @@ func (o *CorporationMember) GetLogoffDate() time.Time {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CorporationMember) GetLogoffDateOk() (*time.Time, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.LogoffDate.Get(), o.LogoffDate.IsSet()
 }
@@ -213,7 +213,7 @@ func (o *CorporationMember) UnsetLogoffDate() {
 
 // GetLogonDate returns the LogonDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CorporationMember) GetLogonDate() time.Time {
-	if o == nil || o.LogonDate.Get() == nil {
+	if o == nil || isNil(o.LogonDate.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -225,7 +225,7 @@ func (o *CorporationMember) GetLogonDate() time.Time {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CorporationMember) GetLogonDateOk() (*time.Time, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.LogonDate.Get(), o.LogonDate.IsSet()
 }
@@ -255,7 +255,7 @@ func (o *CorporationMember) UnsetLogonDate() {
 
 // GetShipType returns the ShipType field value if set, zero value otherwise.
 func (o *CorporationMember) GetShipType() EsiType {
-	if o == nil || o.ShipType == nil {
+	if o == nil || isNil(o.ShipType) {
 		var ret EsiType
 		return ret
 	}
@@ -265,15 +265,15 @@ func (o *CorporationMember) GetShipType() EsiType {
 // GetShipTypeOk returns a tuple with the ShipType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorporationMember) GetShipTypeOk() (*EsiType, bool) {
-	if o == nil || o.ShipType == nil {
-		return nil, false
+	if o == nil || isNil(o.ShipType) {
+    return nil, false
 	}
 	return o.ShipType, true
 }
 
 // HasShipType returns a boolean if a field has been set.
 func (o *CorporationMember) HasShipType() bool {
-	if o != nil && o.ShipType != nil {
+	if o != nil && !isNil(o.ShipType) {
 		return true
 	}
 
@@ -287,7 +287,7 @@ func (o *CorporationMember) SetShipType(v EsiType) {
 
 // GetStartDate returns the StartDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CorporationMember) GetStartDate() time.Time {
-	if o == nil || o.StartDate.Get() == nil {
+	if o == nil || isNil(o.StartDate.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -299,7 +299,7 @@ func (o *CorporationMember) GetStartDate() time.Time {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CorporationMember) GetStartDateOk() (*time.Time, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.StartDate.Get(), o.StartDate.IsSet()
 }
@@ -329,7 +329,7 @@ func (o *CorporationMember) UnsetStartDate() {
 
 // GetCharacter returns the Character field value if set, zero value otherwise.
 func (o *CorporationMember) GetCharacter() Character {
-	if o == nil || o.Character == nil {
+	if o == nil || isNil(o.Character) {
 		var ret Character
 		return ret
 	}
@@ -339,15 +339,15 @@ func (o *CorporationMember) GetCharacter() Character {
 // GetCharacterOk returns a tuple with the Character field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorporationMember) GetCharacterOk() (*Character, bool) {
-	if o == nil || o.Character == nil {
-		return nil, false
+	if o == nil || isNil(o.Character) {
+    return nil, false
 	}
 	return o.Character, true
 }
 
 // HasCharacter returns a boolean if a field has been set.
 func (o *CorporationMember) HasCharacter() bool {
-	if o != nil && o.Character != nil {
+	if o != nil && !isNil(o.Character) {
 		return true
 	}
 
@@ -361,7 +361,7 @@ func (o *CorporationMember) SetCharacter(v Character) {
 
 // GetMissingCharacterMailSentDate returns the MissingCharacterMailSentDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CorporationMember) GetMissingCharacterMailSentDate() time.Time {
-	if o == nil || o.MissingCharacterMailSentDate.Get() == nil {
+	if o == nil || isNil(o.MissingCharacterMailSentDate.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -373,7 +373,7 @@ func (o *CorporationMember) GetMissingCharacterMailSentDate() time.Time {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CorporationMember) GetMissingCharacterMailSentDateOk() (*time.Time, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.MissingCharacterMailSentDate.Get(), o.MissingCharacterMailSentDate.IsSet()
 }
@@ -403,7 +403,7 @@ func (o *CorporationMember) UnsetMissingCharacterMailSentDate() {
 
 // GetMissingCharacterMailSentResult returns the MissingCharacterMailSentResult field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CorporationMember) GetMissingCharacterMailSentResult() string {
-	if o == nil || o.MissingCharacterMailSentResult.Get() == nil {
+	if o == nil || isNil(o.MissingCharacterMailSentResult.Get()) {
 		var ret string
 		return ret
 	}
@@ -415,7 +415,7 @@ func (o *CorporationMember) GetMissingCharacterMailSentResult() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CorporationMember) GetMissingCharacterMailSentResultOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.MissingCharacterMailSentResult.Get(), o.MissingCharacterMailSentResult.IsSet()
 }
@@ -445,7 +445,7 @@ func (o *CorporationMember) UnsetMissingCharacterMailSentResult() {
 
 // GetMissingCharacterMailSentNumber returns the MissingCharacterMailSentNumber field value if set, zero value otherwise.
 func (o *CorporationMember) GetMissingCharacterMailSentNumber() int32 {
-	if o == nil || o.MissingCharacterMailSentNumber == nil {
+	if o == nil || isNil(o.MissingCharacterMailSentNumber) {
 		var ret int32
 		return ret
 	}
@@ -455,15 +455,15 @@ func (o *CorporationMember) GetMissingCharacterMailSentNumber() int32 {
 // GetMissingCharacterMailSentNumberOk returns a tuple with the MissingCharacterMailSentNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorporationMember) GetMissingCharacterMailSentNumberOk() (*int32, bool) {
-	if o == nil || o.MissingCharacterMailSentNumber == nil {
-		return nil, false
+	if o == nil || isNil(o.MissingCharacterMailSentNumber) {
+    return nil, false
 	}
 	return o.MissingCharacterMailSentNumber, true
 }
 
 // HasMissingCharacterMailSentNumber returns a boolean if a field has been set.
 func (o *CorporationMember) HasMissingCharacterMailSentNumber() bool {
-	if o != nil && o.MissingCharacterMailSentNumber != nil {
+	if o != nil && !isNil(o.MissingCharacterMailSentNumber) {
 		return true
 	}
 
@@ -477,7 +477,7 @@ func (o *CorporationMember) SetMissingCharacterMailSentNumber(v int32) {
 
 func (o CorporationMember) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Player != nil {
+	if !isNil(o.Player) {
 		toSerialize["player"] = o.Player
 	}
 	if true {
@@ -486,7 +486,7 @@ func (o CorporationMember) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if o.Location != nil {
+	if !isNil(o.Location) {
 		toSerialize["location"] = o.Location
 	}
 	if o.LogoffDate.IsSet() {
@@ -495,13 +495,13 @@ func (o CorporationMember) MarshalJSON() ([]byte, error) {
 	if o.LogonDate.IsSet() {
 		toSerialize["logonDate"] = o.LogonDate.Get()
 	}
-	if o.ShipType != nil {
+	if !isNil(o.ShipType) {
 		toSerialize["shipType"] = o.ShipType
 	}
 	if o.StartDate.IsSet() {
 		toSerialize["startDate"] = o.StartDate.Get()
 	}
-	if o.Character != nil {
+	if !isNil(o.Character) {
 		toSerialize["character"] = o.Character
 	}
 	if o.MissingCharacterMailSentDate.IsSet() {
@@ -510,7 +510,7 @@ func (o CorporationMember) MarshalJSON() ([]byte, error) {
 	if o.MissingCharacterMailSentResult.IsSet() {
 		toSerialize["missingCharacterMailSentResult"] = o.MissingCharacterMailSentResult.Get()
 	}
-	if o.MissingCharacterMailSentNumber != nil {
+	if !isNil(o.MissingCharacterMailSentNumber) {
 		toSerialize["missingCharacterMailSentNumber"] = o.MissingCharacterMailSentNumber
 	}
 	return json.Marshal(toSerialize)

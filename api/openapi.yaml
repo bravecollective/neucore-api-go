@@ -686,15 +686,15 @@ paths:
       - Application - ESI
   /app/v2/esi:
     get:
-      description: "Needs role: app-esi<br>\n     *         Public ESI routes are\
-        \ not allowed.<br>\n     *         The following headers from ESI are passed\
-        \ through to the response if they exist:\n               Content-Type Expires\
-        \ X-Esi-Error-Limit-Remain X-Esi-Error-Limit-Reset X-Pages warning, Warning<br>\n\
-        \     *         The HTTP status code from ESI is also passed through, so there\
-        \ may be more than the documented ones.<br>\n     *         The ESI path and\
-        \ query parameters can alternatively be appended to the path of this endpoint,\n\
-        \               this allows to use OpenAPI clients that were generated for\
-        \ the ESI API,\n               see doc/api-examples for more."
+      description: |-
+        Needs role: app-esi<br>
+             *         Public ESI routes are not allowed.<br>
+             *         The following headers from ESI are passed through to the response if they exist:
+                       Content-Type Expires X-Esi-Error-Limit-Remain X-Esi-Error-Limit-Reset X-Pages warning, Warning<br>
+             *         The HTTP status code from ESI is also passed through, so there may be more than the documented ones.<br>
+             *         The ESI path and query parameters can alternatively be appended to the path of this endpoint,
+                       this allows to use OpenAPI clients that were generated for the ESI API,
+                       see doc/api-examples for more.
       operationId: esiV2
       parameters:
       - description: The ESI path and query string (without the datasource parameter).
@@ -721,10 +721,10 @@ paths:
             application/json:
               schema:
                 type: string
-          description: "The data from ESI.<br>\n                            Please\
-            \ note that the JSON schema type can be an object, array or number etc.,\n\
-            \                            unfortunately there is no way to document\
-            \ this."
+          description: |-
+            The data from ESI.<br>
+                                        Please note that the JSON schema type can be an object, array or number etc.,
+                                        unfortunately there is no way to document this.
           headers:
             Expires:
               description: RFC7231 formatted datetime string
@@ -974,9 +974,10 @@ paths:
       - Application - Groups
   /app/v1/groups:
     post:
-      description: "Needs role: app-groups.<br>\n     *                  Returns only\
-        \ groups that have been added to the app as well.\n     *                \
-        \  Skips characters that are not found in the local database."
+      description: |-
+        Needs role: app-groups.<br>
+             *                  Returns only groups that have been added to the app as well.
+             *                  Skips characters that are not found in the local database.
       operationId: groupsBulkV1
       requestBody:
         content:
@@ -1074,9 +1075,10 @@ paths:
       - Application - Groups
   /app/v1/corp-groups:
     post:
-      description: "Needs role: app-groups.<br>\n     *                  Returns only\
-        \ groups that have been added to the app as well.\n     *                \
-        \  Skips corporations that are not found in the local database."
+      description: |-
+        Needs role: app-groups.<br>
+             *                  Returns only groups that have been added to the app as well.
+             *                  Skips corporations that are not found in the local database.
       operationId: corpGroupsBulkV1
       requestBody:
         content:
@@ -1172,9 +1174,10 @@ paths:
       - Application - Groups
   /app/v1/alliance-groups:
     post:
-      description: "Needs role: app-groups.<br>\n     *                  Returns only\
-        \ groups that have been added to the app as well.\n     *                \
-        \  Skips alliances that are not found in the local database."
+      description: |-
+        Needs role: app-groups.<br>
+             *                  Returns only groups that have been added to the app as well.
+             *                  Skips alliances that are not found in the local database.
       operationId: allianceGroupsBulkV1
       requestBody:
         content:
@@ -1205,9 +1208,10 @@ paths:
       - Application - Groups
   /app/v1/groups-with-fallback:
     get:
-      description: "Needs role: app-groups.<br>\n     *                  Returns only\
-        \ groups that have been added to the app as well.<br>\n     *            \
-        \      It is not checked if character, corporation and alliance match."
+      description: |-
+        Needs role: app-groups.<br>
+             *                  Returns only groups that have been added to the app as well.<br>
+             *                  It is not checked if character, corporation and alliance match.
       operationId: groupsWithFallbackV1
       parameters:
       - description: EVE character ID.

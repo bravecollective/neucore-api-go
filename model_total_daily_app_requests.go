@@ -57,7 +57,7 @@ func (o *TotalDailyAppRequests) GetRequests() int32 {
 // and a boolean to check if the value has been set.
 func (o *TotalDailyAppRequests) GetRequestsOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Requests, true
 }
@@ -81,7 +81,7 @@ func (o *TotalDailyAppRequests) GetYear() int32 {
 // and a boolean to check if the value has been set.
 func (o *TotalDailyAppRequests) GetYearOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Year, true
 }
@@ -105,7 +105,7 @@ func (o *TotalDailyAppRequests) GetMonth() int32 {
 // and a boolean to check if the value has been set.
 func (o *TotalDailyAppRequests) GetMonthOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Month, true
 }
@@ -129,7 +129,7 @@ func (o *TotalDailyAppRequests) GetDayOfMonth() int32 {
 // and a boolean to check if the value has been set.
 func (o *TotalDailyAppRequests) GetDayOfMonthOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.DayOfMonth, true
 }

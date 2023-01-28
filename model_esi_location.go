@@ -57,7 +57,7 @@ func (o *EsiLocation) GetId() int64 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EsiLocation) GetIdOk() (*int64, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Id.Get(), o.Id.IsSet()
 }
@@ -83,7 +83,7 @@ func (o *EsiLocation) GetCategory() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EsiLocation) GetCategoryOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Category.Get(), o.Category.IsSet()
 }
@@ -109,7 +109,7 @@ func (o *EsiLocation) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EsiLocation) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }

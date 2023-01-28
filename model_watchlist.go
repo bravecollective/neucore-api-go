@@ -56,7 +56,7 @@ func (o *Watchlist) GetId() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Watchlist) GetIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Id.Get(), o.Id.IsSet()
 }
@@ -82,7 +82,7 @@ func (o *Watchlist) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Watchlist) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -94,7 +94,7 @@ func (o *Watchlist) SetName(v string) {
 
 // GetLockWatchlistSettings returns the LockWatchlistSettings field value if set, zero value otherwise.
 func (o *Watchlist) GetLockWatchlistSettings() bool {
-	if o == nil || o.LockWatchlistSettings == nil {
+	if o == nil || isNil(o.LockWatchlistSettings) {
 		var ret bool
 		return ret
 	}
@@ -104,15 +104,15 @@ func (o *Watchlist) GetLockWatchlistSettings() bool {
 // GetLockWatchlistSettingsOk returns a tuple with the LockWatchlistSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Watchlist) GetLockWatchlistSettingsOk() (*bool, bool) {
-	if o == nil || o.LockWatchlistSettings == nil {
-		return nil, false
+	if o == nil || isNil(o.LockWatchlistSettings) {
+    return nil, false
 	}
 	return o.LockWatchlistSettings, true
 }
 
 // HasLockWatchlistSettings returns a boolean if a field has been set.
 func (o *Watchlist) HasLockWatchlistSettings() bool {
-	if o != nil && o.LockWatchlistSettings != nil {
+	if o != nil && !isNil(o.LockWatchlistSettings) {
 		return true
 	}
 
@@ -132,7 +132,7 @@ func (o Watchlist) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if o.LockWatchlistSettings != nil {
+	if !isNil(o.LockWatchlistSettings) {
 		toSerialize["lockWatchlistSettings"] = o.LockWatchlistSettings
 	}
 	return json.Marshal(toSerialize)

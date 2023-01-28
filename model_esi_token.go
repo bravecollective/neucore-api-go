@@ -73,7 +73,7 @@ func (o *EsiToken) GetEveLoginId() int32 {
 // and a boolean to check if the value has been set.
 func (o *EsiToken) GetEveLoginIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.EveLoginId, true
 }
@@ -97,7 +97,7 @@ func (o *EsiToken) GetCharacterId() int32 {
 // and a boolean to check if the value has been set.
 func (o *EsiToken) GetCharacterIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.CharacterId, true
 }
@@ -121,7 +121,7 @@ func (o *EsiToken) GetPlayerId() int32 {
 // and a boolean to check if the value has been set.
 func (o *EsiToken) GetPlayerIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.PlayerId, true
 }
@@ -133,7 +133,7 @@ func (o *EsiToken) SetPlayerId(v int32) {
 
 // GetPlayerName returns the PlayerName field value if set, zero value otherwise.
 func (o *EsiToken) GetPlayerName() string {
-	if o == nil || o.PlayerName == nil {
+	if o == nil || isNil(o.PlayerName) {
 		var ret string
 		return ret
 	}
@@ -143,15 +143,15 @@ func (o *EsiToken) GetPlayerName() string {
 // GetPlayerNameOk returns a tuple with the PlayerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EsiToken) GetPlayerNameOk() (*string, bool) {
-	if o == nil || o.PlayerName == nil {
-		return nil, false
+	if o == nil || isNil(o.PlayerName) {
+    return nil, false
 	}
 	return o.PlayerName, true
 }
 
 // HasPlayerName returns a boolean if a field has been set.
 func (o *EsiToken) HasPlayerName() bool {
-	if o != nil && o.PlayerName != nil {
+	if o != nil && !isNil(o.PlayerName) {
 		return true
 	}
 
@@ -165,7 +165,7 @@ func (o *EsiToken) SetPlayerName(v string) {
 
 // GetCharacter returns the Character field value if set, zero value otherwise.
 func (o *EsiToken) GetCharacter() Character {
-	if o == nil || o.Character == nil {
+	if o == nil || isNil(o.Character) {
 		var ret Character
 		return ret
 	}
@@ -175,15 +175,15 @@ func (o *EsiToken) GetCharacter() Character {
 // GetCharacterOk returns a tuple with the Character field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EsiToken) GetCharacterOk() (*Character, bool) {
-	if o == nil || o.Character == nil {
-		return nil, false
+	if o == nil || isNil(o.Character) {
+    return nil, false
 	}
 	return o.Character, true
 }
 
 // HasCharacter returns a boolean if a field has been set.
 func (o *EsiToken) HasCharacter() bool {
-	if o != nil && o.Character != nil {
+	if o != nil && !isNil(o.Character) {
 		return true
 	}
 
@@ -211,7 +211,7 @@ func (o *EsiToken) GetValidToken() bool {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EsiToken) GetValidTokenOk() (*bool, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.ValidToken.Get(), o.ValidToken.IsSet()
 }
@@ -237,7 +237,7 @@ func (o *EsiToken) GetValidTokenTime() time.Time {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EsiToken) GetValidTokenTimeOk() (*time.Time, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.ValidTokenTime.Get(), o.ValidTokenTime.IsSet()
 }
@@ -263,7 +263,7 @@ func (o *EsiToken) GetHasRoles() bool {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EsiToken) GetHasRolesOk() (*bool, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.HasRoles.Get(), o.HasRoles.IsSet()
 }
@@ -275,7 +275,7 @@ func (o *EsiToken) SetHasRoles(v bool) {
 
 // GetLastChecked returns the LastChecked field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EsiToken) GetLastChecked() time.Time {
-	if o == nil || o.LastChecked.Get() == nil {
+	if o == nil || isNil(o.LastChecked.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -287,7 +287,7 @@ func (o *EsiToken) GetLastChecked() time.Time {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EsiToken) GetLastCheckedOk() (*time.Time, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.LastChecked.Get(), o.LastChecked.IsSet()
 }
@@ -326,10 +326,10 @@ func (o EsiToken) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["playerId"] = o.PlayerId
 	}
-	if o.PlayerName != nil {
+	if !isNil(o.PlayerName) {
 		toSerialize["playerName"] = o.PlayerName
 	}
-	if o.Character != nil {
+	if !isNil(o.Character) {
 		toSerialize["character"] = o.Character
 	}
 	if true {

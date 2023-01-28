@@ -53,7 +53,7 @@ func (o *EsiType) GetId() int64 {
 // and a boolean to check if the value has been set.
 func (o *EsiType) GetIdOk() (*int64, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Id, true
 }
@@ -77,7 +77,7 @@ func (o *EsiType) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *EsiType) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Name, true
 }

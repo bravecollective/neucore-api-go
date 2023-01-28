@@ -65,7 +65,7 @@ func NewPlayerWithDefaults() *Player {
 
 // GetServiceAccounts returns the ServiceAccounts field value if set, zero value otherwise.
 func (o *Player) GetServiceAccounts() []ServiceAccount {
-	if o == nil || o.ServiceAccounts == nil {
+	if o == nil || isNil(o.ServiceAccounts) {
 		var ret []ServiceAccount
 		return ret
 	}
@@ -75,15 +75,15 @@ func (o *Player) GetServiceAccounts() []ServiceAccount {
 // GetServiceAccountsOk returns a tuple with the ServiceAccounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Player) GetServiceAccountsOk() ([]ServiceAccount, bool) {
-	if o == nil || o.ServiceAccounts == nil {
-		return nil, false
+	if o == nil || isNil(o.ServiceAccounts) {
+    return nil, false
 	}
 	return o.ServiceAccounts, true
 }
 
 // HasServiceAccounts returns a boolean if a field has been set.
 func (o *Player) HasServiceAccounts() bool {
-	if o != nil && o.ServiceAccounts != nil {
+	if o != nil && !isNil(o.ServiceAccounts) {
 		return true
 	}
 
@@ -97,7 +97,7 @@ func (o *Player) SetServiceAccounts(v []ServiceAccount) {
 
 // GetCharacterId returns the CharacterId field value if set, zero value otherwise.
 func (o *Player) GetCharacterId() string {
-	if o == nil || o.CharacterId == nil {
+	if o == nil || isNil(o.CharacterId) {
 		var ret string
 		return ret
 	}
@@ -107,15 +107,15 @@ func (o *Player) GetCharacterId() string {
 // GetCharacterIdOk returns a tuple with the CharacterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Player) GetCharacterIdOk() (*string, bool) {
-	if o == nil || o.CharacterId == nil {
-		return nil, false
+	if o == nil || isNil(o.CharacterId) {
+    return nil, false
 	}
 	return o.CharacterId, true
 }
 
 // HasCharacterId returns a boolean if a field has been set.
 func (o *Player) HasCharacterId() bool {
-	if o != nil && o.CharacterId != nil {
+	if o != nil && !isNil(o.CharacterId) {
 		return true
 	}
 
@@ -129,7 +129,7 @@ func (o *Player) SetCharacterId(v string) {
 
 // GetCorporationName returns the CorporationName field value if set, zero value otherwise.
 func (o *Player) GetCorporationName() string {
-	if o == nil || o.CorporationName == nil {
+	if o == nil || isNil(o.CorporationName) {
 		var ret string
 		return ret
 	}
@@ -139,15 +139,15 @@ func (o *Player) GetCorporationName() string {
 // GetCorporationNameOk returns a tuple with the CorporationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Player) GetCorporationNameOk() (*string, bool) {
-	if o == nil || o.CorporationName == nil {
-		return nil, false
+	if o == nil || isNil(o.CorporationName) {
+    return nil, false
 	}
 	return o.CorporationName, true
 }
 
 // HasCorporationName returns a boolean if a field has been set.
 func (o *Player) HasCorporationName() bool {
-	if o != nil && o.CorporationName != nil {
+	if o != nil && !isNil(o.CorporationName) {
 		return true
 	}
 
@@ -161,7 +161,7 @@ func (o *Player) SetCorporationName(v string) {
 
 // GetAllianceName returns the AllianceName field value if set, zero value otherwise.
 func (o *Player) GetAllianceName() string {
-	if o == nil || o.AllianceName == nil {
+	if o == nil || isNil(o.AllianceName) {
 		var ret string
 		return ret
 	}
@@ -171,15 +171,15 @@ func (o *Player) GetAllianceName() string {
 // GetAllianceNameOk returns a tuple with the AllianceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Player) GetAllianceNameOk() (*string, bool) {
-	if o == nil || o.AllianceName == nil {
-		return nil, false
+	if o == nil || isNil(o.AllianceName) {
+    return nil, false
 	}
 	return o.AllianceName, true
 }
 
 // HasAllianceName returns a boolean if a field has been set.
 func (o *Player) HasAllianceName() bool {
-	if o != nil && o.AllianceName != nil {
+	if o != nil && !isNil(o.AllianceName) {
 		return true
 	}
 
@@ -207,7 +207,7 @@ func (o *Player) GetId() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Player) GetIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Id.Get(), o.Id.IsSet()
 }
@@ -231,7 +231,7 @@ func (o *Player) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *Player) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Name, true
 }
@@ -243,7 +243,7 @@ func (o *Player) SetName(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Player) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil || isNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -253,15 +253,15 @@ func (o *Player) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Player) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
-		return nil, false
+	if o == nil || isNil(o.Status) {
+    return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Player) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !isNil(o.Status) {
 		return true
 	}
 
@@ -275,7 +275,7 @@ func (o *Player) SetStatus(v string) {
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
 func (o *Player) GetRoles() []Role {
-	if o == nil || o.Roles == nil {
+	if o == nil || isNil(o.Roles) {
 		var ret []Role
 		return ret
 	}
@@ -285,15 +285,15 @@ func (o *Player) GetRoles() []Role {
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Player) GetRolesOk() ([]Role, bool) {
-	if o == nil || o.Roles == nil {
-		return nil, false
+	if o == nil || isNil(o.Roles) {
+    return nil, false
 	}
 	return o.Roles, true
 }
 
 // HasRoles returns a boolean if a field has been set.
 func (o *Player) HasRoles() bool {
-	if o != nil && o.Roles != nil {
+	if o != nil && !isNil(o.Roles) {
 		return true
 	}
 
@@ -307,7 +307,7 @@ func (o *Player) SetRoles(v []Role) {
 
 // GetCharacters returns the Characters field value if set, zero value otherwise.
 func (o *Player) GetCharacters() []Character {
-	if o == nil || o.Characters == nil {
+	if o == nil || isNil(o.Characters) {
 		var ret []Character
 		return ret
 	}
@@ -317,15 +317,15 @@ func (o *Player) GetCharacters() []Character {
 // GetCharactersOk returns a tuple with the Characters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Player) GetCharactersOk() ([]Character, bool) {
-	if o == nil || o.Characters == nil {
-		return nil, false
+	if o == nil || isNil(o.Characters) {
+    return nil, false
 	}
 	return o.Characters, true
 }
 
 // HasCharacters returns a boolean if a field has been set.
 func (o *Player) HasCharacters() bool {
-	if o != nil && o.Characters != nil {
+	if o != nil && !isNil(o.Characters) {
 		return true
 	}
 
@@ -339,7 +339,7 @@ func (o *Player) SetCharacters(v []Character) {
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *Player) GetGroups() []Group {
-	if o == nil || o.Groups == nil {
+	if o == nil || isNil(o.Groups) {
 		var ret []Group
 		return ret
 	}
@@ -349,15 +349,15 @@ func (o *Player) GetGroups() []Group {
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Player) GetGroupsOk() ([]Group, bool) {
-	if o == nil || o.Groups == nil {
-		return nil, false
+	if o == nil || isNil(o.Groups) {
+    return nil, false
 	}
 	return o.Groups, true
 }
 
 // HasGroups returns a boolean if a field has been set.
 func (o *Player) HasGroups() bool {
-	if o != nil && o.Groups != nil {
+	if o != nil && !isNil(o.Groups) {
 		return true
 	}
 
@@ -371,7 +371,7 @@ func (o *Player) SetGroups(v []Group) {
 
 // GetManagerGroups returns the ManagerGroups field value if set, zero value otherwise.
 func (o *Player) GetManagerGroups() []Group {
-	if o == nil || o.ManagerGroups == nil {
+	if o == nil || isNil(o.ManagerGroups) {
 		var ret []Group
 		return ret
 	}
@@ -381,15 +381,15 @@ func (o *Player) GetManagerGroups() []Group {
 // GetManagerGroupsOk returns a tuple with the ManagerGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Player) GetManagerGroupsOk() ([]Group, bool) {
-	if o == nil || o.ManagerGroups == nil {
-		return nil, false
+	if o == nil || isNil(o.ManagerGroups) {
+    return nil, false
 	}
 	return o.ManagerGroups, true
 }
 
 // HasManagerGroups returns a boolean if a field has been set.
 func (o *Player) HasManagerGroups() bool {
-	if o != nil && o.ManagerGroups != nil {
+	if o != nil && !isNil(o.ManagerGroups) {
 		return true
 	}
 
@@ -403,7 +403,7 @@ func (o *Player) SetManagerGroups(v []Group) {
 
 // GetManagerApps returns the ManagerApps field value if set, zero value otherwise.
 func (o *Player) GetManagerApps() []App {
-	if o == nil || o.ManagerApps == nil {
+	if o == nil || isNil(o.ManagerApps) {
 		var ret []App
 		return ret
 	}
@@ -413,15 +413,15 @@ func (o *Player) GetManagerApps() []App {
 // GetManagerAppsOk returns a tuple with the ManagerApps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Player) GetManagerAppsOk() ([]App, bool) {
-	if o == nil || o.ManagerApps == nil {
-		return nil, false
+	if o == nil || isNil(o.ManagerApps) {
+    return nil, false
 	}
 	return o.ManagerApps, true
 }
 
 // HasManagerApps returns a boolean if a field has been set.
 func (o *Player) HasManagerApps() bool {
-	if o != nil && o.ManagerApps != nil {
+	if o != nil && !isNil(o.ManagerApps) {
 		return true
 	}
 
@@ -435,7 +435,7 @@ func (o *Player) SetManagerApps(v []App) {
 
 // GetRemovedCharacters returns the RemovedCharacters field value if set, zero value otherwise.
 func (o *Player) GetRemovedCharacters() []RemovedCharacter {
-	if o == nil || o.RemovedCharacters == nil {
+	if o == nil || isNil(o.RemovedCharacters) {
 		var ret []RemovedCharacter
 		return ret
 	}
@@ -445,15 +445,15 @@ func (o *Player) GetRemovedCharacters() []RemovedCharacter {
 // GetRemovedCharactersOk returns a tuple with the RemovedCharacters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Player) GetRemovedCharactersOk() ([]RemovedCharacter, bool) {
-	if o == nil || o.RemovedCharacters == nil {
-		return nil, false
+	if o == nil || isNil(o.RemovedCharacters) {
+    return nil, false
 	}
 	return o.RemovedCharacters, true
 }
 
 // HasRemovedCharacters returns a boolean if a field has been set.
 func (o *Player) HasRemovedCharacters() bool {
-	if o != nil && o.RemovedCharacters != nil {
+	if o != nil && !isNil(o.RemovedCharacters) {
 		return true
 	}
 
@@ -467,7 +467,7 @@ func (o *Player) SetRemovedCharacters(v []RemovedCharacter) {
 
 // GetIncomingCharacters returns the IncomingCharacters field value if set, zero value otherwise.
 func (o *Player) GetIncomingCharacters() []RemovedCharacter {
-	if o == nil || o.IncomingCharacters == nil {
+	if o == nil || isNil(o.IncomingCharacters) {
 		var ret []RemovedCharacter
 		return ret
 	}
@@ -477,15 +477,15 @@ func (o *Player) GetIncomingCharacters() []RemovedCharacter {
 // GetIncomingCharactersOk returns a tuple with the IncomingCharacters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Player) GetIncomingCharactersOk() ([]RemovedCharacter, bool) {
-	if o == nil || o.IncomingCharacters == nil {
-		return nil, false
+	if o == nil || isNil(o.IncomingCharacters) {
+    return nil, false
 	}
 	return o.IncomingCharacters, true
 }
 
 // HasIncomingCharacters returns a boolean if a field has been set.
 func (o *Player) HasIncomingCharacters() bool {
-	if o != nil && o.IncomingCharacters != nil {
+	if o != nil && !isNil(o.IncomingCharacters) {
 		return true
 	}
 
@@ -499,16 +499,16 @@ func (o *Player) SetIncomingCharacters(v []RemovedCharacter) {
 
 func (o Player) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ServiceAccounts != nil {
+	if !isNil(o.ServiceAccounts) {
 		toSerialize["serviceAccounts"] = o.ServiceAccounts
 	}
-	if o.CharacterId != nil {
+	if !isNil(o.CharacterId) {
 		toSerialize["characterId"] = o.CharacterId
 	}
-	if o.CorporationName != nil {
+	if !isNil(o.CorporationName) {
 		toSerialize["corporationName"] = o.CorporationName
 	}
-	if o.AllianceName != nil {
+	if !isNil(o.AllianceName) {
 		toSerialize["allianceName"] = o.AllianceName
 	}
 	if true {
@@ -517,28 +517,28 @@ func (o Player) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Status != nil {
+	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.Roles != nil {
+	if !isNil(o.Roles) {
 		toSerialize["roles"] = o.Roles
 	}
-	if o.Characters != nil {
+	if !isNil(o.Characters) {
 		toSerialize["characters"] = o.Characters
 	}
-	if o.Groups != nil {
+	if !isNil(o.Groups) {
 		toSerialize["groups"] = o.Groups
 	}
-	if o.ManagerGroups != nil {
+	if !isNil(o.ManagerGroups) {
 		toSerialize["managerGroups"] = o.ManagerGroups
 	}
-	if o.ManagerApps != nil {
+	if !isNil(o.ManagerApps) {
 		toSerialize["managerApps"] = o.ManagerApps
 	}
-	if o.RemovedCharacters != nil {
+	if !isNil(o.RemovedCharacters) {
 		toSerialize["removedCharacters"] = o.RemovedCharacters
 	}
-	if o.IncomingCharacters != nil {
+	if !isNil(o.IncomingCharacters) {
 		toSerialize["incomingCharacters"] = o.IncomingCharacters
 	}
 	return json.Marshal(toSerialize)

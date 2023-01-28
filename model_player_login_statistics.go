@@ -57,7 +57,7 @@ func (o *PlayerLoginStatistics) GetUniqueLogins() int32 {
 // and a boolean to check if the value has been set.
 func (o *PlayerLoginStatistics) GetUniqueLoginsOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.UniqueLogins, true
 }
@@ -81,7 +81,7 @@ func (o *PlayerLoginStatistics) GetTotalLogins() int32 {
 // and a boolean to check if the value has been set.
 func (o *PlayerLoginStatistics) GetTotalLoginsOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.TotalLogins, true
 }
@@ -105,7 +105,7 @@ func (o *PlayerLoginStatistics) GetYear() int32 {
 // and a boolean to check if the value has been set.
 func (o *PlayerLoginStatistics) GetYearOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Year, true
 }
@@ -129,7 +129,7 @@ func (o *PlayerLoginStatistics) GetMonth() int32 {
 // and a boolean to check if the value has been set.
 func (o *PlayerLoginStatistics) GetMonthOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Month, true
 }

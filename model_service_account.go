@@ -61,7 +61,7 @@ func (o *ServiceAccount) GetServiceId() int32 {
 // and a boolean to check if the value has been set.
 func (o *ServiceAccount) GetServiceIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.ServiceId, true
 }
@@ -85,7 +85,7 @@ func (o *ServiceAccount) GetServiceName() string {
 // and a boolean to check if the value has been set.
 func (o *ServiceAccount) GetServiceNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.ServiceName, true
 }
@@ -109,7 +109,7 @@ func (o *ServiceAccount) GetCharacterId() int64 {
 // and a boolean to check if the value has been set.
 func (o *ServiceAccount) GetCharacterIdOk() (*int64, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.CharacterId, true
 }
@@ -135,7 +135,7 @@ func (o *ServiceAccount) GetUsername() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceAccount) GetUsernameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Username.Get(), o.Username.IsSet()
 }
@@ -161,7 +161,7 @@ func (o *ServiceAccount) GetStatus() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceAccount) GetStatusOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Status.Get(), o.Status.IsSet()
 }
@@ -187,7 +187,7 @@ func (o *ServiceAccount) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceAccount) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }

@@ -53,7 +53,7 @@ func (o *CharacterGroups) GetCharacter() Character {
 // and a boolean to check if the value has been set.
 func (o *CharacterGroups) GetCharacterOk() (*Character, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Character, true
 }
@@ -77,7 +77,7 @@ func (o *CharacterGroups) GetGroups() []Group {
 // and a boolean to check if the value has been set.
 func (o *CharacterGroups) GetGroupsOk() ([]Group, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Groups, true
 }

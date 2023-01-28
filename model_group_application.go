@@ -60,7 +60,7 @@ func (o *GroupApplication) GetId() int32 {
 // and a boolean to check if the value has been set.
 func (o *GroupApplication) GetIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Id, true
 }
@@ -84,7 +84,7 @@ func (o *GroupApplication) GetPlayer() Player {
 // and a boolean to check if the value has been set.
 func (o *GroupApplication) GetPlayerOk() (*Player, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Player, true
 }
@@ -108,7 +108,7 @@ func (o *GroupApplication) GetGroup() Group {
 // and a boolean to check if the value has been set.
 func (o *GroupApplication) GetGroupOk() (*Group, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Group, true
 }
@@ -134,7 +134,7 @@ func (o *GroupApplication) GetCreated() time.Time {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GroupApplication) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Created.Get(), o.Created.IsSet()
 }
@@ -146,7 +146,7 @@ func (o *GroupApplication) SetCreated(v time.Time) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *GroupApplication) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil || isNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -156,15 +156,15 @@ func (o *GroupApplication) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupApplication) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
-		return nil, false
+	if o == nil || isNil(o.Status) {
+    return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *GroupApplication) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !isNil(o.Status) {
 		return true
 	}
 
@@ -190,7 +190,7 @@ func (o GroupApplication) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["created"] = o.Created.Get()
 	}
-	if o.Status != nil {
+	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 	return json.Marshal(toSerialize)

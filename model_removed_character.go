@@ -54,7 +54,7 @@ func NewRemovedCharacterWithDefaults() *RemovedCharacter {
 
 // GetNewPlayerId returns the NewPlayerId field value if set, zero value otherwise.
 func (o *RemovedCharacter) GetNewPlayerId() int32 {
-	if o == nil || o.NewPlayerId == nil {
+	if o == nil || isNil(o.NewPlayerId) {
 		var ret int32
 		return ret
 	}
@@ -64,15 +64,15 @@ func (o *RemovedCharacter) GetNewPlayerId() int32 {
 // GetNewPlayerIdOk returns a tuple with the NewPlayerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemovedCharacter) GetNewPlayerIdOk() (*int32, bool) {
-	if o == nil || o.NewPlayerId == nil {
-		return nil, false
+	if o == nil || isNil(o.NewPlayerId) {
+    return nil, false
 	}
 	return o.NewPlayerId, true
 }
 
 // HasNewPlayerId returns a boolean if a field has been set.
 func (o *RemovedCharacter) HasNewPlayerId() bool {
-	if o != nil && o.NewPlayerId != nil {
+	if o != nil && !isNil(o.NewPlayerId) {
 		return true
 	}
 
@@ -86,7 +86,7 @@ func (o *RemovedCharacter) SetNewPlayerId(v int32) {
 
 // GetNewPlayerName returns the NewPlayerName field value if set, zero value otherwise.
 func (o *RemovedCharacter) GetNewPlayerName() string {
-	if o == nil || o.NewPlayerName == nil {
+	if o == nil || isNil(o.NewPlayerName) {
 		var ret string
 		return ret
 	}
@@ -96,15 +96,15 @@ func (o *RemovedCharacter) GetNewPlayerName() string {
 // GetNewPlayerNameOk returns a tuple with the NewPlayerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemovedCharacter) GetNewPlayerNameOk() (*string, bool) {
-	if o == nil || o.NewPlayerName == nil {
-		return nil, false
+	if o == nil || isNil(o.NewPlayerName) {
+    return nil, false
 	}
 	return o.NewPlayerName, true
 }
 
 // HasNewPlayerName returns a boolean if a field has been set.
 func (o *RemovedCharacter) HasNewPlayerName() bool {
-	if o != nil && o.NewPlayerName != nil {
+	if o != nil && !isNil(o.NewPlayerName) {
 		return true
 	}
 
@@ -118,7 +118,7 @@ func (o *RemovedCharacter) SetNewPlayerName(v string) {
 
 // GetPlayer returns the Player field value if set, zero value otherwise.
 func (o *RemovedCharacter) GetPlayer() Player {
-	if o == nil || o.Player == nil {
+	if o == nil || isNil(o.Player) {
 		var ret Player
 		return ret
 	}
@@ -128,15 +128,15 @@ func (o *RemovedCharacter) GetPlayer() Player {
 // GetPlayerOk returns a tuple with the Player field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemovedCharacter) GetPlayerOk() (*Player, bool) {
-	if o == nil || o.Player == nil {
-		return nil, false
+	if o == nil || isNil(o.Player) {
+    return nil, false
 	}
 	return o.Player, true
 }
 
 // HasPlayer returns a boolean if a field has been set.
 func (o *RemovedCharacter) HasPlayer() bool {
-	if o != nil && o.Player != nil {
+	if o != nil && !isNil(o.Player) {
 		return true
 	}
 
@@ -164,7 +164,7 @@ func (o *RemovedCharacter) GetCharacterId() int64 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RemovedCharacter) GetCharacterIdOk() (*int64, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.CharacterId.Get(), o.CharacterId.IsSet()
 }
@@ -190,7 +190,7 @@ func (o *RemovedCharacter) GetCharacterName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RemovedCharacter) GetCharacterNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.CharacterName.Get(), o.CharacterName.IsSet()
 }
@@ -216,7 +216,7 @@ func (o *RemovedCharacter) GetRemovedDate() time.Time {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RemovedCharacter) GetRemovedDateOk() (*time.Time, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.RemovedDate.Get(), o.RemovedDate.IsSet()
 }
@@ -242,7 +242,7 @@ func (o *RemovedCharacter) GetReason() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RemovedCharacter) GetReasonOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Reason.Get(), o.Reason.IsSet()
 }
@@ -254,7 +254,7 @@ func (o *RemovedCharacter) SetReason(v string) {
 
 // GetDeletedBy returns the DeletedBy field value if set, zero value otherwise.
 func (o *RemovedCharacter) GetDeletedBy() Player {
-	if o == nil || o.DeletedBy == nil {
+	if o == nil || isNil(o.DeletedBy) {
 		var ret Player
 		return ret
 	}
@@ -264,15 +264,15 @@ func (o *RemovedCharacter) GetDeletedBy() Player {
 // GetDeletedByOk returns a tuple with the DeletedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemovedCharacter) GetDeletedByOk() (*Player, bool) {
-	if o == nil || o.DeletedBy == nil {
-		return nil, false
+	if o == nil || isNil(o.DeletedBy) {
+    return nil, false
 	}
 	return o.DeletedBy, true
 }
 
 // HasDeletedBy returns a boolean if a field has been set.
 func (o *RemovedCharacter) HasDeletedBy() bool {
-	if o != nil && o.DeletedBy != nil {
+	if o != nil && !isNil(o.DeletedBy) {
 		return true
 	}
 
@@ -286,13 +286,13 @@ func (o *RemovedCharacter) SetDeletedBy(v Player) {
 
 func (o RemovedCharacter) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.NewPlayerId != nil {
+	if !isNil(o.NewPlayerId) {
 		toSerialize["newPlayerId"] = o.NewPlayerId
 	}
-	if o.NewPlayerName != nil {
+	if !isNil(o.NewPlayerName) {
 		toSerialize["newPlayerName"] = o.NewPlayerName
 	}
-	if o.Player != nil {
+	if !isNil(o.Player) {
 		toSerialize["player"] = o.Player
 	}
 	if true {
@@ -307,7 +307,7 @@ func (o RemovedCharacter) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["reason"] = o.Reason.Get()
 	}
-	if o.DeletedBy != nil {
+	if !isNil(o.DeletedBy) {
 		toSerialize["deletedBy"] = o.DeletedBy
 	}
 	return json.Marshal(toSerialize)

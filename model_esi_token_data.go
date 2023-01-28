@@ -61,7 +61,7 @@ func (o *EsiTokenData) GetLastChecked() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EsiTokenData) GetLastCheckedOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.LastChecked.Get(), o.LastChecked.IsSet()
 }
@@ -85,7 +85,7 @@ func (o *EsiTokenData) GetCharacterId() int32 {
 // and a boolean to check if the value has been set.
 func (o *EsiTokenData) GetCharacterIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.CharacterId, true
 }
@@ -109,7 +109,7 @@ func (o *EsiTokenData) GetCharacterName() string {
 // and a boolean to check if the value has been set.
 func (o *EsiTokenData) GetCharacterNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.CharacterName, true
 }
@@ -135,7 +135,7 @@ func (o *EsiTokenData) GetCorporationId() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EsiTokenData) GetCorporationIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.CorporationId.Get(), o.CorporationId.IsSet()
 }
@@ -161,7 +161,7 @@ func (o *EsiTokenData) GetAllianceId() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EsiTokenData) GetAllianceIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.AllianceId.Get(), o.AllianceId.IsSet()
 }

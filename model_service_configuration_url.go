@@ -56,7 +56,7 @@ func (o *ServiceConfigurationURL) GetUrl() string {
 // and a boolean to check if the value has been set.
 func (o *ServiceConfigurationURL) GetUrlOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Url, true
 }
@@ -80,7 +80,7 @@ func (o *ServiceConfigurationURL) GetTitle() string {
 // and a boolean to check if the value has been set.
 func (o *ServiceConfigurationURL) GetTitleOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Title, true
 }
@@ -104,7 +104,7 @@ func (o *ServiceConfigurationURL) GetTarget() string {
 // and a boolean to check if the value has been set.
 func (o *ServiceConfigurationURL) GetTargetOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Target, true
 }
