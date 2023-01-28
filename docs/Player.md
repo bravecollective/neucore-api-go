@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ServiceAccounts** | Pointer to [**[]ServiceAccount**](ServiceAccount.md) | External service accounts (API: not included by default) | [optional] 
-**CharacterId** | Pointer to **string** | ID of main character (API: not included by default) | [optional] 
+**CharacterId** | Pointer to **int32** | ID of main character (API: not included by default) | [optional] 
 **CorporationName** | Pointer to **string** | Corporation of main character (API: not included by default) | [optional] 
 **AllianceName** | Pointer to **string** | Alliance of main character (API: not included by default) | [optional] 
 **Id** | **NullableInt32** |  | 
@@ -65,20 +65,20 @@ HasServiceAccounts returns a boolean if a field has been set.
 
 ### GetCharacterId
 
-`func (o *Player) GetCharacterId() string`
+`func (o *Player) GetCharacterId() int32`
 
 GetCharacterId returns the CharacterId field if non-nil, zero value otherwise.
 
 ### GetCharacterIdOk
 
-`func (o *Player) GetCharacterIdOk() (*string, bool)`
+`func (o *Player) GetCharacterIdOk() (*int32, bool)`
 
 GetCharacterIdOk returns a tuple with the CharacterId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCharacterId
 
-`func (o *Player) SetCharacterId(v string)`
+`func (o *Player) SetCharacterId(v int32)`
 
 SetCharacterId sets CharacterId field to given value.
 

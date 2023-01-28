@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | 
-**Name** | **string** |  | 
+**Id** | **NullableInt64** |  | 
+**Name** | **NullableString** |  | 
 
 ## Methods
 
 ### NewEsiType
 
-`func NewEsiType(id int64, name string, ) *EsiType`
+`func NewEsiType(id NullableInt64, name NullableString, ) *EsiType`
 
 NewEsiType instantiates a new EsiType object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +46,16 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### SetIdNil
+
+`func (o *EsiType) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *EsiType) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetName
 
 `func (o *EsiType) GetName() string`
@@ -66,6 +76,16 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### SetNameNil
+
+`func (o *EsiType) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *EsiType) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

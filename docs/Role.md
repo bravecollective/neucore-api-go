@@ -29,7 +29,7 @@
 
 * `APP_MANAGER` (value: `"app-manager"`)
 
-* `SERVICE_ADMIN` (value: `"service-admin"`)
+* `PLUGIN_ADMIN` (value: `"plugin-admin"`)
 
 * `STATISTICS` (value: `"statistics"`)
 

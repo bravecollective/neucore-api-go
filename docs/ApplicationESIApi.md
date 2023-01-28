@@ -5,7 +5,7 @@ All URIs are relative to *https://localhost/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**EsiEveLoginCharactersV1**](ApplicationESIApi.md#EsiEveLoginCharactersV1) | **Get** /app/v1/esi/eve-login/{name}/characters | Returns character IDs of characters that have an ESI token (including invalid) of an EVE login.
-[**EsiEveLoginTokenDataV1**](ApplicationESIApi.md#EsiEveLoginTokenDataV1) | **Get** /app/v1/esi/eve-login/{name}/token-data | Returns data of valid tokens for an EVE login.
+[**EsiEveLoginTokenDataV1**](ApplicationESIApi.md#EsiEveLoginTokenDataV1) | **Get** /app/v1/esi/eve-login/{name}/token-data | Returns data for all valid tokens (roles are also checked if applicable) for an EVE login.
 [**EsiPostV1**](ApplicationESIApi.md#EsiPostV1) | **Post** /app/v1/esi | See POST /app/v2/esi
 [**EsiPostV2**](ApplicationESIApi.md#EsiPostV2) | **Post** /app/v2/esi | Same as GET /app/v2/esi, but for POST requests.
 [**EsiV1**](ApplicationESIApi.md#EsiV1) | **Get** /app/v1/esi | See GET /app/v2/esi
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 > []EsiTokenData EsiEveLoginTokenDataV1(ctx, name).Execute()
 
-Returns data of valid tokens for an EVE login.
+Returns data for all valid tokens (roles are also checked if applicable) for an EVE login.
 
 
 

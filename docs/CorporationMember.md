@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Player** | Pointer to [**Player**](Player.md) |  | [optional] 
-**Id** | **int64** | EVE Character ID. | 
+**Id** | **NullableInt64** | EVE Character ID. | 
 **Name** | **NullableString** | EVE Character name. | 
 **Location** | Pointer to [**EsiLocation**](EsiLocation.md) |  | [optional] 
 **LogoffDate** | Pointer to **NullableTime** |  | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewCorporationMember
 
-`func NewCorporationMember(id int64, name NullableString, ) *CorporationMember`
+`func NewCorporationMember(id NullableInt64, name NullableString, ) *CorporationMember`
 
 NewCorporationMember instantiates a new CorporationMember object
 This constructor will assign default values to properties that have it defined,
@@ -81,6 +81,16 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### SetIdNil
+
+`func (o *CorporationMember) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *CorporationMember) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetName
 
 `func (o *CorporationMember) GetName() string`

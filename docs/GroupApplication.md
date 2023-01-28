@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
+**Id** | **NullableInt32** |  | 
 **Player** | [**Player**](Player.md) |  | 
 **Group** | [**Group**](Group.md) |  | 
 **Created** | **NullableTime** |  | 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewGroupApplication
 
-`func NewGroupApplication(id int32, player Player, group Group, created NullableTime, ) *GroupApplication`
+`func NewGroupApplication(id NullableInt32, player Player, group Group, created NullableTime, ) *GroupApplication`
 
 NewGroupApplication instantiates a new GroupApplication object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +49,16 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### SetIdNil
+
+`func (o *GroupApplication) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *GroupApplication) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetPlayer
 
 `func (o *GroupApplication) GetPlayer() Player`

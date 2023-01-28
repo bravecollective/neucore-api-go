@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: Client library of Neucore API
   title: Neucore API
-  version: 1.36.0
+  version: 1.43.0
 servers:
 - url: https://localhost/api
 tags:
@@ -26,6 +26,12 @@ paths:
           description: The app information
         "403":
           description: Not authorized.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Show app information.
@@ -59,6 +65,12 @@ paths:
           description: Not authorized.
         "404":
           description: Character not found. (default reason phrase)
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Returns the main character of the player account to which the character
@@ -92,6 +104,12 @@ paths:
           description: Not authorized.
         "404":
           description: "Reason phrase: Character not found."
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Returns the main character of the player account to which the character
@@ -122,6 +140,12 @@ paths:
           description: Not authorized.
         "404":
           description: Character not found.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Returns the player account to which the character ID belongs.
@@ -153,6 +177,12 @@ paths:
           description: Not authorized.
         "404":
           description: Character not found.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Returns all characters of the player account to which the character
@@ -187,6 +217,12 @@ paths:
           description: All characters from the player account.
         "403":
           description: Not authorized.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Returns all characters from multiple player accounts identified by
@@ -219,6 +255,12 @@ paths:
           description: Invalid body.
         "403":
           description: Not authorized.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Returns all known characters from the parameter list.
@@ -250,6 +292,12 @@ paths:
           description: Not authorized.
         "404":
           description: Player not found.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Returns all characters from the player account.
@@ -279,6 +327,12 @@ paths:
           description: Not authorized.
         "404":
           description: Character not found.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Returns the player account to which the character ID belongs with all
@@ -311,6 +365,12 @@ paths:
           description: Not authorized.
         "404":
           description: Character not found.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: |-
@@ -344,6 +404,12 @@ paths:
           description: Not authorized.
         "404":
           description: Character not found.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: |-
@@ -375,6 +441,12 @@ paths:
           description: "List of players, only id and name properties are returned."
         "403":
           description: Not authorized.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Returns a list of all players that have a character in the corporation.
@@ -404,6 +476,12 @@ paths:
           description: List of characters (does not include the corporation property).
         "403":
           description: Not authorized.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Returns a list of all known characters from the corporation.
@@ -445,6 +523,12 @@ paths:
               schema:
                 type: string
           description: EVE login not found.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Returns character IDs of characters that have an ESI token (including
@@ -487,9 +571,16 @@ paths:
               schema:
                 type: string
           description: EVE login not found.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
-      summary: Returns data of valid tokens for an EVE login.
+      summary: Returns data for all valid tokens (roles are also checked if applicable)
+        for an EVE login.
       tags:
       - Application - ESI
   /app/v1/esi:
@@ -935,6 +1026,12 @@ paths:
           description: Not authorized.
         "404":
           description: Character not found. (default reason phrase)
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Return groups of the character's player account.
@@ -967,6 +1064,12 @@ paths:
           description: Not authorized.
         "404":
           description: "Reason phrase: Character not found."
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Return groups of the character's player account.
@@ -1002,6 +1105,12 @@ paths:
           description: Invalid body.
         "403":
           description: Not authorized.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: "Return groups of multiple players, identified by one of their character\
@@ -1036,6 +1145,12 @@ paths:
           description: Not authorized.
         "404":
           description: Corporation not found. (default reason phrase)
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Return groups of the corporation.
@@ -1068,6 +1183,12 @@ paths:
           description: Not authorized.
         "404":
           description: "Reason phrase: Corporation not found."
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Return groups of the corporation.
@@ -1102,6 +1223,12 @@ paths:
           description: Invalid body.
         "403":
           description: Not authorized.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Return groups of multiple corporations.
@@ -1135,6 +1262,12 @@ paths:
           description: Not authorized.
         "404":
           description: Alliance not found. (default reason phrase)
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Return groups of the alliance.
@@ -1167,6 +1300,12 @@ paths:
           description: Not authorized.
         "404":
           description: "Reason phrase: Alliance not found."
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Return groups of the alliance.
@@ -1201,6 +1340,12 @@ paths:
           description: Invalid body.
         "403":
           description: Not authorized.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Return groups of multiple alliances.
@@ -1249,6 +1394,12 @@ paths:
           description: List of groups.
         "403":
           description: Not authorized.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: "Returns groups from the character's account, if available, or the\
@@ -1289,6 +1440,12 @@ paths:
           description: Not authorized.
         "404":
           description: Group was not found or app may not see it.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Returns the main character IDs from all group members.
@@ -1346,6 +1503,12 @@ paths:
             properties excluded).
         "403":
           description: Not authorized.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
       - BearerAuth: []
       summary: Return corporation member tracking data.
@@ -1476,6 +1639,145 @@ components:
       - character
       - groups
       type: object
+    PluginConfigurationDatabase:
+      description: |-
+        Plugin configuration stored in database.
+
+        API: The required properties are necessary for the service page where users register their account. The rest
+        is necessary for the admin page.
+      properties:
+        directoryName:
+          description: |-
+            Directory where the plugin.yml file is stored.
+
+            Only from database but always set when the data from the file is read.
+          type: string
+        URLs:
+          items:
+            $ref: '#/components/schemas/PluginConfigurationURL'
+          type: array
+        textTop:
+          type: string
+        textAccount:
+          type: string
+        textRegister:
+          type: string
+        textPending:
+          type: string
+        configurationData:
+          type: string
+        active:
+          description: |-
+            Inactive plugins are neither updated by the cron job nor displayed to the user.
+
+            From admin UI.
+          type: boolean
+        requiredGroups:
+          description: From admin UI.
+          items:
+            type: integer
+          type: array
+      required:
+      - URLs
+      - configurationData
+      - textAccount
+      - textPending
+      - textRegister
+      - textTop
+      type: object
+    PluginConfigurationFile:
+      description: |-
+        Plugin configuration from YAML file.
+
+        API: The required properties are necessary for the service page where users register their account. The rest
+        is necessary for the admin page.
+      properties:
+        directoryName:
+          description: |-
+            Directory where the plugin.yml file is stored.
+
+            Only from database but always set when the data from the file is read.
+          type: string
+        URLs:
+          items:
+            $ref: '#/components/schemas/PluginConfigurationURL'
+          type: array
+        textTop:
+          type: string
+        textAccount:
+          type: string
+        textRegister:
+          type: string
+        textPending:
+          type: string
+        configurationData:
+          type: string
+        name:
+          type: string
+        types:
+          description: Not part of the file but will be set when the plugin implementation
+            is loaded.
+          enum:
+          - general
+          - service
+          items:
+            type: string
+          type: array
+        oneAccount:
+          type: boolean
+        properties:
+          enum:
+          - username
+          - password
+          - email
+          - status
+          - name
+          items:
+            type: string
+          type: array
+        showPassword:
+          type: boolean
+        actions:
+          enum:
+          - update-account
+          - reset-password
+          items:
+            type: string
+          type: array
+      required:
+      - actions
+      - properties
+      type: object
+    PluginConfigurationURL:
+      properties:
+        url:
+          description: "placeholders: {plugin_id}, {username}, {password}, {email}"
+          type: string
+        title:
+          type: string
+        target:
+          type: string
+      required:
+      - target
+      - title
+      - url
+      type: object
+    SearchResult:
+      properties:
+        characterId:
+          type: integer
+        characterName:
+          type: string
+        playerId:
+          type: integer
+        playerName:
+          type: string
+      required:
+      - characterId
+      - characterName
+      - playerId
+      - playerName
+      type: object
     ServiceAccount:
       example:
         name: name
@@ -1513,89 +1815,6 @@ components:
       - serviceName
       - status
       - username
-      type: object
-    ServiceConfiguration:
-      properties:
-        phpClass:
-          nullable: true
-          type: string
-        psr4Prefix:
-          nullable: true
-          type: string
-        psr4Path:
-          nullable: true
-          type: string
-        oneAccount:
-          nullable: true
-          type: boolean
-        requiredGroups:
-          items:
-            type: integer
-          nullable: true
-          type: array
-        properties:
-          enum:
-          - username
-          - password
-          - email
-          - status
-          - name
-          items:
-            type: string
-          nullable: true
-          type: array
-        showPassword:
-          nullable: true
-          type: boolean
-        actions:
-          enum:
-          - update-account
-          - reset-password
-          items:
-            type: string
-          nullable: true
-          type: array
-        URLs:
-          items:
-            $ref: '#/components/schemas/ServiceConfigurationURL'
-          type: array
-        textAccount:
-          nullable: true
-          type: string
-        textTop:
-          nullable: true
-          type: string
-        textRegister:
-          nullable: true
-          type: string
-        textPending:
-          nullable: true
-          type: string
-        configurationData:
-          type: string
-      required:
-      - URLs
-      - actions
-      - configurationData
-      - properties
-      - textAccount
-      - textPending
-      - textRegister
-      - textTop
-      type: object
-    ServiceConfigurationURL:
-      properties:
-        url:
-          description: "placeholders: {username}, {password}, {email}"
-          type: string
-        title:
-          type: string
-        target:
-          type: string
-      required:
-      - target
-      - title
-      - url
       type: object
     Alliance:
       description: EVE Alliance.
@@ -2011,7 +2230,7 @@ components:
             reason: moved
             newPlayerId: 5
             characterName: characterName
-            characterId: 5
+            characterId: 2
             deletedBy: null
             player: null
             removedDate: 2000-01-23T04:56:07.000+00:00
@@ -2019,7 +2238,7 @@ components:
             reason: moved
             newPlayerId: 5
             characterName: characterName
-            characterId: 5
+            characterId: 2
             deletedBy: null
             player: null
             removedDate: 2000-01-23T04:56:07.000+00:00
@@ -2058,7 +2277,7 @@ components:
             reason: moved
             newPlayerId: 5
             characterName: characterName
-            characterId: 5
+            characterId: 2
             deletedBy: null
             player: null
             removedDate: 2000-01-23T04:56:07.000+00:00
@@ -2066,7 +2285,7 @@ components:
             reason: moved
             newPlayerId: 5
             characterName: characterName
-            characterId: 5
+            characterId: 2
             deletedBy: null
             player: null
             removedDate: 2000-01-23T04:56:07.000+00:00
@@ -2276,7 +2495,7 @@ components:
             id: 0
           name: name
           allianceName: allianceName
-          id: 1
+          id: 5
           managerGroups:
           - isDefault: true
             visibility: private
@@ -2290,7 +2509,7 @@ components:
             name: name
             description: description
             id: 6
-          characterId: characterId
+          characterId: 1
           status: standard
       properties:
         player:
@@ -2298,6 +2517,7 @@ components:
         id:
           description: EVE Character ID.
           format: int64
+          nullable: true
           type: integer
         name:
           description: EVE Character name.
@@ -2430,8 +2650,10 @@ components:
       properties:
         id:
           format: int64
+          nullable: true
           type: integer
         name:
+          nullable: true
           type: string
       required:
       - id
@@ -2514,6 +2736,7 @@ components:
       description: The player property contains only id and name.
       properties:
         id:
+          nullable: true
           type: integer
         player:
           $ref: '#/components/schemas/Player'
@@ -2543,7 +2766,7 @@ components:
           reason: moved
           newPlayerId: 5
           characterName: characterName
-          characterId: 5
+          characterId: 2
           deletedBy: null
           player: null
           removedDate: 2000-01-23T04:56:07.000+00:00
@@ -2551,7 +2774,7 @@ components:
           reason: moved
           newPlayerId: 5
           characterName: characterName
-          characterId: 5
+          characterId: 2
           deletedBy: null
           player: null
           removedDate: 2000-01-23T04:56:07.000+00:00
@@ -2590,7 +2813,7 @@ components:
           reason: moved
           newPlayerId: 5
           characterName: characterName
-          characterId: 5
+          characterId: 2
           deletedBy: null
           player: null
           removedDate: 2000-01-23T04:56:07.000+00:00
@@ -2598,7 +2821,7 @@ components:
           reason: moved
           newPlayerId: 5
           characterName: characterName
-          characterId: 5
+          characterId: 2
           deletedBy: null
           player: null
           removedDate: 2000-01-23T04:56:07.000+00:00
@@ -2808,7 +3031,7 @@ components:
           id: 0
         name: name
         allianceName: allianceName
-        id: 1
+        id: 5
         managerGroups:
         - isDefault: true
           visibility: private
@@ -2822,7 +3045,7 @@ components:
           name: name
           description: description
           id: 6
-        characterId: characterId
+        characterId: 1
         status: standard
       properties:
         serviceAccounts:
@@ -2832,7 +3055,7 @@ components:
           type: array
         characterId:
           description: "ID of main character (API: not included by default)"
-          type: string
+          type: integer
         corporationName:
           description: "Corporation of main character (API: not included by default)"
           type: string
@@ -2895,13 +3118,28 @@ components:
       - id
       - name
       type: object
+    Plugin:
+      properties:
+        id:
+          nullable: true
+          type: integer
+        name:
+          type: string
+        configurationDatabase:
+          $ref: '#/components/schemas/PluginConfigurationDatabase'
+        configurationFile:
+          $ref: '#/components/schemas/PluginConfigurationFile'
+      required:
+      - id
+      - name
+      type: object
     RemovedCharacter:
       example:
         newPlayerName: newPlayerName
         reason: moved
         newPlayerId: 5
         characterName: characterName
-        characterId: 5
+        characterId: 2
         deletedBy: null
         player: null
         removedDate: 2000-01-23T04:56:07.000+00:00
@@ -2961,7 +3199,7 @@ components:
       - group-manager
       - app-admin
       - app-manager
-      - service-admin
+      - plugin-admin
       - statistics
       - esi
       - settings
@@ -2971,18 +3209,6 @@ components:
       - watchlist-manager
       - watchlist-admin
       type: string
-    Service:
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        configuration:
-          $ref: '#/components/schemas/ServiceConfiguration'
-      required:
-      - id
-      - name
-      type: object
     SystemVariable:
       description: |-
         A system settings variable.
