@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: Client library of Neucore API
   title: Neucore API
-  version: 1.43.0
+  version: 2.1.0
 servers:
 - url: https://localhost/api
 tags:
@@ -1628,6 +1628,7 @@ components:
           name: name
           description: description
           id: 6
+        deactivated: "no"
       properties:
         character:
           $ref: '#/components/schemas/Character'
@@ -1635,8 +1636,16 @@ components:
           items:
             $ref: '#/components/schemas/Group'
           type: array
+        deactivated:
+          description: Groups deactivation status.
+          enum:
+          - "no"
+          - soon
+          - "yes"
+          type: string
       required:
       - character
+      - deactivated
       - groups
       type: object
     PluginConfigurationDatabase:

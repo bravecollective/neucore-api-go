@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Character** | [**Character**](Character.md) |  | 
 **Groups** | [**[]Group**](Group.md) |  | 
+**Deactivated** | **string** | Groups deactivation status. | 
 
 ## Methods
 
 ### NewCharacterGroups
 
-`func NewCharacterGroups(character Character, groups []Group, ) *CharacterGroups`
+`func NewCharacterGroups(character Character, groups []Group, deactivated string, ) *CharacterGroups`
 
 NewCharacterGroups instantiates a new CharacterGroups object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *CharacterGroups) SetGroups(v []Group)`
 
 SetGroups sets Groups field to given value.
+
+
+### GetDeactivated
+
+`func (o *CharacterGroups) GetDeactivated() string`
+
+GetDeactivated returns the Deactivated field if non-nil, zero value otherwise.
+
+### GetDeactivatedOk
+
+`func (o *CharacterGroups) GetDeactivatedOk() (*string, bool)`
+
+GetDeactivatedOk returns a tuple with the Deactivated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeactivated
+
+`func (o *CharacterGroups) SetDeactivated(v string)`
+
+SetDeactivated sets Deactivated field to given value.
 
 
 

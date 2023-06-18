@@ -35,7 +35,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/bravecollective/neucore-api-go"
 )
 
 func main() {
@@ -101,7 +101,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/bravecollective/neucore-api-go"
 )
 
 func main() {
@@ -171,7 +171,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/bravecollective/neucore-api-go"
 )
 
 func main() {
@@ -241,7 +241,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/bravecollective/neucore-api-go"
 )
 
 func main() {
@@ -307,7 +307,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/bravecollective/neucore-api-go"
 )
 
 func main() {
@@ -377,7 +377,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/bravecollective/neucore-api-go"
 )
 
 func main() {
@@ -447,7 +447,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/bravecollective/neucore-api-go"
 )
 
 func main() {
@@ -519,7 +519,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/bravecollective/neucore-api-go"
 )
 
 func main() {
@@ -585,7 +585,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/bravecollective/neucore-api-go"
 )
 
 func main() {
@@ -655,7 +655,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/bravecollective/neucore-api-go"
 )
 
 func main() {
@@ -725,7 +725,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/bravecollective/neucore-api-go"
 )
 
 func main() {
