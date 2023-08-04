@@ -90,7 +90,7 @@ func (o *Service) SetName(v string) {
 
 // GetConfiguration returns the Configuration field value if set, zero value otherwise.
 func (o *Service) GetConfiguration() ServiceConfiguration {
-	if o == nil || isNil(o.Configuration) {
+	if o == nil || IsNil(o.Configuration) {
 		var ret ServiceConfiguration
 		return ret
 	}
@@ -100,7 +100,7 @@ func (o *Service) GetConfiguration() ServiceConfiguration {
 // GetConfigurationOk returns a tuple with the Configuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetConfigurationOk() (*ServiceConfiguration, bool) {
-	if o == nil || isNil(o.Configuration) {
+	if o == nil || IsNil(o.Configuration) {
     return nil, false
 	}
 	return o.Configuration, true
@@ -108,7 +108,7 @@ func (o *Service) GetConfigurationOk() (*ServiceConfiguration, bool) {
 
 // HasConfiguration returns a boolean if a field has been set.
 func (o *Service) HasConfiguration() bool {
-	if o != nil && !isNil(o.Configuration) {
+	if o != nil && !IsNil(o.Configuration) {
 		return true
 	}
 
@@ -128,7 +128,7 @@ func (o Service) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Configuration) {
+	if !IsNil(o.Configuration) {
 		toSerialize["configuration"] = o.Configuration
 	}
 	return json.Marshal(toSerialize)

@@ -1,0 +1,135 @@
+Subject: [PATCH] Fix isNil -> IsNil.
+---
+Index: model_service_configuration.go
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/model_service_configuration.go b/model_service_configuration.go
+--- a/model_service_configuration.go	(revision 10f15145fb6ccfc6d26353be4b8f6e702d342ae8)
++++ b/model_service_configuration.go	(date 1691166562902)
+@@ -59,7 +59,7 @@
+ 
+ // GetPhpClass returns the PhpClass field value if set, zero value otherwise (both if not set or set to explicit null).
+ func (o *ServiceConfiguration) GetPhpClass() string {
+-	if o == nil || isNil(o.PhpClass.Get()) {
++	if o == nil || IsNil(o.PhpClass.Get()) {
+ 		var ret string
+ 		return ret
+ 	}
+@@ -101,7 +101,7 @@
+ 
+ // GetPsr4Prefix returns the Psr4Prefix field value if set, zero value otherwise (both if not set or set to explicit null).
+ func (o *ServiceConfiguration) GetPsr4Prefix() string {
+-	if o == nil || isNil(o.Psr4Prefix.Get()) {
++	if o == nil || IsNil(o.Psr4Prefix.Get()) {
+ 		var ret string
+ 		return ret
+ 	}
+@@ -143,7 +143,7 @@
+ 
+ // GetPsr4Path returns the Psr4Path field value if set, zero value otherwise (both if not set or set to explicit null).
+ func (o *ServiceConfiguration) GetPsr4Path() string {
+-	if o == nil || isNil(o.Psr4Path.Get()) {
++	if o == nil || IsNil(o.Psr4Path.Get()) {
+ 		var ret string
+ 		return ret
+ 	}
+@@ -185,7 +185,7 @@
+ 
+ // GetOneAccount returns the OneAccount field value if set, zero value otherwise (both if not set or set to explicit null).
+ func (o *ServiceConfiguration) GetOneAccount() bool {
+-	if o == nil || isNil(o.OneAccount.Get()) {
++	if o == nil || IsNil(o.OneAccount.Get()) {
+ 		var ret bool
+ 		return ret
+ 	}
+@@ -238,7 +238,7 @@
+ // and a boolean to check if the value has been set.
+ // NOTE: If the value is an explicit nil, `nil, true` will be returned
+ func (o *ServiceConfiguration) GetRequiredGroupsOk() ([]int32, bool) {
+-	if o == nil || isNil(o.RequiredGroups) {
++	if o == nil || IsNil(o.RequiredGroups) {
+     return nil, false
+ 	}
+ 	return o.RequiredGroups, true
+@@ -246,7 +246,7 @@
+ 
+ // HasRequiredGroups returns a boolean if a field has been set.
+ func (o *ServiceConfiguration) HasRequiredGroups() bool {
+-	if o != nil && isNil(o.RequiredGroups) {
++	if o != nil && IsNil(o.RequiredGroups) {
+ 		return true
+ 	}
+ 
+@@ -273,7 +273,7 @@
+ // and a boolean to check if the value has been set.
+ // NOTE: If the value is an explicit nil, `nil, true` will be returned
+ func (o *ServiceConfiguration) GetPropertiesOk() ([]string, bool) {
+-	if o == nil || isNil(o.Properties) {
++	if o == nil || IsNil(o.Properties) {
+     return nil, false
+ 	}
+ 	return o.Properties, true
+@@ -286,7 +286,7 @@
+ 
+ // GetShowPassword returns the ShowPassword field value if set, zero value otherwise (both if not set or set to explicit null).
+ func (o *ServiceConfiguration) GetShowPassword() bool {
+-	if o == nil || isNil(o.ShowPassword.Get()) {
++	if o == nil || IsNil(o.ShowPassword.Get()) {
+ 		var ret bool
+ 		return ret
+ 	}
+@@ -341,7 +341,7 @@
+ // and a boolean to check if the value has been set.
+ // NOTE: If the value is an explicit nil, `nil, true` will be returned
+ func (o *ServiceConfiguration) GetActionsOk() ([]string, bool) {
+-	if o == nil || isNil(o.Actions) {
++	if o == nil || IsNil(o.Actions) {
+     return nil, false
+ 	}
+ 	return o.Actions, true
+Index: model_service.go
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/model_service.go b/model_service.go
+--- a/model_service.go	(revision 10f15145fb6ccfc6d26353be4b8f6e702d342ae8)
++++ b/model_service.go	(date 1691166562894)
+@@ -90,7 +90,7 @@
+ 
+ // GetConfiguration returns the Configuration field value if set, zero value otherwise.
+ func (o *Service) GetConfiguration() ServiceConfiguration {
+-	if o == nil || isNil(o.Configuration) {
++	if o == nil || IsNil(o.Configuration) {
+ 		var ret ServiceConfiguration
+ 		return ret
+ 	}
+@@ -100,7 +100,7 @@
+ // GetConfigurationOk returns a tuple with the Configuration field value if set, nil otherwise
+ // and a boolean to check if the value has been set.
+ func (o *Service) GetConfigurationOk() (*ServiceConfiguration, bool) {
+-	if o == nil || isNil(o.Configuration) {
++	if o == nil || IsNil(o.Configuration) {
+     return nil, false
+ 	}
+ 	return o.Configuration, true
+@@ -108,7 +108,7 @@
+ 
+ // HasConfiguration returns a boolean if a field has been set.
+ func (o *Service) HasConfiguration() bool {
+-	if o != nil && !isNil(o.Configuration) {
++	if o != nil && !IsNil(o.Configuration) {
+ 		return true
+ 	}
+ 
+@@ -128,7 +128,7 @@
+ 	if true {
+ 		toSerialize["name"] = o.Name
+ 	}
+-	if !isNil(o.Configuration) {
++	if !IsNil(o.Configuration) {
+ 		toSerialize["configuration"] = o.Configuration
+ 	}
+ 	return json.Marshal(toSerialize)
