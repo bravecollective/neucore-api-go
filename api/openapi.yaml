@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: Client library of Neucore API
   title: Neucore API
-  version: 2.1.0
+  version: 2.2.0
 servers:
 - url: https://localhost/api
 tags:
@@ -149,6 +149,43 @@ paths:
       security:
       - BearerAuth: []
       summary: Returns the player account to which the character ID belongs.
+      tags:
+      - Application - Characters
+  /app/v1/players:
+    post:
+      description: "Needs role: app-chars."
+      operationId: playersV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                type: integer
+              type: array
+        description: EVE character IDs array.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Player'
+                type: array
+          description: "The players, only id and name properties are returned."
+        "400":
+          description: Invalid body.
+        "403":
+          description: Not authorized.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security:
+      - BearerAuth: []
+      summary: Returns player accounts identified by character IDs.
       tags:
       - Application - Characters
   /app/v1/characters/{characterId}:

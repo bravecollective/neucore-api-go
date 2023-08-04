@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**PlayerCharactersV1**](ApplicationCharactersApi.md#PlayerCharactersV1) | **Get** /app/v1/player-chars/{playerId} | Returns all characters from the player account.
 [**PlayerV1**](ApplicationCharactersApi.md#PlayerV1) | **Get** /app/v1/player/{characterId} | Returns the player account to which the character ID belongs.
 [**PlayerWithCharactersV1**](ApplicationCharactersApi.md#PlayerWithCharactersV1) | **Get** /app/v1/player-with-characters/{characterId} | Returns the player account to which the character ID belongs with all characters.
+[**PlayersV1**](ApplicationCharactersApi.md#PlayersV1) | **Post** /app/v1/players | Returns player accounts identified by character IDs.
 [**RemovedCharactersV1**](ApplicationCharactersApi.md#RemovedCharactersV1) | **Get** /app/v1/removed-characters/{characterId} | Returns all characters that were removed from the player account to which the character ID                     belongs.
 
 
@@ -774,6 +775,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PlayersV1
+
+> []Player PlayersV1(ctx).RequestBody(requestBody).Execute()
+
+Returns player accounts identified by character IDs.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/bravecollective/neucore-api-go"
+)
+
+func main() {
+    requestBody := []int32{int32(123)} // []int32 | EVE character IDs array.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationCharactersApi.PlayersV1(context.Background()).RequestBody(requestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCharactersApi.PlayersV1``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PlayersV1`: []Player
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationCharactersApi.PlayersV1`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPlayersV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requestBody** | **[]int32** | EVE character IDs array. | 
+
+### Return type
+
+[**[]Player**](Player.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
