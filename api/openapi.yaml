@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: Client library of Neucore API
   title: Neucore API
-  version: 2.2.0
+  version: 2.2.1
 servers:
 - url: https://localhost/api
 tags:
@@ -170,9 +170,9 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Player'
+                  $ref: '#/components/schemas/PlayerWithCharcterId'
                 type: array
-          description: "The players, only id and name properties are returned."
+          description: One entry for each character ID that was provided and found.
         "400":
           description: Invalid body.
         "403":
@@ -185,7 +185,8 @@ paths:
           description: ""
       security:
       - BearerAuth: []
-      summary: Returns player accounts identified by character IDs.
+      summary: Returns player accounts identified by character IDs. Can contain the
+        same player several times.
       tags:
       - Application - Characters
   /app/v1/characters/{characterId}:
@@ -1553,6 +1554,23 @@ paths:
       - Application - Tracking
 components:
   schemas:
+    PlayerWithCharcterId:
+      example:
+        name: name
+        id: 0
+        characterId: 6
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        characterId:
+          type: integer
+      required:
+      - characterId
+      - id
+      - name
+      type: object
     EsiTokenData:
       example:
         allianceId: 1

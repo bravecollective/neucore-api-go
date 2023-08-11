@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**PlayerCharactersV1**](ApplicationCharactersApi.md#PlayerCharactersV1) | **Get** /app/v1/player-chars/{playerId} | Returns all characters from the player account.
 [**PlayerV1**](ApplicationCharactersApi.md#PlayerV1) | **Get** /app/v1/player/{characterId} | Returns the player account to which the character ID belongs.
 [**PlayerWithCharactersV1**](ApplicationCharactersApi.md#PlayerWithCharactersV1) | **Get** /app/v1/player-with-characters/{characterId} | Returns the player account to which the character ID belongs with all characters.
-[**PlayersV1**](ApplicationCharactersApi.md#PlayersV1) | **Post** /app/v1/players | Returns player accounts identified by character IDs.
+[**PlayersV1**](ApplicationCharactersApi.md#PlayersV1) | **Post** /app/v1/players | Returns player accounts identified by character IDs. Can contain the same player several times.
 [**RemovedCharactersV1**](ApplicationCharactersApi.md#RemovedCharactersV1) | **Get** /app/v1/removed-characters/{characterId} | Returns all characters that were removed from the player account to which the character ID                     belongs.
 
 
@@ -784,9 +784,9 @@ Name | Type | Description  | Notes
 
 ## PlayersV1
 
-> []Player PlayersV1(ctx).RequestBody(requestBody).Execute()
+> []PlayerWithCharcterId PlayersV1(ctx).RequestBody(requestBody).Execute()
 
-Returns player accounts identified by character IDs.
+Returns player accounts identified by character IDs. Can contain the same player several times.
 
 
 
@@ -812,7 +812,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCharactersApi.PlayersV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PlayersV1`: []Player
+    // response from `PlayersV1`: []PlayerWithCharcterId
     fmt.Fprintf(os.Stdout, "Response from `ApplicationCharactersApi.PlayersV1`: %v\n", resp)
 }
 ```
@@ -832,7 +832,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Player**](Player.md)
+[**[]PlayerWithCharcterId**](PlayerWithCharcterId.md)
 
 ### Authorization
 
