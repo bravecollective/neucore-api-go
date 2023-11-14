@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: Client library of Neucore API
   title: Neucore API
-  version: 2.2.1
+  version: 2.4.0
 servers:
 - url: https://localhost/api
 tags:
@@ -527,7 +527,7 @@ paths:
       - Application - Characters
   /app/v1/esi/eve-login/{name}/characters:
     get:
-      description: "Needs role: app-esi."
+      description: "Needs role: app-esi-login."
       operationId: esiEveLoginCharactersV1
       parameters:
       - description: EVE login name.
@@ -575,7 +575,7 @@ paths:
       - Application - ESI
   /app/v1/esi/eve-login/{name}/token-data:
     get:
-      description: "Needs role: app-esi."
+      description: "Needs role: app-esi-login."
       operationId: esiEveLoginTokenDataV1
       parameters:
       - description: "EVE login name, 'core.default' is not allowed."
@@ -621,11 +621,83 @@ paths:
         for an EVE login.
       tags:
       - Application - ESI
+  /app/v1/esi/access-token/{characterId}:
+    get:
+      description: "Needs role: app-esi-token"
+      operationId: esiAccessTokenV1
+      parameters:
+      - description: The EVE character ID.
+        explode: false
+        in: path
+        name: characterId
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: "Optional EVE login name, defaults to 'core.default'."
+        explode: true
+        in: query
+        name: eveLoginName
+        required: false
+        schema:
+          maxLength: 20
+          pattern: "^[-._a-zA-Z0-9]+$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EsiAccessToken'
+          description: Success
+        "204":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Invalid token.
+        "403":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ESI token not found.
+      security:
+      - BearerAuth: []
+      summary: Returns an access token for a character and EVE login.
+      tags:
+      - Application - ESI
   /app/v1/esi:
     get:
       deprecated: true
       operationId: esiV1
       parameters:
+      - description: |-
+          The EVE character ID those token should be used. Has priority over the query
+               *                       parameter 'datasource'
+        explode: false
+        in: header
+        name: Neucore-EveCharacter
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: "The EVE login name from which the token should be used, defaults\
+          \ to core.default."
+        explode: false
+        in: header
+        name: Neucore-EveLogin
+        required: false
+        schema:
+          type: string
+        style: simple
       - explode: true
         in: query
         name: esi-path-query
@@ -718,6 +790,25 @@ paths:
       deprecated: true
       operationId: esiPostV1
       parameters:
+      - description: |-
+          The EVE character ID those token should be used. Has priority over the query
+               *                       parameter 'datasource'
+        explode: false
+        in: header
+        name: Neucore-EveCharacter
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: "The EVE login name from which the token should be used, defaults\
+          \ to core.default."
+        explode: false
+        in: header
+        name: Neucore-EveLogin
+        required: false
+        schema:
+          type: string
+        style: simple
       - explode: true
         in: query
         name: esi-path-query
@@ -816,7 +907,9 @@ paths:
   /app/v2/esi:
     get:
       description: |-
-        Needs role: app-esi<br>
+        Needs role: app-esi-proxy<br>
+             *         Either the header 'Neucore-EveCharacter' and optionally 'Neucore-EveLogin' or the query parameter
+                       'datasource' is required.<br>
              *         Public ESI routes are not allowed.<br>
              *         The following headers from ESI are passed through to the response if they exist:
                        Content-Type Expires X-Esi-Error-Limit-Remain X-Esi-Error-Limit-Reset X-Pages warning, Warning<br>
@@ -826,6 +919,25 @@ paths:
                        see doc/api-examples for more.
       operationId: esiV2
       parameters:
+      - description: |-
+          The EVE character ID those token should be used. Has priority over the query
+                                      parameter 'datasource'
+        explode: false
+        in: header
+        name: Neucore-EveCharacter
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: "The EVE login name from which the token should be used, defaults\
+          \ to core.default."
+        explode: false
+        in: header
+        name: Neucore-EveLogin
+        required: false
+        schema:
+          type: string
+        style: simple
       - description: The ESI path and query string (without the datasource parameter).
         explode: true
         in: query
@@ -835,12 +947,13 @@ paths:
           type: string
         style: form
       - description: |-
-          The EVE character ID those token should be used to make the ESI request. Optionally
-                                      followed by a colon and the name of an EVE login to use an alternative ESI token.
+          The EVE character ID those token should be used from the default login to make the ESI
+                                      request. Optionally followed by a colon and the name of an EVE login to use an alternative
+                                      ESI token.
         explode: true
         in: query
         name: datasource
-        required: true
+        required: false
         schema:
           type: string
         style: form
@@ -934,6 +1047,25 @@ paths:
     post:
       operationId: esiPostV2
       parameters:
+      - description: |-
+          The EVE character ID those token should be used. Has priority over the query
+               *                       parameter 'datasource'
+        explode: false
+        in: header
+        name: Neucore-EveCharacter
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: "The EVE login name from which the token should be used, defaults\
+          \ to core.default."
+        explode: false
+        in: header
+        name: Neucore-EveLogin
+        required: false
+        schema:
+          type: string
+        style: simple
       - explode: true
         in: query
         name: esi-path-query
@@ -1598,6 +1730,27 @@ components:
       - characterName
       - corporationId
       - lastChecked
+      type: object
+    EsiAccessToken:
+      example:
+        expires: 0
+        scopes:
+        - scopes
+        - scopes
+        token: token
+      properties:
+        token:
+          type: string
+        scopes:
+          items:
+            type: string
+          type: array
+        expires:
+          type: integer
+      required:
+      - expires
+      - scopes
+      - token
       type: object
     CharacterGroups:
       example:
@@ -3254,7 +3407,9 @@ components:
       - app-groups
       - app-chars
       - app-tracking
-      - app-esi
+      - app-esi-login
+      - app-esi-proxy
+      - app-esi-token
       - user
       - user-admin
       - user-manager

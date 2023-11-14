@@ -4,6 +4,7 @@ All URIs are relative to *https://localhost/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**EsiAccessTokenV1**](ApplicationESIApi.md#EsiAccessTokenV1) | **Get** /app/v1/esi/access-token/{characterId} | Returns an access token for a character and EVE login.
 [**EsiEveLoginCharactersV1**](ApplicationESIApi.md#EsiEveLoginCharactersV1) | **Get** /app/v1/esi/eve-login/{name}/characters | Returns character IDs of characters that have an ESI token (including invalid) of an EVE login.
 [**EsiEveLoginTokenDataV1**](ApplicationESIApi.md#EsiEveLoginTokenDataV1) | **Get** /app/v1/esi/eve-login/{name}/token-data | Returns data for all valid tokens (roles are also checked if applicable) for an EVE login.
 [**EsiPostV1**](ApplicationESIApi.md#EsiPostV1) | **Post** /app/v1/esi | See POST /app/v2/esi
@@ -11,6 +12,78 @@ Method | HTTP request | Description
 [**EsiV1**](ApplicationESIApi.md#EsiV1) | **Get** /app/v1/esi | See GET /app/v2/esi
 [**EsiV2**](ApplicationESIApi.md#EsiV2) | **Get** /app/v2/esi | Makes an ESI GET request on behalf on an EVE character and returns the result.
 
+
+
+## EsiAccessTokenV1
+
+> EsiAccessToken EsiAccessTokenV1(ctx, characterId).EveLoginName(eveLoginName).Execute()
+
+Returns an access token for a character and EVE login.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/bravecollective/neucore-api-go"
+)
+
+func main() {
+    characterId := int32(56) // int32 | The EVE character ID.
+    eveLoginName := "eveLoginName_example" // string | Optional EVE login name, defaults to 'core.default'. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationESIApi.EsiAccessTokenV1(context.Background(), characterId).EveLoginName(eveLoginName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationESIApi.EsiAccessTokenV1``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EsiAccessTokenV1`: EsiAccessToken
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationESIApi.EsiAccessTokenV1`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**characterId** | **int32** | The EVE character ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEsiAccessTokenV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **eveLoginName** | **string** | Optional EVE login name, defaults to &#39;core.default&#39;. | 
+
+### Return type
+
+[**EsiAccessToken**](EsiAccessToken.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## EsiEveLoginCharactersV1
@@ -155,7 +228,7 @@ Name | Type | Description  | Notes
 
 ## EsiPostV1
 
-> string EsiPostV1(ctx).EsiPathQuery(esiPathQuery).Datasource(datasource).Body(body).Execute()
+> string EsiPostV1(ctx).EsiPathQuery(esiPathQuery).Datasource(datasource).Body(body).NeucoreEveCharacter(neucoreEveCharacter).NeucoreEveLogin(neucoreEveLogin).Execute()
 
 See POST /app/v2/esi
 
@@ -175,10 +248,12 @@ func main() {
     esiPathQuery := "esiPathQuery_example" // string | 
     datasource := "datasource_example" // string | 
     body := "body_example" // string | 
+    neucoreEveCharacter := "neucoreEveCharacter_example" // string | The EVE character ID those token should be used. Has priority over the query      *                       parameter 'datasource' (optional)
+    neucoreEveLogin := "neucoreEveLogin_example" // string | The EVE login name from which the token should be used, defaults to core.default. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationESIApi.EsiPostV1(context.Background()).EsiPathQuery(esiPathQuery).Datasource(datasource).Body(body).Execute()
+    resp, r, err := apiClient.ApplicationESIApi.EsiPostV1(context.Background()).EsiPathQuery(esiPathQuery).Datasource(datasource).Body(body).NeucoreEveCharacter(neucoreEveCharacter).NeucoreEveLogin(neucoreEveLogin).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationESIApi.EsiPostV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -202,6 +277,8 @@ Name | Type | Description  | Notes
  **esiPathQuery** | **string** |  | 
  **datasource** | **string** |  | 
  **body** | **string** |  | 
+ **neucoreEveCharacter** | **string** | The EVE character ID those token should be used. Has priority over the query      *                       parameter &#39;datasource&#39; | 
+ **neucoreEveLogin** | **string** | The EVE login name from which the token should be used, defaults to core.default. | 
 
 ### Return type
 
@@ -223,7 +300,7 @@ Name | Type | Description  | Notes
 
 ## EsiPostV2
 
-> string EsiPostV2(ctx).EsiPathQuery(esiPathQuery).Datasource(datasource).Body(body).Execute()
+> string EsiPostV2(ctx).EsiPathQuery(esiPathQuery).Datasource(datasource).Body(body).NeucoreEveCharacter(neucoreEveCharacter).NeucoreEveLogin(neucoreEveLogin).Execute()
 
 Same as GET /app/v2/esi, but for POST requests.
 
@@ -243,10 +320,12 @@ func main() {
     esiPathQuery := "esiPathQuery_example" // string | 
     datasource := "datasource_example" // string | 
     body := "body_example" // string | JSON encoded data.
+    neucoreEveCharacter := "neucoreEveCharacter_example" // string | The EVE character ID those token should be used. Has priority over the query      *                       parameter 'datasource' (optional)
+    neucoreEveLogin := "neucoreEveLogin_example" // string | The EVE login name from which the token should be used, defaults to core.default. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationESIApi.EsiPostV2(context.Background()).EsiPathQuery(esiPathQuery).Datasource(datasource).Body(body).Execute()
+    resp, r, err := apiClient.ApplicationESIApi.EsiPostV2(context.Background()).EsiPathQuery(esiPathQuery).Datasource(datasource).Body(body).NeucoreEveCharacter(neucoreEveCharacter).NeucoreEveLogin(neucoreEveLogin).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationESIApi.EsiPostV2``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -270,6 +349,8 @@ Name | Type | Description  | Notes
  **esiPathQuery** | **string** |  | 
  **datasource** | **string** |  | 
  **body** | **string** | JSON encoded data. | 
+ **neucoreEveCharacter** | **string** | The EVE character ID those token should be used. Has priority over the query      *                       parameter &#39;datasource&#39; | 
+ **neucoreEveLogin** | **string** | The EVE login name from which the token should be used, defaults to core.default. | 
 
 ### Return type
 
@@ -291,7 +372,7 @@ Name | Type | Description  | Notes
 
 ## EsiV1
 
-> string EsiV1(ctx).EsiPathQuery(esiPathQuery).Datasource(datasource).Execute()
+> string EsiV1(ctx).EsiPathQuery(esiPathQuery).Datasource(datasource).NeucoreEveCharacter(neucoreEveCharacter).NeucoreEveLogin(neucoreEveLogin).Execute()
 
 See GET /app/v2/esi
 
@@ -310,10 +391,12 @@ import (
 func main() {
     esiPathQuery := "esiPathQuery_example" // string | 
     datasource := "datasource_example" // string | 
+    neucoreEveCharacter := "neucoreEveCharacter_example" // string | The EVE character ID those token should be used. Has priority over the query      *                       parameter 'datasource' (optional)
+    neucoreEveLogin := "neucoreEveLogin_example" // string | The EVE login name from which the token should be used, defaults to core.default. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationESIApi.EsiV1(context.Background()).EsiPathQuery(esiPathQuery).Datasource(datasource).Execute()
+    resp, r, err := apiClient.ApplicationESIApi.EsiV1(context.Background()).EsiPathQuery(esiPathQuery).Datasource(datasource).NeucoreEveCharacter(neucoreEveCharacter).NeucoreEveLogin(neucoreEveLogin).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationESIApi.EsiV1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -336,6 +419,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **esiPathQuery** | **string** |  | 
  **datasource** | **string** |  | 
+ **neucoreEveCharacter** | **string** | The EVE character ID those token should be used. Has priority over the query      *                       parameter &#39;datasource&#39; | 
+ **neucoreEveLogin** | **string** | The EVE login name from which the token should be used, defaults to core.default. | 
 
 ### Return type
 
@@ -357,7 +442,7 @@ Name | Type | Description  | Notes
 
 ## EsiV2
 
-> string EsiV2(ctx).EsiPathQuery(esiPathQuery).Datasource(datasource).Execute()
+> string EsiV2(ctx).EsiPathQuery(esiPathQuery).NeucoreEveCharacter(neucoreEveCharacter).NeucoreEveLogin(neucoreEveLogin).Datasource(datasource).Execute()
 
 Makes an ESI GET request on behalf on an EVE character and returns the result.
 
@@ -377,11 +462,13 @@ import (
 
 func main() {
     esiPathQuery := "esiPathQuery_example" // string | The ESI path and query string (without the datasource parameter).
-    datasource := "datasource_example" // string | The EVE character ID those token should be used to make the ESI request. Optionally                             followed by a colon and the name of an EVE login to use an alternative ESI token.
+    neucoreEveCharacter := "neucoreEveCharacter_example" // string | The EVE character ID those token should be used. Has priority over the query                             parameter 'datasource' (optional)
+    neucoreEveLogin := "neucoreEveLogin_example" // string | The EVE login name from which the token should be used, defaults to core.default. (optional)
+    datasource := "datasource_example" // string | The EVE character ID those token should be used from the default login to make the ESI                             request. Optionally followed by a colon and the name of an EVE login to use an alternative                             ESI token. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationESIApi.EsiV2(context.Background()).EsiPathQuery(esiPathQuery).Datasource(datasource).Execute()
+    resp, r, err := apiClient.ApplicationESIApi.EsiV2(context.Background()).EsiPathQuery(esiPathQuery).NeucoreEveCharacter(neucoreEveCharacter).NeucoreEveLogin(neucoreEveLogin).Datasource(datasource).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationESIApi.EsiV2``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -403,7 +490,9 @@ Other parameters are passed through a pointer to a apiEsiV2Request struct via th
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **esiPathQuery** | **string** | The ESI path and query string (without the datasource parameter). | 
- **datasource** | **string** | The EVE character ID those token should be used to make the ESI request. Optionally                             followed by a colon and the name of an EVE login to use an alternative ESI token. | 
+ **neucoreEveCharacter** | **string** | The EVE character ID those token should be used. Has priority over the query                             parameter &#39;datasource&#39; | 
+ **neucoreEveLogin** | **string** | The EVE login name from which the token should be used, defaults to core.default. | 
+ **datasource** | **string** | The EVE character ID those token should be used from the default login to make the ESI                             request. Optionally followed by a colon and the name of an EVE login to use an alternative                             ESI token. | 
 
 ### Return type
 

@@ -11,7 +11,11 @@
 
 * `APP_TRACKING` (value: `"app-tracking"`)
 
-* `APP_ESI` (value: `"app-esi"`)
+* `APP_ESI_LOGIN` (value: `"app-esi-login"`)
+
+* `APP_ESI_PROXY` (value: `"app-esi-proxy"`)
+
+* `APP_ESI_TOKEN` (value: `"app-esi-token"`)
 
 * `USER` (value: `"user"`)
 

@@ -21,6 +21,7 @@ docs/CharacterGroups.md
 docs/CharacterNameChange.md
 docs/Corporation.md
 docs/CorporationMember.md
+docs/EsiAccessToken.md
 docs/EsiLocation.md
 docs/EsiToken.md
 docs/EsiTokenData.md
@@ -55,6 +56,7 @@ model_character_groups.go
 model_character_name_change.go
 model_corporation.go
 model_corporation_member.go
+model_esi_access_token.go
 model_esi_location.go
 model_esi_token.go
 model_esi_token_data.go
